@@ -26,10 +26,11 @@ interface IErrorMessages {
   address: string[] | undefined;
   city: string[] | undefined;
   state: string[] | undefined;
-  zip: string[] | undefined;
+  zipcode: string[] | undefined;
   country: string[] | undefined;
   sizes: string[] | undefined;
   processes: string[] | undefined;
+  images: string[] | undefined;
 }
 
 const initialState: IErrorMessages = {
@@ -38,10 +39,11 @@ const initialState: IErrorMessages = {
   address: undefined,
   city: undefined,
   state: undefined,
-  zip: undefined,
+  zipcode: undefined,
   country: undefined,
   sizes: undefined,
-  processes: undefined
+  processes: undefined,
+  images: undefined
 };
 
 export default function AddLabForm() {
@@ -170,6 +172,9 @@ export default function AddLabForm() {
         <FormLabel htmlFor="uploadedPictures">Images</FormLabel>
         <div className="col-span-2">
           <MyDropzone />
+          {errors?.images && (
+            <FormErrorParagraph>{errors.images}</FormErrorParagraph>
+          )}
         </div>
       </FormRow>
       {/* <FormRow>

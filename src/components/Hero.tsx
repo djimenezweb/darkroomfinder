@@ -1,10 +1,9 @@
-import { useId } from 'react';
 import { partners } from '@/constants/partners';
 import Image from 'next/image';
 import Link from 'next/link';
+import Search from './Search';
 
 export default function Hero() {
-  const id = useId();
   return (
     <section className="sm:py-18 container relative mx-auto px-6 py-16 md:py-24 lg:px-16 lg:py-24 xl:px-20 pt-8 md:pt-16 overflow-hidden">
       <div className="pt-20 text-center">
@@ -21,25 +20,7 @@ export default function Hero() {
         </p>
       </div>
       <div>
-        <form className="flex justify-center items-center gap-2 mt-8">
-          <input
-            type="search"
-            id={`input${id}`}
-            className="rounded-md shadow-sm text-gray-dark-1200 focus-visible:shadow-md outline-none focus:ring-current focus:ring-2 focus-visible:border-gray-dark-900 focus-visible:ring-gray-dark-300 placeholder-gray-dark-900 bg-gray-dark-1200/[.026] border border-gray-dark-600 text-sm px-4 py-2"
-          />
-          {/* <select name="type" id={`type${id}`}>
-            <option value="all">All</option>
-            <option value="submin">Subminiature</option>
-            <option value="35">35 mm</option>
-            <option value="MF">Medium Format</option>
-            <option value="LF">Large Format</option>
-          </select> */}
-          <button
-            type="submit"
-            className="bg-red-800 hover:bg-red-800/80 text-sm px-4 py-2 rounded-md font-normal border border-red-600">
-            Search
-          </button>
-        </form>
+        <Search />
         <div className="mt-14">
           <p className="text-xs text-gray-dark-1100 text-center">
             Made possible by

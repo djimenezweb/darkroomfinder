@@ -13,16 +13,16 @@ export interface ILab {
     zipcode: string;
     country: string;
   };
-  enlargers: number;
-  features: string[];
+  //enlargers: number;
+  //features: string[];
   sizes: string[];
   processes: string[];
-  rates: {
-    hour?: number;
-    session?: number;
-    day?: number;
-    week?: number;
-  };
+  // rates: {
+  //   hour?: number;
+  //   session?: number;
+  //   day?: number;
+  //   week?: number;
+  // };
   images: string[];
   isFeatured: boolean;
 }
@@ -40,16 +40,16 @@ const labSchema = new Schema<ILab>(
       zipcode: String,
       country: String
     },
-    enlargers: { type: Number },
-    features: [{ type: String }],
+    // enlargers: { type: Number },
+    // features: [{ type: String }],
     sizes: [{ type: String }],
     processes: [{ type: String }],
-    rates: {
-      hour: Number,
-      session: Number,
-      day: Number,
-      week: Number
-    },
+    // rates: {
+    //   hour: Number,
+    //   session: Number,
+    //   day: Number,
+    //   week: Number
+    // },
     images: [{ type: String }],
     isFeatured: { type: Boolean, default: false }
   },

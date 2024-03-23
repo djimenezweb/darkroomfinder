@@ -91,8 +91,8 @@ export default function MyDropzone() {
       <div {...getRootProps({ style })}>
         <input
           {...getInputProps({
-            name: 'uploadedPictures',
-            id: 'uploadedPictures'
+            name: 'images',
+            id: 'images'
           })}
         />
         {isDragReject && (
