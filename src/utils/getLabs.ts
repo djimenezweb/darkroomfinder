@@ -20,8 +20,8 @@ export async function getLabs(
 
   const matchFilter = {
     $or: [
-      { name: { $regex: `${query}`, $options: 'i' } },
-      { description: { $regex: `${query}`, $options: 'i' } }
+      { name: { $regex: query, $options: 'i' } },
+      { description: { $regex: query, $options: 'i' } }
     ]
   };
 

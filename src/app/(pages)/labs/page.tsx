@@ -2,9 +2,8 @@ import LabCard from '@/components/LabCard';
 import { fetchLabs } from '@/utils/fetchLabs';
 import Link from 'next/link';
 import Aside from './Aside';
-import { range } from '@/utils/range';
-import { RESULTS_PER_PAGE } from '@/constants/search-options';
 import { getLabs } from '@/utils/getLabs';
+import Pagination from './Pagination';
 
 export default async function Labs({
   searchParams
@@ -18,54 +17,31 @@ export default async function Labs({
     page,
     query
   );
-  const buttons = Math.ceil(totalResults / RESULTS_PER_PAGE);
+
+  if (labs.length === 0) return <p>No labs found</p>;
 
   return (
     <section className="pt-16 min-h-screen relative flex items-stretch">
       <Aside />
       <div className="grow p-5">
-        {labs.length > 0 && (
-          <h4 className="text-lg">
-            {totalResults} darkrooms found. Showing from {showingFrom} to{' '}
-            {showingTo}
-          </h4>
-        )}
-        {labs.length === 0 && <p>No labs found</p>}
-
+        <h4 className="text-lg">
+          {totalResults} darkrooms found. Showing from {showingFrom} to{' '}
+          {showingTo}
+        </h4>
         <ul className="mx-auto mt-3 grid grid-cols-1 gap-4 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
           {labs.map(lab => (
             <li key={lab._id}>
               <Link href={`/lab/${lab._id}`}>
-                <LabCard name={lab.name} city={lab.location.city} />
+                <LabCard
+                  name={lab.name}
+                  city={lab.location.city}
+                  picture={lab.images[0]}
+                />
               </Link>
             </li>
           ))}
         </ul>
-
-        {labs.length > 0 && buttons > 1 && (
-          <div className="flex gap-4 justify-center items-center mt-8">
-            {range(1, buttons + 1).map(n => {
-              if (n === page) {
-                return (
-                  <span
-                    key={n}
-                    className="text-center font-regular text-xs px-3 py-1 shadow-sm border rounded text-gray-dark-1200 bg-gray-dark-500 hover:bg-gray-dark-600 border-gray-dark-700 hover:border-gray-dark-800">
-                    {n}
-                  </span>
-                );
-              } else {
-                return (
-                  <Link
-                    key={n}
-                    href={`/labs?page=${n}`}
-                    className="text-center font-regular text-xs px-3 py-1 shadow-sm border rounded cursor-pointer text-gray-dark-1000 hover:text-gray-dark-1200 bg-transparent hover:bg-gray-dark-600 border-gray-dark-700 hover:border-gray-dark-900">
-                    {n}
-                  </Link>
-                );
-              }
-            })}
-          </div>
-        )}
+        <Pagination totalResults={totalResults} page={page} />
       </div>
     </section>
   );

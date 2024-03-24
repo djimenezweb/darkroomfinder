@@ -4,20 +4,22 @@ import testImage from '../../public/images/test_9243.jpg';
 
 export default function LabCard({
   name,
-  city
+  city,
+  picture
 }: {
   name: string;
   city: string;
+  picture: string;
 }) {
   return (
     <div className="relative bg-gray-dark-300 border border-gray-dark-500 rounded-md p-5 block cursor-pointer hover:bg-gray-dark-400 hover:border-gray-dark-600 h-44">
       <div className="flex gap-4">
         <Image
-          src={testImage}
+          src={picture}
           alt={name}
           width={150}
           height={100}
-          className="rounded-md overflow-hidden"
+          className="rounded-md overflow-hidden shrink-0"
         />
         <div>
           <p className="text-sm">{name}</p>

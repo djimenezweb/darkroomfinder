@@ -12,19 +12,17 @@ export interface ILab {
     state: string;
     zipcode: string;
     country: string;
+    latitude: number;
+    longitude: number;
   };
-  //enlargers: number;
-  //features: string[];
-  sizes: string[];
-  processes: string[];
-  // rates: {
-  //   hour?: number;
-  //   session?: number;
-  //   day?: number;
-  //   week?: number;
-  // };
+  sizes: ['35mm', 'medium', 'large', 'submin'];
+  // sizes: string[];
+  processes: ['bw', 'c41', 'e6', 'ra4', 'other'];
+  // processes: string[];
   images: string[];
   isFeatured: boolean;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 // Create a Schema corresponding to the document interface.
@@ -38,18 +36,12 @@ const labSchema = new Schema<ILab>(
       city: String,
       state: String,
       zipcode: String,
-      country: String
+      country: String,
+      latitude: Number,
+      longitude: Number
     },
-    // enlargers: { type: Number },
-    // features: [{ type: String }],
     sizes: [{ type: String }],
     processes: [{ type: String }],
-    // rates: {
-    //   hour: Number,
-    //   session: Number,
-    //   day: Number,
-    //   week: Number
-    // },
     images: [{ type: String }],
     isFeatured: { type: Boolean, default: false }
   },
