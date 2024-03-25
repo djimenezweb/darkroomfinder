@@ -1,6 +1,6 @@
 import { AuthOptions } from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
-import dbConnect from '@/lib/dbConnect';
+import dbConnect from '@/utils/dbConnect';
 import { User } from '@/models/User';
 
 // Doc Google provider: https://next-auth.js.org/providers/google

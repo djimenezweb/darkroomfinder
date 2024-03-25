@@ -1,5 +1,5 @@
 import { RESULTS_PER_PAGE } from '@/constants/search-options';
-import dbConnect from '@/lib/dbConnect';
+import dbConnect from '@/utils/dbConnect';
 import { ILab, Lab } from '@/models/Lab';
 
 interface IFetchLabs {
@@ -8,6 +8,8 @@ interface IFetchLabs {
   showingFrom: number;
   showingTo: number;
 }
+
+// Buscar en arrays: https://stackoverflow.com/questions/63507376/mongodb-mongoose-find-if-array-contains-includes#63507514
 
 export async function getLabs(
   page: number,

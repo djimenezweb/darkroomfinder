@@ -13,7 +13,7 @@ import CloseMenu from './logos/CloseMenu';
 import { EnvelopeIcon } from '@heroicons/react/16/solid';
 
 export default function Navbar({ session }: { session: Session | null }) {
-  const pathname = usePathname();
+  // const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useToggle();
   const [isProfileOpen, setIsProfileOpen] = useToggle();
 

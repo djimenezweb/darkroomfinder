@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import { ChevronRightIcon } from '@heroicons/react/24/solid';
-import testImage from '../../public/images/test_9243.jpg';
 
 export default function LabCard({
   name,

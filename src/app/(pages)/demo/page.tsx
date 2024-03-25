@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { technologies } from './technologies';
+import { technologies } from '@/constants/technologies';
 import Image from 'next/image';
 
 export default function FakePage() {

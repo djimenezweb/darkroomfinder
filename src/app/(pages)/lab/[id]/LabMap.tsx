@@ -16,7 +16,7 @@ export default function LabMap({ lat, lon }: { lat: number; lon: number }) {
         style={{ width: 600, height: 400 }}
         mapLib={import('maplibre-gl')}
         mapStyle={`https://api.maptiler.com/maps/5cde18f8-54d9-4506-b93a-4ffa7a3aeaa2/style.json?key=${process.env.NEXT_PUBLIC_MAPTILER_API_KEY}`}>
-        <Marker longitude={lon} latitude={lat} anchor="bottom">
+        <Marker longitude={lon} latitude={lat} anchor="bottom" offset={[0, 0]}>
           <div className="rounded-full bg-red-600 w-4 h-4 animate-pulse" />
         </Marker>
       </Map>
@@ -38,5 +38,6 @@ export default function LabMap({ lat, lon }: { lat: number; lon: number }) {
   );
 }
 
+// 5cde18f8-54d9-4506-b93a-4ffa7a3aeaa2
 // mapStyle={`https://api.maptiler.com/maps/streets/style.json?key=${process.env.NEXT_PUBLIC_MAPTILER_API_KEY}`}>
 // https://api.maptiler.com/maps/5cde18f8-54d9-4506-b93a-4ffa7a3aeaa2/style.json?key=GnkPvo6GfRC5rLKbXjam

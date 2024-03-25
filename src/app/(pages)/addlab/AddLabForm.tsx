@@ -2,7 +2,7 @@
 
 import { sizes, processes } from '@/constants/lab-options';
 import SubmitButton from './SubmitButton';
-import { addDarkroom } from '@/actions/actions';
+import { addDarkroom } from '@/actions/addDarkroom';
 import clsx from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import styles from '@/styles/styles';
@@ -16,9 +16,7 @@ import {
   FormErrorParagraph
 } from './FormElements';
 import { LOCATION } from '@/constants/location-form-fields';
-import { useDropzone } from 'react-dropzone';
 import MyDropzone from './Dropzone';
-import Basic from './BasicDropzone';
 
 interface IErrorMessages {
   name: string[] | undefined;
@@ -137,7 +135,7 @@ export default function AddLabForm() {
               <FormCheckBox
                 key={id}
                 group="sizes"
-                id={id}
+                id={fullName}
                 fullName={fullName}
                 checked={checked}
               />
@@ -157,7 +155,7 @@ export default function AddLabForm() {
               <FormCheckBox
                 key={id}
                 group="processes"
-                id={id}
+                id={fullName}
                 fullName={fullName}
                 checked={checked}
               />
@@ -177,18 +175,6 @@ export default function AddLabForm() {
           )}
         </div>
       </FormRow>
-      {/* <FormRow>
-        <FormLabel htmlFor="images">Images</FormLabel>
-        <div className="col-span-2">
-          <Basic />
-        </div>
-      </FormRow>
-      <FormRow>
-        <FormLabel htmlFor="pictures">Pictures upload</FormLabel>
-        <div className="col-span-2">
-          <input type="file" name="pictures" id="picturees" multiple />
-        </div>
-      </FormRow> */}
       <div className="bg-gray-dark-300 border-b border-gray-dark-400 flex items-center justify-between px-6 py-4">
         <button
           type="button"

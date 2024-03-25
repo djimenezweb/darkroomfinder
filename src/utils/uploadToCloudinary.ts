@@ -43,7 +43,7 @@ export async function uploadToCloudinary(images: File[]) {
 //     .end(byteArrayBuffer);
 // });
 
-const resultSample = {
+const RESULT_EXAMPLE = {
   asset_id: '1a613a3d9994680c6d6bf48ff6ca998c',
   public_id: 'dkkpxw5yx35hr8laxiwg',
   version: 1710717175,
