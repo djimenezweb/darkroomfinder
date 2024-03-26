@@ -6,6 +6,7 @@ export default async function Home() {
   return (
     <>
       <Hero />
+
       <figure>
         <Image
           src="/images/pexels-annushka-ahuja-8114061.jpg"

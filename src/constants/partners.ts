@@ -1,8 +1,8 @@
-import adox from '../../public/images/partners/adox.png';
-import durst from '../../public/images/partners/durst.png';
-import foma from '../../public/images/partners/foma.png';
-import ilford from '../../public/images/partners/ilford.png';
-import meopta from '../../public/images/partners/meopta.png';
+import adox from '/public/images/partners/adox.png';
+import durst from '/public/images/partners/durst.png';
+import foma from '/public/images/partners/foma.png';
+import ilford from '/public/images/partners/ilford.png';
+import meopta from '/public/images/partners/meopta.png';
 
 export const partners = [
   {

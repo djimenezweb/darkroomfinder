@@ -1,5 +1,6 @@
 import { range } from '@/utils/range';
 import Aside from './Aside';
+import { RESULTS_PER_PAGE } from '@/constants/search-options';
 
 export default async function LabsLoadingPage() {
   return (
@@ -8,7 +9,7 @@ export default async function LabsLoadingPage() {
       <div className="grow p-5">
         <h4 className="text-lg">Searching darkrooms...</h4>
         <ul className="mx-auto mt-3 grid grid-cols-1 gap-4 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
-          {range(9).map(n => (
+          {range(RESULTS_PER_PAGE).map(n => (
             <SkeletonLabCard key={n} />
           ))}
         </ul>

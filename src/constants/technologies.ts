@@ -1,18 +1,18 @@
-import cloudinary from '../../public/images/logos/cloudinary.png';
-import maplibre from '../../public/images/logos/maplibre.png';
-import maptiler from '../../public/images/logos/maptiler.png';
-import mongodb from '../../public/images/logos/mongodb.png';
-import mongoose from '../../public/images/logos/mongoose.png';
-import nextWhite from '../../public/images/logos/next_white.png';
-import nextauth from '../../public/images/logos/nextauth.png';
-import npm from '../../public/images/logos/npm.png';
-import react from '../../public/images/logos/react.png';
-import tailwindcss from '../../public/images/logos/tailwindcss.png';
-import tailwindMerge from '../../public/images/logos/tailwind-merge.png';
-import typescript from '../../public/images/logos/typescript.png';
-import reactDropzone from '../../public/images/logos/react-dropzone.png';
-import zod from '../../public/images/logos/zod.png';
-import vercel from '../../public/images/logos/vercel.png';
+import cloudinary from '/public/images/logos/cloudinary.png';
+import maplibre from '/public/images/logos/maplibre.png';
+import maptiler from '/public/images/logos/maptiler.png';
+import mongodb from '/public/images/logos/mongodb.png';
+import mongoose from '/public/images/logos/mongoose.png';
+import nextWhite from '/public/images/logos/next_white.png';
+import nextauth from '/public/images/logos/nextauth.png';
+import npm from '/public/images/logos/npm.png';
+import react from '/public/images/logos/react.png';
+import tailwindcss from '/public/images/logos/tailwindcss.png';
+import tailwindMerge from '/public/images/logos/tailwind-merge.png';
+import typescript from '/public/images/logos/typescript.png';
+import reactDropzone from '/public/images/logos/react-dropzone.png';
+import zod from '/public/images/logos/zod.png';
+import vercel from '/public/images/logos/vercel.png';
 
 export const technologies = [
   {

@@ -1,8 +1,8 @@
 export const sizes = [
-  { id: '35mm', shortName: '35mm', fullName: '35 mm', checked: true },
-  { id: 'medium', shortName: 'MF', fullName: 'medium format', checked: false },
-  { id: 'large', shortName: 'LF', fullName: 'large format', checked: false },
-  { id: 'submin', shortName: 'sub', fullName: 'submin', checked: false }
+  { id: '35', shortName: '35mm', fullName: '35 mm', checked: true },
+  { id: 'mf', shortName: 'MF', fullName: 'medium format', checked: false },
+  { id: 'lf', shortName: 'LF', fullName: 'large format', checked: false },
+  { id: 'sub', shortName: 'sub', fullName: 'submin', checked: false }
 ];
 
 export const processes = [

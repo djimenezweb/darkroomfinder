@@ -11,7 +11,7 @@ export default function Pagination({
 }) {
   const buttons = Math.ceil(totalResults / RESULTS_PER_PAGE);
 
-  if (buttons < 1) return;
+  if (buttons <= 1) return;
 
   return (
     <div className="flex gap-4 justify-center items-center mt-8">

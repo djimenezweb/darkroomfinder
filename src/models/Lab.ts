@@ -15,9 +15,7 @@ export interface ILab {
     latitude: number;
     longitude: number;
   };
-  // sizes: ['35mm', 'medium', 'large', 'submin'];
   sizes: string[];
-  // processes: ['bw', 'c41', 'e6', 'ra4', 'other'];
   processes: string[];
   images: string[];
   isFeatured: boolean;

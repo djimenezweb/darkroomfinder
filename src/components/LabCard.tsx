@@ -18,7 +18,7 @@ export default function LabCard({
           alt={name}
           width={150}
           height={100}
-          className="rounded-md overflow-hidden shrink-0"
+          className="w-[150px] h-[100px] rounded-md overflow-hidden shrink-0 object-cover object-top"
         />
         <div>
           <p className="text-sm">{name}</p>

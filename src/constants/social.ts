@@ -1,7 +1,7 @@
-import twitter from '../../public/images/logos/twitter.svg';
-import github from '../../public/images/logos/github.svg';
-import discord from '../../public/images/logos/discord.svg';
-import youtube from '../../public/images/logos/youtube.svg';
+import twitter from '/public/images/logos/twitter.svg';
+import github from '/public/images/logos/github.svg';
+import discord from '/public/images/logos/discord.svg';
+import youtube from '/public/images/logos/youtube.svg';
 
 export const social = [
   {

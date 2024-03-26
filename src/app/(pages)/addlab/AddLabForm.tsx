@@ -130,17 +130,17 @@ export default function AddLabForm() {
       <FormRow>
         <FormFieldSet name="sizes">Sizes</FormFieldSet>
         <div className="col-span-2">
-          <div className="flex gap-2">
+          <ul className="flex gap-2">
             {sizes.map(({ id, fullName, checked }) => (
               <FormCheckBox
                 key={id}
                 group="sizes"
-                id={fullName}
+                id={id}
                 fullName={fullName}
                 checked={checked}
               />
             ))}
-          </div>
+          </ul>
           {errors?.sizes && (
             <FormErrorParagraph>{errors.sizes}</FormErrorParagraph>
           )}
@@ -150,17 +150,17 @@ export default function AddLabForm() {
         <FormFieldSet name="processes">Processes</FormFieldSet>
 
         <div className="col-span-2">
-          <div className="flex gap-2 flex-wrap">
+          <ul className="flex gap-2 flex-wrap">
             {processes.map(({ id, fullName, checked }) => (
               <FormCheckBox
                 key={id}
                 group="processes"
-                id={fullName}
+                id={id}
                 fullName={fullName}
                 checked={checked}
               />
             ))}
-          </div>
+          </ul>
           {errors?.processes && (
             <FormErrorParagraph>{errors.processes}</FormErrorParagraph>
           )}
