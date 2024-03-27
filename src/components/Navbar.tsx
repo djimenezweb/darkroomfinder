@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import defaultProfile from '/public/images/default_profile.png';
 import useToggle from '@/hooks/useToggle';
-import { usePathname } from 'next/navigation';
 import { Session } from 'next-auth';
 import Image from 'next/image';
 import DropDownMenu from './DropDownMenu';
@@ -53,7 +52,9 @@ export default function Navbar({ session }: { session: Session | null }) {
                 </Link>
               </li>
             )}
-            {isMobileMenuOpen && session && <DropDownMenu />}
+            {isMobileMenuOpen && session && (
+              <DropDownMenu setIsProfileOpen={setIsProfileOpen} />
+            )}
           </ul>
           <div className="bg-gray-dark-100 absolute lg:relative bottom-0 left-0 w-full lg:w-auto lg:bg-transparent lg:flex lg:items-center lg:gap-2">
             <div className="hidden lg:block text-xs ml-auto px-2.5 py-1 rounded-md font-normal text-gray-dark-1100 hover:text-gray-dark-1200 hover:bg-gray-dark-500">
@@ -89,7 +90,7 @@ export default function Navbar({ session }: { session: Session | null }) {
             {isProfileOpen && (
               <div className="absolute w-40 h-auto bg-gray-dark-300 top-10 right-0 border-solid border border-gray-dark-500 rounded-xl shadow-lg">
                 <ul className="text-sm font-normal p-3">
-                  <DropDownMenu />
+                  <DropDownMenu setIsProfileOpen={setIsProfileOpen} />
                 </ul>
               </div>
             )}

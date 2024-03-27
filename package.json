@@ -25,6 +25,7 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@types/geojson": "^7946.0.14",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
