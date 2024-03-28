@@ -46,9 +46,17 @@ export default async function Labs({
     <section className="pt-16 min-h-screen relative flex items-stretch">
       <Aside />
       <div className="grow p-5">
-        <h4 className="text-lg">
-          {totalResults} darkrooms found. Showing from {showingFrom} to{' '}
-          {showingTo}
+        <h4 className="text-lg text-gray-dark-1200">
+          <span>
+            Showing {showingFrom}-{showingTo} of {totalResults}{' '}
+            {totalResults === 1 ? 'darkroom' : 'darkrooms'}
+          </span>
+          {query && (
+            <span>
+              {' '}
+              for <span className="text-red-500">{`"${query}"`}</span>
+            </span>
+          )}
         </h4>
         <ul className="mx-auto mt-3 grid grid-cols-1 gap-4 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
           {labs.map(lab => (

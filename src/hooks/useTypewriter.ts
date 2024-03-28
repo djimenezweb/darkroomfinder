@@ -27,7 +27,7 @@ export default function useTypewriter(array: string[], speed: number = 100) {
         setCurrentText('');
         wordIndex.current = wrap(wordIndex.current + 1, array.length);
         delay.current = random(speed * 0.5, speed * 2.2);
-      }, 1250);
+      }, 2500);
       return () => clearTimeout(timeoutId);
     }
   }, [text, delay, currentText, array, speed]);

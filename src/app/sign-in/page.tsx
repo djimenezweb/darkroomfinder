@@ -44,7 +44,7 @@ export default async function SigninPage() {
             </p>
           </div>
         </main>
-        <aside className="hidden md:block relative bg-gray-dark-100 grow basis-1/4 border-l border-gray-dark-600 overflow-hidden">
+        <aside className="hidden md:block relative bg-[#5f0000] grow basis-1/4 border-l border-gray-dark-600 overflow-hidden">
           <figure>
             <Image
               src="/images/pexels-ron-lach-10276046.jpg"

@@ -1,10 +1,15 @@
 'use client';
 
 import 'maplibre-gl/dist/maplibre-gl.css';
-import Link from 'next/link';
-import Map, { Marker } from 'react-map-gl/maplibre';
+import Map, {
+  FullscreenControl,
+  Marker,
+  NavigationControl,
+  ScaleControl
+} from 'react-map-gl/maplibre';
 import { MapPinIcon } from '@heroicons/react/24/solid';
 import { useState } from 'react';
+import SpinnerSVG from '@/components/logos/Spinner';
 
 export default function LabMap({ lat, lon }: { lat: number; lon: number }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -12,18 +17,18 @@ export default function LabMap({ lat, lon }: { lat: number; lon: number }) {
 
   if (!lat || !lon)
     return (
-      <div className="w-[600px]">
-        <div className="w-[300px] h-[200px] bg-gray-dark-400 flex justify-center items-center">
+      <div className="w-full">
+        <div className="w-full h-40 bg-gray-dark-400 flex justify-center items-center">
           <p className="text-sm text-gray-dark-900">Map not available</p>
         </div>
       </div>
     );
 
   return (
-    <div className="w-[600px] relative">
+    <div className="w-full h-80 relative">
       {isLoading && (
         <div className="absolute inset-0 z-10 flex justify-center items-center bg-gray-dark-400">
-          <p className="text-sm">Loading map...</p>
+          <SpinnerSVG className="size-12 animate-spin" />
         </div>
       )}
 
@@ -41,29 +46,17 @@ export default function LabMap({ lat, lon }: { lat: number; lon: number }) {
         }}
         onLoad={() => setIsLoading(false)}
         onError={() => setError(true)}
-        style={{ width: 600, height: 400 }}
+        style={{ width: '100%', height: '100%' }}
         mapLib={import('maplibre-gl')}
-        mapStyle={`https://api.maptiler.com/maps/5cde18f8-54d9-4506-b93a-4ffa7a3aeaa2/style.json?key=${process.env.NEXT_PUBLIC_MAPTILER_API_KEY}`}>
+        mapStyle={`https://api.maptiler.com/maps/5cde18f8-54d9-4506-b93a-4ffa7a3aeaa2/style.json?key=${process.env.NEXT_PUBLIC_MAPTILER_API_KEY}`}
+        attributionControl={false}>
         <Marker longitude={lon} latitude={lat} anchor="bottom" offset={[0, -4]}>
           {/* <div className="rounded-full bg-red-600 w-4 h-4 animate-pulse" /> */}
           <MapPinIcon className="text-red-600 size-8 animate-bounce" />
         </Marker>
+        <FullscreenControl />
+        <NavigationControl showCompass={false} />
       </Map>
-
-      <p className="text-xs text-gray-dark-1100 text-right">
-        powered by{' '}
-        <Link href="https://maplibre.org/" target="_blank">
-          MapLibre
-        </Link>
-        {' | '}
-        <Link href="https://www.maptiler.com/copyright/" target="_blank">
-          MapTiler
-        </Link>
-        {' | '}
-        <Link href="https://www.openstreetmap.org/copyright" target="_blank">
-          OpenStreetMap
-        </Link>
-      </p>
     </div>
   );
 }
