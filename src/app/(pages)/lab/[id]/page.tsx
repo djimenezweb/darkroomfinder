@@ -62,9 +62,7 @@ export default async function DarkroomPage({ params }: { params: Params }) {
           </div>
         </ContainerWithBorder>
 
-        <ContainerWithBorder>
-          <Carousel images={lab.images} />
-        </ContainerWithBorder>
+        <Carousel images={lab.images} />
 
         <ContainerWithBorder>
           <div className="rounded-md overflow-hidden">

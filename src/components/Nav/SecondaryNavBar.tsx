@@ -35,7 +35,10 @@ export default function SecondaryNavBar({
 
           <li>
             <button
-              onClick={() => setIsProfileOpen(prv => !prv)}
+              onClick={e => {
+                e.stopPropagation();
+                setIsProfileOpen(prv => !prv);
+              }}
               className="px-2.5 py-1">
               <Image
                 src={profilePicture}

@@ -6,10 +6,12 @@ import { useState } from 'react';
 import { wrap } from '@/utils/wrap';
 import { AnimatePresence, motion } from 'framer-motion';
 import { twMerge } from 'tailwind-merge';
+import ContainerWithBorder from '@/components/ContainerWithBorder';
 
 export default function Carousel({ images }: { images: string[] }) {
   const [[index, direction], setIndex] = useState([0, 0]);
   const [pillWidth, setPillWidth] = useState<number | number[]>(8);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const length = images.length;
   const buttonStyles =
@@ -28,7 +30,9 @@ export default function Carousel({ images }: { images: string[] }) {
   }
 
   return (
-    <>
+    <motion.div
+      layoutId={String(index)}
+      className="bg-gray-dark-300 p-5 rounded-md border border-gray-dark-500">
       <div className="w-full flex justify-between items-center">
         {length > 1 && (
           <button
@@ -39,7 +43,9 @@ export default function Carousel({ images }: { images: string[] }) {
           </button>
         )}
         <div className="w-full grow flex justify-center">
-          <div className="relative overflow-hidden">
+          <div
+            className="relative overflow-hidden"
+            onClick={() => setIsModalOpen(true)}>
             <AnimatePresence
               mode="popLayout"
               initial={false}
@@ -91,6 +97,6 @@ export default function Carousel({ images }: { images: string[] }) {
           </div>
         ))}
       </div>
-    </>
+    </motion.div>
   );
 }

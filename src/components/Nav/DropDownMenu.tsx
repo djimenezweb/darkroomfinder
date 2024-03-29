@@ -1,3 +1,5 @@
+'use client';
+
 import { signOut } from 'next-auth/react';
 import Link from 'next/link';
 import {
@@ -5,15 +7,21 @@ import {
   StarIcon,
   UserCircleIcon
 } from '@heroicons/react/16/solid';
+import { useCallback, useRef } from 'react';
+import { useClickOutside } from '@/hooks/useClickOutside';
 
 export default function DropDownMenu({
   closeProfile
 }: {
   closeProfile: () => void;
 }) {
+  const ref = useRef(null);
+  const handleClickOutside = useCallback(closeProfile, [closeProfile]);
+  useClickOutside(ref, handleClickOutside);
+
   return (
     <div className="hidden lg:block absolute w-48 h-auto bg-gray-dark-300 top-10 right-0 border-solid border border-gray-dark-500 rounded-xl shadow-lg">
-      <ul className="font-normal text-sm p-3">
+      <ul className="font-normal text-sm p-3" ref={ref}>
         <li>
           <Link
             href="/profile"
