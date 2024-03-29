@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 export default function useTypewriter(array: string[], speed: number = 100) {
   const [currentText, setCurrentText] = useState('');
   const letterIndex = useRef(0);
-  const wordIndex = useRef(0);
+  const wordIndex = useRef(random(0, array.length));
   const text = array[wordIndex.current];
   const delay = useRef(speed);
 

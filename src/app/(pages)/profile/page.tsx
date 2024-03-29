@@ -3,10 +3,13 @@ import { getServerSession } from 'next-auth';
 import Image from 'next/image';
 import { redirect } from 'next/navigation';
 import defaultProfile from '/public/images/default_profile.png';
+import ContainerWithBorder from '@/components/ContainerWithBorder';
+import StickyAside from '@/components/StickyAside';
+import BackButton from '@/components/BackButton';
 
 export default async function ProfilePage() {
   const session = await getServerSession(authOptions);
-  console.log('🚀 ~ ProfilePage ~ session:', session);
+  // console.log('🚀 ~ ProfilePage ~ session:', session);
 
   if (!session) {
     redirect('/sign-in');
@@ -16,15 +19,11 @@ export default async function ProfilePage() {
 
   return (
     <section className="pt-16 min-h-screen relative flex items-stretch">
-      <aside className="w-40 lg:w-64 border-r border-gray-dark-600 relative shrink-0">
-        <div className="sticky top-16">
-          <div className="py-5 px-6 border-b border-gray-dark-600">
-            <p className="text-sm text-gray-dark-1000">Back</p>
-          </div>
-        </div>
-      </aside>
+      <StickyAside>
+        <BackButton />
+      </StickyAside>
       <div className="p-5 grow max-w-3xl space-y-8">
-        <div className="bg-gray-dark-300 px-6 py-4 rounded-md border border-gray-dark-400">
+        <ContainerWithBorder>
           <h3 className="text-base mb-8">Profile Information</h3>
           <div className="space-y-2">
             <div className="text-sm grid gap-2 md:grid md:grid-cols-12">
@@ -63,26 +62,25 @@ export default async function ProfilePage() {
                 />
               </div>
             </div>
-            <div className="text-sm grid gap-2 md:grid md:grid-cols-12">
-              <div className="flex flex-col space-y-2 col-span-4">
-                <label className="text-gray-dark-1100 text-sm">
-                  Profile picture
-                </label>
-              </div>
-              <div className="col-span-8">
-                <Image
-                  src={profilePicture}
-                  width={48}
-                  height={48}
-                  className="size-12 rounded-full"
-                  alt="Profile picture"
-                />
-              </div>
+          </div>
+        </ContainerWithBorder>
+
+        <ContainerWithBorder>
+          <div className="text-sm grid gap-2 md:grid md:grid-cols-12">
+            <h3 className="mb-8 text-base col-span-4">Profile picture</h3>
+            <div className="col-span-8">
+              <Image
+                src={profilePicture}
+                width={48}
+                height={48}
+                className="size-12 rounded-full"
+                alt="Profile picture"
+              />
             </div>
           </div>
-        </div>
+        </ContainerWithBorder>
 
-        <div className="bg-gray-dark-300 px-6 py-4 rounded-md border border-gray-dark-400">
+        <ContainerWithBorder className="border-error-500">
           <h3 className="mb-8 text-base">Delete account</h3>
           <div className="space-y-2">
             <p className="text-gray-dark-1000 text-sm">
@@ -90,7 +88,7 @@ export default async function ProfilePage() {
               your deletion request has been submitted.
             </p>
           </div>
-        </div>
+        </ContainerWithBorder>
       </div>
     </section>
   );

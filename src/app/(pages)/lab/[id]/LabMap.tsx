@@ -4,8 +4,7 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import Map, {
   FullscreenControl,
   Marker,
-  NavigationControl,
-  ScaleControl
+  NavigationControl
 } from 'react-map-gl/maplibre';
 import { MapPinIcon } from '@heroicons/react/24/solid';
 import { useState } from 'react';
@@ -48,6 +47,7 @@ export default function LabMap({ lat, lon }: { lat: number; lon: number }) {
         onError={() => setError(true)}
         style={{ width: '100%', height: '100%' }}
         mapLib={import('maplibre-gl')}
+        // mapStyle="./maptiler-style.json"
         mapStyle={`https://api.maptiler.com/maps/5cde18f8-54d9-4506-b93a-4ffa7a3aeaa2/style.json?key=${process.env.NEXT_PUBLIC_MAPTILER_API_KEY}`}
         attributionControl={false}>
         <Marker longitude={lon} latitude={lat} anchor="bottom" offset={[0, -4]}>

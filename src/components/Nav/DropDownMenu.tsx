@@ -7,9 +7,9 @@ import {
 } from '@heroicons/react/16/solid';
 
 export default function DropDownMenu({
-  setIsProfileOpen
+  closeProfile
 }: {
-  setIsProfileOpen: () => void;
+  closeProfile: () => void;
 }) {
   return (
     <div className="hidden lg:block absolute w-48 h-auto bg-gray-dark-300 top-10 right-0 border-solid border border-gray-dark-500 rounded-xl shadow-lg">
@@ -17,7 +17,7 @@ export default function DropDownMenu({
         <li>
           <Link
             href="/profile"
-            onClick={setIsProfileOpen}
+            onClick={closeProfile}
             className="px-4 py-2 flex items-center gap-4 hover:bg-gray-dark-400">
             <UserCircleIcon className="text-gray-dark-900 size-4" />
             <span>My Profile</span>
@@ -26,7 +26,7 @@ export default function DropDownMenu({
         <li>
           <Link
             href="#"
-            onClick={setIsProfileOpen}
+            onClick={closeProfile}
             className="px-4 py-2 flex items-center gap-4 hover:bg-gray-dark-400">
             <StarIcon className="text-gray-dark-900 size-4" />
             <span>Saved Labs</span>
@@ -35,7 +35,7 @@ export default function DropDownMenu({
         <li>
           <button
             onClick={() => {
-              setIsProfileOpen;
+              closeProfile;
               signOut();
             }}
             className="w-full px-4 py-2 flex items-center gap-4 hover:bg-gray-dark-400">

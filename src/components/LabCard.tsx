@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { ChevronRightIcon } from '@heroicons/react/24/solid';
+import { ChevronRightIcon } from '@heroicons/react/24/outline';
 
 export default function LabCard({
   name,
@@ -11,7 +11,7 @@ export default function LabCard({
   picture: string;
 }) {
   return (
-    <div className="relative bg-gray-dark-300 border border-gray-dark-500 rounded-md p-5 block cursor-pointer hover:bg-gray-dark-400 hover:border-gray-dark-600 h-44">
+    <div className="group relative bg-gray-dark-300 border border-gray-dark-500 rounded-md p-5 block cursor-pointer hover:bg-gray-dark-400 hover:border-gray-dark-600 h-44">
       <div className="flex gap-4">
         <Image
           src={picture}
@@ -25,7 +25,7 @@ export default function LabCard({
           <p className="text-sm text-gray-dark-1100">{city}</p>
         </div>
       </div>
-      <ChevronRightIcon className="absolute bottom-5 right-5 w-4 h-4 text-gray-dark-1000" />
+      <ChevronRightIcon className="absolute bottom-5 right-5 w-4 h-4 text-gray-dark-900 group-hover:text-gray-dark-1100 group-hover:translate-x-2 transition-transform" />
     </div>
   );
 }

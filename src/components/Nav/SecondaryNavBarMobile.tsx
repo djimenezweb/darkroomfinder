@@ -11,10 +11,10 @@ import { signOut } from 'next-auth/react';
 
 export default function SecondaryNavBarMobile({
   session,
-  setIsMobileMenuOpen
+  closeMobileMenu
 }: {
   session: Session | null;
-  setIsMobileMenuOpen: () => void;
+  closeMobileMenu: () => void;
 }) {
   const profilePicture = session?.user.image || defaultProfile;
 
@@ -32,7 +32,7 @@ export default function SecondaryNavBarMobile({
             <Link
               href="#"
               className="block px-2.5 py-1"
-              onClick={setIsMobileMenuOpen}>
+              onClick={closeMobileMenu}>
               <EnvelopeIcon className="text-gray-dark-1100 size-8" />
             </Link>
           </li>
@@ -41,7 +41,7 @@ export default function SecondaryNavBarMobile({
             <Link
               href="#"
               className="block px-2.5 py-1"
-              onClick={setIsMobileMenuOpen}>
+              onClick={closeMobileMenu}>
               <StarIcon className="text-gray-dark-1100 size-8" />
             </Link>
           </li>
@@ -50,7 +50,7 @@ export default function SecondaryNavBarMobile({
             <Link
               href="/profile"
               className="block px-2.5 py-1"
-              onClick={setIsMobileMenuOpen}>
+              onClick={closeMobileMenu}>
               <Image
                 src={profilePicture}
                 alt="Profile picture"

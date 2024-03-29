@@ -1,4 +1,5 @@
 import cloudinary from '/public/images/logos/cloudinary.png';
+import framermotion from '/public/images/logos/framermotion.png';
 import maplibre from '/public/images/logos/maplibre.png';
 import maptiler from '/public/images/logos/maptiler.png';
 import mongodb from '/public/images/logos/mongodb.png';
@@ -7,6 +8,7 @@ import nextWhite from '/public/images/logos/next_white.png';
 import nextauth from '/public/images/logos/nextauth.png';
 import npm from '/public/images/logos/npm.png';
 import react from '/public/images/logos/react.png';
+import reactMapGL from '/public/images/logos/react-map-gl.png';
 import tailwindcss from '/public/images/logos/tailwindcss.png';
 import tailwindMerge from '/public/images/logos/tailwind-merge.png';
 import typescript from '/public/images/logos/typescript.png';
@@ -79,6 +81,24 @@ export const technologies = [
     logo: tailwindcss
   },
   {
+    url: 'https://www.npmjs.com/package/tailwind-merge',
+    npm: 'tailwind-merge',
+    title: 'tailwind-merge',
+    description:
+      'Utility function to efficiently merge Tailwind CSS classes in JS without style conflicts.',
+    version: '2.2.1',
+    logo: tailwindMerge
+  },
+  {
+    url: 'https://www.framer.com/motion/',
+    npm: 'framer-motion',
+    title: 'Framer Motion',
+    description:
+      'An open source, production-ready motion library for React on the web.',
+    version: '11.0.23',
+    logo: framermotion
+  },
+  {
     url: 'https://cloudinary.com/',
     npm: 'cloudinary',
     title: 'Cloudinary',
@@ -86,15 +106,6 @@ export const technologies = [
       'Streamline media management and improve user experience by automatically delivering images and videos, enhanced and optimized for every user.',
     version: '2.0.3',
     logo: cloudinary
-  },
-  {
-    url: 'https://zod.dev/',
-    npm: 'zod',
-    title: 'Zod',
-    description:
-      'TypeScript-first schema validation with static type inference',
-    version: '3.22.4',
-    logo: zod
   },
   {
     url: 'https://react-dropzone.js.org/',
@@ -106,23 +117,24 @@ export const technologies = [
     logo: reactDropzone
   },
   {
-    url: 'https://www.npmjs.com/package/clsx',
-    npm: 'clsx',
-    title: 'clsx',
+    url: 'https://zod.dev/',
+    npm: 'zod',
+    title: 'Zod',
     description:
-      'A tiny utility for constructing className strings conditionally.',
-    version: '2.1.0',
-    logo: npm
+      'TypeScript-first schema validation with static type inference',
+    version: '3.22.4',
+    logo: zod
   },
-  {
-    url: 'https://www.npmjs.com/package/tailwind-merge',
-    npm: 'tailwind-merge',
-    title: 'tailwind-merge',
-    description:
-      'Utility function to efficiently merge Tailwind CSS classes in JS without style conflicts.',
-    version: '2.2.1',
-    logo: tailwindMerge
-  },
+  // {
+  //   url: 'https://www.npmjs.com/package/clsx',
+  //   npm: 'clsx',
+  //   title: 'clsx',
+  //   description:
+  //     'A tiny utility for constructing className strings conditionally.',
+  //   version: '2.1.0',
+  //   logo: npm
+  // },
+
   {
     url: 'https://www.maptiler.com/',
     npm: '',
@@ -142,13 +154,13 @@ export const technologies = [
     logo: maplibre
   },
   {
-    url: 'https://www.npmjs.com/package/react-map-gl',
+    url: 'http://visgl.github.io/react-map-gl/',
     npm: 'react-map-gl',
     title: 'react-map-gl',
     description:
       'react-map-gl is a suite of React components designed to provide a React API for Mapbox GL JS-compatible libraries.',
     version: '7.1.7',
-    logo: npm
+    logo: reactMapGL
   },
   {
     url: 'https://vercel.com/home',

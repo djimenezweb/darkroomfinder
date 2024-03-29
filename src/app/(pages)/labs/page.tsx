@@ -1,8 +1,10 @@
 import LabCard from '@/components/LabCard';
 import Link from 'next/link';
-import Aside from './Aside';
 import { getLabs } from '@/utils/getLabs';
 import Pagination from './Pagination';
+import StickyAside from '@/components/StickyAside';
+import SearchMini from './SearchMini';
+import Filters from './Filters';
 // import { findLabs } from '@/utils/findLabs';
 
 export default async function Labs({
@@ -35,7 +37,18 @@ export default async function Labs({
   if (labs.length === 0)
     return (
       <section className="pt-16 min-h-screen relative flex items-stretch">
-        <Aside />
+        <StickyAside>
+          <div className="py-5 px-6 border-b border-gray-dark-600">
+            <SearchMini />
+          </div>
+          <div className="py-5 px-6 border-b border-gray-dark-600">
+            <Filters name="sizes" />
+          </div>
+          <div className="py-5 px-6 border-b border-gray-dark-600">
+            <Filters name="processes" />
+          </div>
+        </StickyAside>
+
         <div className="grow p-5">
           <h4 className="text-lg">No labs found</h4>
         </div>
@@ -44,7 +57,17 @@ export default async function Labs({
 
   return (
     <section className="pt-16 min-h-screen relative flex items-stretch">
-      <Aside />
+      <StickyAside>
+        <div className="py-5 px-6 border-b border-gray-dark-600">
+          <SearchMini />
+        </div>
+        <div className="py-5 px-6 border-b border-gray-dark-600">
+          <Filters name="sizes" />
+        </div>
+        <div className="py-5 px-6 border-b border-gray-dark-600">
+          <Filters name="processes" />
+        </div>
+      </StickyAside>
       <div className="grow p-5">
         <h4 className="text-lg text-gray-dark-1200">
           <span>

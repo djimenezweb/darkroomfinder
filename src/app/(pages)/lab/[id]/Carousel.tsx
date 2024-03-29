@@ -5,7 +5,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
 import { useState } from 'react';
 import { wrap } from '@/utils/wrap';
 import { AnimatePresence, motion } from 'framer-motion';
-import clsx from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export default function Carousel({ images }: { images: string[] }) {
   const [[index, direction], setIndex] = useState([0, 0]);
@@ -13,7 +13,7 @@ export default function Carousel({ images }: { images: string[] }) {
 
   const length = images.length;
   const buttonStyles =
-    'block px-1 py-2.5 rounded-md font-normal text-gray-dark-1100 hover:text-gray-dark-1200 hover:bg-gray-dark-500';
+    'block px-1 py-2.5 rounded-md font-normal text-gray-dark-800 hover:text-gray-dark-1100 hover:bg-gray-dark-500';
 
   const variants = {
     enter: (direction: number) => ({ x: direction > 0 ? '100%' : '-100%' }),
@@ -33,7 +33,7 @@ export default function Carousel({ images }: { images: string[] }) {
         {length > 1 && (
           <button
             type="button"
-            className={clsx(buttonStyles)}
+            className={twMerge(buttonStyles)}
             onClick={() => handleClick(-1)}>
             <ChevronLeftIcon className="size-6" />
           </button>
@@ -66,7 +66,7 @@ export default function Carousel({ images }: { images: string[] }) {
         {length > 1 && (
           <button
             type="button"
-            className={clsx(buttonStyles)}
+            className={twMerge(buttonStyles)}
             onClick={() => handleClick(1)}>
             <ChevronRightIcon className="size-6" />
           </button>
@@ -76,7 +76,7 @@ export default function Carousel({ images }: { images: string[] }) {
         {images.map((picture, i) => (
           <div
             key={picture}
-            className={clsx(
+            className={twMerge(
               'size-2 rounded-full',
               i === index ? 'bg-gray-dark-900' : 'bg-gray-dark-900'
             )}>

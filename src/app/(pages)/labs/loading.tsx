@@ -1,13 +1,25 @@
 import { range } from '@/utils/range';
-import Aside from './Aside';
 import { RESULTS_PER_PAGE } from '@/constants/search-options';
+import StickyAside from '@/components/StickyAside';
+import SearchMini from './SearchMini';
+import Filters from './Filters';
 
 export default async function LabsLoadingPage() {
   return (
     <section className="pt-16 min-h-screen relative flex items-stretch">
-      <Aside />
+      <StickyAside>
+        <div className="py-5 px-6 border-b border-gray-dark-600">
+          <SearchMini />
+        </div>
+        <div className="py-5 px-6 border-b border-gray-dark-600">
+          <Filters name="sizes" />
+        </div>
+        <div className="py-5 px-6 border-b border-gray-dark-600">
+          <Filters name="processes" />
+        </div>
+      </StickyAside>
       <div className="grow p-5">
-        <h4 className="text-lg">Searching darkrooms...</h4>
+        <h4 className="text-lg animate-pulse">Searching darkrooms...</h4>
         <ul className="mx-auto mt-3 grid grid-cols-1 gap-4 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
           {range(RESULTS_PER_PAGE).map(n => (
             <SkeletonLabCard key={n} />

@@ -1,8 +1,7 @@
 'use client';
 
 import { sizes, processes } from '@/constants/lab-options';
-import SubmitButton from './SubmitButton';
-import { addDarkroom } from '@/actions/addDarkroom';
+import SubmitButton from '@/app/(pages)/addlab/SubmitButton';
 import { twMerge } from 'tailwind-merge';
 import styles from '@/styles/styles';
 import { useFormState } from 'react-dom';
@@ -13,9 +12,11 @@ import {
   FormLabel,
   FormRow,
   FormErrorParagraph
-} from './FormElements';
+} from '@/app/(pages)/addlab/FormElements';
 import { LOCATION } from '@/constants/location-form-fields';
-import MyDropzone from './Dropzone';
+import MyDropzone from '@/app/(pages)/addlab/Dropzone';
+import { ILab } from '@/models/Lab';
+import { editDarkroom } from '@/actions/editDarkroom';
 import { useRouter } from 'next/navigation';
 
 interface IErrorMessages {
@@ -26,6 +27,8 @@ interface IErrorMessages {
   state: string[] | undefined;
   zipcode: string[] | undefined;
   country: string[] | undefined;
+  latitude: string[] | undefined;
+  longitude: string[] | undefined;
   sizes: string[] | undefined;
   processes: string[] | undefined;
   images: string[] | undefined;
@@ -39,48 +42,43 @@ const initialState: IErrorMessages = {
   state: undefined,
   zipcode: undefined,
   country: undefined,
+  latitude: undefined,
+  longitude: undefined,
   sizes: undefined,
   processes: undefined,
   images: undefined
 };
 
-export default function AddLabForm() {
+// type TLocation = ILab['location'];
+
+export default function EditLabForm({ lab }: { lab: ILab }) {
   const router = useRouter();
-  const [errors, formAction] = useFormState(addDarkroom, initialState);
+  const documentId = lab._id;
+  const editDarkroomWithId = editDarkroom.bind(null, documentId);
+  const [errors, formAction] = useFormState(editDarkroomWithId, initialState);
 
   return (
     <form
       action={formAction}
       className="rounded-md border border-gray-dark-400 shadow-sm mb-8 overflow-hidden">
       <div className="bg-gray-dark-300 border-b border-gray-dark-400 flex items-center px-6 py-4">
-        <h2 className="text-base">Add a new darkroom</h2>
-      </div>
-      <div className="bg-gray-dark-300 border-b border-gray-dark-400 flex items-center px-6 py-4">
-        <p className="text-sm text-gray-dark-1000">
-          Fill in the form to add your lab to the database.
-          <br />
-          Once published you will be able to edit or delete the information.
-        </p>
-      </div>
-
-      <FormRow>
-        <FormLabel htmlFor="name">Name</FormLabel>
-        <FormInput
+        <input
           id="name"
           name="name"
-          placeholder="Darkroom name"
           type="text"
           className={twMerge(
             styles.inputTextStyles,
+            'w-full text-2xl sm:text-3xl',
             errors?.name &&
               'bg-error-200 border-error-500 placeholder-error-500'
           )}
-          defaultValue="">
+          defaultValue={lab.name}>
           {errors?.name && (
             <FormErrorParagraph>{errors.name}</FormErrorParagraph>
           )}
-        </FormInput>
-      </FormRow>
+        </input>
+      </div>
+
       <FormRow>
         <FormLabel htmlFor="description">Description</FormLabel>
 
@@ -88,30 +86,31 @@ export default function AddLabForm() {
           <textarea
             id="description"
             name="description"
-            placeholder="Description"
             className={twMerge(
               styles.inputTextStyles,
               errors?.description &&
                 'bg-error-200 border-error-500 placeholder-error-500'
             )}
-            defaultValue=""
+            defaultValue={lab.description}
           />
           {errors?.description && (
             <FormErrorParagraph>{errors.description}</FormErrorParagraph>
           )}
         </div>
       </FormRow>
+
       <FormRow>
-        <FormLabel htmlFor="address">Location</FormLabel>
-        <div className="col-span-2 space-y-2">
-          {LOCATION.map(({ id, placeholder }) => (
-            <div key={id}>
+        {LOCATION.map(({ id }) => (
+          <>
+            <FormLabel htmlFor={id} key={id + 'label'}>
+              <span className="capitalize">{id}</span>
+            </FormLabel>
+            <div className="col-span-2 space-y-2" key={id + 'input'}>
               <input
                 id={id}
                 name={id}
-                placeholder={placeholder}
                 type="text"
-                defaultValue=""
+                defaultValue={lab.location[id as keyof ILab['location']]}
                 className={twMerge(
                   'bg-gray-dark-400',
                   styles.inputTextStyles,
@@ -125,9 +124,40 @@ export default function AddLabForm() {
                 </FormErrorParagraph>
               )}
             </div>
-          ))}
+          </>
+        ))}
+        <FormLabel htmlFor="latitude">Latitude</FormLabel>
+        <div className="col-span-2 space-y-2">
+          <input
+            type="text"
+            id="latitude"
+            name="latitude"
+            defaultValue={lab.location.latitude}
+            className={twMerge(
+              'bg-gray-dark-400',
+              styles.inputTextStyles,
+              errors?.latitude &&
+                'bg-error-200 border-error-500 placeholder-error-500'
+            )}
+          />
+        </div>
+        <FormLabel htmlFor="longitude">Longitude</FormLabel>
+        <div className="col-span-2 space-y-2">
+          <input
+            type="text"
+            id="longitude"
+            name="longitude"
+            defaultValue={lab.location.longitude}
+            className={twMerge(
+              'bg-gray-dark-400',
+              styles.inputTextStyles,
+              errors?.longitude &&
+                'bg-error-200 border-error-500 placeholder-error-500'
+            )}
+          />
         </div>
       </FormRow>
+
       <FormRow>
         <FormFieldSet name="sizes">Sizes</FormFieldSet>
         <div className="col-span-2">
@@ -138,7 +168,7 @@ export default function AddLabForm() {
                 group="sizes"
                 id={id}
                 fullName={fullName}
-                checked={checked}
+                checked={lab.sizes.includes(id)}
               />
             ))}
           </ul>
@@ -152,13 +182,13 @@ export default function AddLabForm() {
 
         <div className="col-span-2">
           <ul className="flex gap-2 flex-wrap">
-            {processes.map(({ id, fullName, checked }) => (
+            {processes.map(({ id, fullName }) => (
               <FormCheckBox
                 key={id}
                 group="processes"
                 id={id}
                 fullName={fullName}
-                checked={checked}
+                checked={lab.processes.includes(id)}
               />
             ))}
           </ul>
@@ -183,7 +213,7 @@ export default function AddLabForm() {
           className="bg-gray-dark-500 hover:bg-gray-dark-600 text-xs p-2.5 lg:px-2.5 lg:py-1 rounded-md font-normal border border-gray-dark-700 hover:border-gray-dark-800">
           Cancel
         </button>
-        <SubmitButton text="Add new darkroom" />
+        <SubmitButton text="Save changes" />
       </div>
     </form>
   );

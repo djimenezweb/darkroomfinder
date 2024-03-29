@@ -23,6 +23,11 @@ const schema = z.object({
     })
 });
 
+const schemaWithGeoLocation = schema.extend({
+  latitude: z.string(),
+  longitude: z.string()
+});
+
 export function validateForm(formData: FormData) {
   const fieldsToValidate = {
     name: formData.get('name'),
@@ -38,4 +43,23 @@ export function validateForm(formData: FormData) {
   };
 
   return schema.safeParse(fieldsToValidate);
+}
+
+export function validateEditForm(formData: FormData) {
+  const fieldsToValidate = {
+    name: formData.get('name'),
+    description: formData.get('description'),
+    address: formData.get('address'),
+    city: formData.get('city'),
+    state: formData.get('state'),
+    zipcode: formData.get('zipcode'),
+    country: formData.get('country'),
+    latitude: formData.get('latitude'),
+    longitude: formData.get('longitude'),
+    sizes: formData.getAll('sizes'),
+    processes: formData.getAll('processes'),
+    images: formData.getAll('images')
+  };
+
+  return schemaWithGeoLocation.safeParse(fieldsToValidate);
 }

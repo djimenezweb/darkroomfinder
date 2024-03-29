@@ -8,10 +8,15 @@ import CloseMenu from '../logos/CloseMenu';
 import PrimaryNavBar from './PrimaryNavBar';
 import SecondaryNavBar from './SecondaryNavBar';
 import SecondaryNavBarMobile from './SecondaryNavBarMobile';
+import { useState } from 'react';
 
 export default function Navbar({ session }: { session: Session | null }) {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useToggle();
-  const [isProfileOpen, setIsProfileOpen] = useToggle();
+  // const [isMobileMenuOpen, setIsMobileMenuOpen] = useToggle();
+  // const [isProfileOpen, setIsProfileOpen] = useToggle();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const closeMobileMenu = () => setIsMobileMenuOpen(false);
+  const closeProfile = () => setIsProfileOpen(false);
 
   return (
     <div
@@ -34,21 +39,19 @@ export default function Navbar({ session }: { session: Session | null }) {
             session={session}
             setIsProfileOpen={setIsProfileOpen}
           />
-          {isProfileOpen && (
-            <DropDownMenu setIsProfileOpen={setIsProfileOpen} />
-          )}
+          {isProfileOpen && <DropDownMenu closeProfile={closeProfile} />}
 
           {isMobileMenuOpen && (
             <SecondaryNavBarMobile
               session={session}
-              setIsMobileMenuOpen={setIsMobileMenuOpen}
+              closeMobileMenu={closeMobileMenu}
             />
           )}
         </div>
 
         <div className="inset-y-0 flex items-center lg:hidden z-50">
           <button
-            onClick={setIsMobileMenuOpen}
+            onClick={() => setIsMobileMenuOpen(prv => !prv)}
             className="text-gray-dark-1000 focus:ring-red-800 bg-gray-dark-200 hover:bg-gray-dark-300 inline-flex items-center justify-center rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-inset">
             {isMobileMenuOpen ? (
               <CloseMenu className="block w-6 h-6" />

@@ -10,7 +10,7 @@ export default function SecondaryNavBar({
   setIsProfileOpen
 }: {
   session: Session | null;
-  setIsProfileOpen: () => void;
+  setIsProfileOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const profilePicture = session?.user.image || defaultProfile;
 
@@ -34,7 +34,9 @@ export default function SecondaryNavBar({
           </li>
 
           <li>
-            <button onClick={setIsProfileOpen} className="px-2.5 py-1">
+            <button
+              onClick={() => setIsProfileOpen(prv => !prv)}
+              className="px-2.5 py-1">
               <Image
                 src={profilePicture}
                 alt="Profile picture"

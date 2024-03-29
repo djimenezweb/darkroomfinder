@@ -3,8 +3,10 @@ import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
 import LabMap from './LabMap';
 import { sizes, processes } from '@/constants/lab-options';
 import Link from 'next/link';
-import clsx from 'clsx';
 import Carousel from './Carousel';
+import ContainerWithBorder from '@/components/ContainerWithBorder';
+import StickyAside from '@/components/StickyAside';
+import BackButton from '@/components/BackButton';
 
 export default async function DarkroomPage({ params }: { params: Params }) {
   const id = params.id;
@@ -14,13 +16,9 @@ export default async function DarkroomPage({ params }: { params: Params }) {
 
   return (
     <section className="pt-16 min-h-screen relative flex items-stretch">
-      <aside className="w-40 lg:w-64 border-r border-gray-dark-600 relative shrink-0">
-        <div className="sticky top-16">
-          <div className="py-5 px-6 border-b border-gray-dark-600">
-            <p className="text-sm text-gray-dark-1000">Back</p>
-          </div>
-        </div>
-      </aside>
+      <StickyAside>
+        <BackButton />
+      </StickyAside>
       <div className="p-5 ml-32 grow max-w-2xl space-y-4">
         <div>
           <h1 className="text-2xl sm:text-3xl mb-4">{lab.name}</h1>
@@ -97,26 +95,5 @@ export default async function DarkroomPage({ params }: { params: Params }) {
         </ContainerWithBorder>
       </div>
     </section>
-  );
-}
-
-function ContainerWithBorder({
-  children,
-  className,
-  transparent
-}: {
-  children: React.ReactNode;
-  className?: string;
-  transparent?: boolean;
-}) {
-  return (
-    <div
-      className={clsx(
-        'bg-gray-dark-300 p-5 rounded-md border border-gray-dark-500',
-        className,
-        transparent && 'bg-transparent hover:bg-gray-dark-300'
-      )}>
-      {children}
-    </div>
   );
 }

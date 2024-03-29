@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { technologies } from '@/constants/technologies';
 import Image from 'next/image';
+import ContainerWithBorder from '@/components/ContainerWithBorder';
 
 export default function FakePage() {
   return (
@@ -24,8 +25,8 @@ export default function FakePage() {
         <ul>
           {technologies.map(technology => (
             <li key={technology.url} className="mb-4">
-              <Link href={technology.url}>
-                <div className="bg-gray-dark-300 border border-gray-dark-500 rounded-md p-5 block cursor-pointer hover:bg-gray-dark-400 hover:border-gray-dark-600 shadow-md">
+              <Link href={technology.url} target="_blank">
+                <ContainerWithBorder className="block cursor-pointer hover:bg-gray-dark-400 hover:border-gray-dark-600 shadow-md">
                   <div className="flex gap-5">
                     <div className="shrink-0 flex items-center justify-center h-12 w-12 bg-gray-dark-100 rounded-lg text-gray-dark-1100">
                       <Image
@@ -45,7 +46,7 @@ export default function FakePage() {
                       </p>
                     </div>
                   </div>
-                </div>
+                </ContainerWithBorder>
               </Link>
             </li>
           ))}
