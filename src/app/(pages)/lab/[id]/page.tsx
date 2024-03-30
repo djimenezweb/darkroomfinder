@@ -7,17 +7,24 @@ import Carousel from './Carousel';
 import ContainerWithBorder from '@/components/ContainerWithBorder';
 import StickyAside from '@/components/StickyAside';
 import BackButton from '@/components/BackButton';
+import EditButton from '@/components/EditButton';
+import { redirect } from 'next/navigation';
 
 export default async function DarkroomPage({ params }: { params: Params }) {
-  const id = params.id;
+  const id: string = params.id;
   const lab = await getLabById(id);
-  if (!lab) return;
-  // Redirect to notfound
+
+  // Not found
+  if (!lab) {
+    // Redirect to notfound
+    return;
+  }
 
   return (
     <section className="pt-16 min-h-screen relative flex items-stretch">
       <StickyAside>
         <BackButton />
+        <EditButton id={id} />
       </StickyAside>
       <div className="p-5 ml-32 grow max-w-2xl space-y-4">
         <div>
@@ -84,12 +91,6 @@ export default async function DarkroomPage({ params }: { params: Params }) {
               OpenStreetMap
             </Link>
           </p>
-        </ContainerWithBorder>
-
-        <ContainerWithBorder className="flex">
-          {lab?.owner && <p>Lab owner: {lab.owner.toString()}</p>}
-          {lab.createdAt && <p>Published: {lab.createdAt.toDateString()}</p>}
-          {lab.updatedAt && <p>Updated: {lab.updatedAt.toDateString()}</p>}
         </ContainerWithBorder>
       </div>
     </section>

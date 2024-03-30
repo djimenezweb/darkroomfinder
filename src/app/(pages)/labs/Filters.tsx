@@ -18,11 +18,11 @@ export default function Filters({ name }: { name: 'sizes' | 'processes' }) {
   const router = useRouter();
 
   // Save possibly existing filter params as array
-  const filtersParams = searchParams.get(name)?.split('+');
+  const filterParams = searchParams.get(name)?.split('+');
 
   // If search params exist, asign them to initial state.
   // Otherwise initial state is an empty array.
-  const [filters, setFilters] = useState(filtersParams || []);
+  const [filters, setFilters] = useState(filterParams || []);
 
   // Updates filter state
   function handleClick(id: string) {
@@ -37,9 +37,13 @@ export default function Filters({ name }: { name: 'sizes' | 'processes' }) {
   // Updates searchParams according to the filter state after it has re-rendered
   // If the filter is empty, the search param is deleted
   // Otherwise the filter is updated
+  // This should run ONLY if filters are updated (are clicked on)
   useEffect(() => {
+    console.log('I am the useEffect from ' + name);
     function updateSearchParams() {
-      const params = new URLSearchParams(searchParams);
+      const params = new URLSearchParams();
+      // Deletes page to start url from scratch
+      // params.delete('page');
       if (filters.length === 0) {
         params.delete(name);
       } else {
@@ -49,7 +53,7 @@ export default function Filters({ name }: { name: 'sizes' | 'processes' }) {
       router.push(`/labs?${params.toString()}`);
     }
     updateSearchParams();
-  }, [filters, name, router, searchParams]);
+  }, [filters]);
 
   return (
     <>

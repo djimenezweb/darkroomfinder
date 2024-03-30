@@ -5,7 +5,6 @@ import Pagination from './Pagination';
 import StickyAside from '@/components/StickyAside';
 import SearchMini from './SearchMini';
 import Filters from './Filters';
-// import { findLabs } from '@/utils/findLabs';
 
 export default async function Labs({
   searchParams
@@ -21,12 +20,6 @@ export default async function Labs({
   const query = searchParams?.query || '';
   const sizes = searchParams?.sizes || null;
   const processes = searchParams?.processes || null;
-  // const { labs, totalResults, showingFrom, showingTo } = await findLabs(
-  //   page,
-  //   query,
-  //   sizes,
-  //   processes
-  // );
   const { labs, totalResults, showingFrom, showingTo } = await getLabs(
     page,
     query,

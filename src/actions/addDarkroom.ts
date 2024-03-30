@@ -8,8 +8,10 @@ import { authOptions } from '@/utils/authOptions';
 import { User } from '@/models/User';
 import { validateForm } from '@/utils/validateForm';
 import { geocodeAddress } from '@/utils/geocodeAddress';
+import { redirect } from 'next/navigation';
 
 export async function addDarkroom(prevState: any, formData: FormData) {
+  let documentId;
   // Validate form fields with Zod
   const validatedForm = validateForm(formData);
 
@@ -54,9 +56,14 @@ export async function addDarkroom(prevState: any, formData: FormData) {
         images: imagesURL
       });
       console.log('Darkroom added to db:', result);
+      documentId = result._id;
       // Redirect user to newly created result
     } catch (error) {
       console.log(error);
     }
+
+    // Revalidate and redirect user
+    // revalidatePath('/lab/' + documentId);
+    redirect('/lab/' + documentId);
   }
 }

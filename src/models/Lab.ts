@@ -1,9 +1,11 @@
-import { Schema, Types, model, models } from 'mongoose';
+import { Schema, Types, model, models, PopulatedDoc, Document } from 'mongoose';
+import { IUser } from './User';
 
 // Create an interface representing a document in MongoDB.
 export interface ILab {
   _id: string;
   owner: Types.ObjectId;
+  // owner: PopulatedDoc<Document<Types.ObjectId> & IUser>;
   name: string;
   description: string;
   location: {
@@ -46,4 +48,11 @@ const labSchema = new Schema<ILab>(
   { timestamps: true }
 );
 
-export const Lab = models.Lab || model<ILab>('Lab', labSchema, 'labs');
+const LabModel = () => model<ILab>('Lab', labSchema, 'labs');
+
+export const Lab = (models.Lab ||
+  model<ILab>('Lab', labSchema, 'labs')) as ReturnType<typeof LabModel>;
+
+// export const Lab = models.Lab || model<ILab>('Lab', labSchema, 'labs');
+
+// https://stackoverflow.com/questions/19051041/cannot-overwrite-model-once-compiled-mongoose/68670166#68670166

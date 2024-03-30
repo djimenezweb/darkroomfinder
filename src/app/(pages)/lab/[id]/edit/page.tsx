@@ -7,18 +7,24 @@ import EditLabForm from './EditLabForm';
 
 export default async function EditLabPage({ params }: { params: Params }) {
   const id = params.id;
-  const data = await getLabById(id);
-  if (!data) return;
-  // Fixes "Only plain objects can be passed to Client Components from Server Components" error.
-  // Thanks to https://flaviocopes.com/nextjs-serialize-date-json/
-  const lab = await JSON.parse(JSON.stringify(data));
-  // Redirect to notfound
-  // Comprobar si usuario tiene permiso
-
   const session = await getServerSession(authOptions);
 
+  // Not logged in
   if (!session) {
-    redirect('/sign-in?callbackUrl=/addlab');
+    redirect(`/sign-in?callbackUrl=/labs/${id}`);
+  }
+
+  const lab = await getLabById(id);
+  if (!lab) {
+    // Redirect to notfound
+    return;
+  }
+
+  //const lab = await JSON.parse(JSON.stringify(data));
+
+  // Unauthorized
+  if (session.user.email !== lab.owner.email) {
+    redirect(`/labs/${id}`);
   }
 
   return (

@@ -18,6 +18,7 @@ import MyDropzone from '@/app/(pages)/addlab/Dropzone';
 import { ILab } from '@/models/Lab';
 import { editDarkroom } from '@/actions/editDarkroom';
 import { useRouter } from 'next/navigation';
+import { ILabWithOwner } from '@/utils/getLabById';
 
 interface IErrorMessages {
   name: string[] | undefined;
@@ -51,7 +52,7 @@ const initialState: IErrorMessages = {
 
 // type TLocation = ILab['location'];
 
-export default function EditLabForm({ lab }: { lab: ILab }) {
+export default function EditLabForm({ lab }: { lab: ILabWithOwner }) {
   const router = useRouter();
   const documentId = lab._id;
   const editDarkroomWithId = editDarkroom.bind(null, documentId);
