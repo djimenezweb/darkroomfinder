@@ -36,12 +36,12 @@ export async function getLabs(
     ];
   }
 
-  // If sizes exist, set filter to look in sizes array
+  // If sizes exist, set filter to search in sizes array
   if (sizes) {
     filters.sizes = { sizes: { $all: sizes.split('+') } };
   }
 
-  // If processes exist, set filter to look in processes array
+  // If processes exist, set filter to search in processes array
   if (processes) {
     filters.processes = { processes: { $all: processes.split('+') } };
   }

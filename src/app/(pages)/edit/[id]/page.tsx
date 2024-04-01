@@ -3,7 +3,7 @@ import { getLabById } from '@/utils/getLabById';
 import { getServerSession } from 'next-auth';
 import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
 import { redirect } from 'next/navigation';
-import EditLabForm from './EditLabForm';
+import EditLabForm from '@/components/forms/EditLabForm';
 
 export default async function EditLabPage({ params }: { params: Params }) {
   const id = params.id;

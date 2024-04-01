@@ -21,6 +21,7 @@ export default function SearchMini() {
     } else {
       params.delete('query');
     }
+    params.delete('page');
     router.push(`/labs?${params.toString()}`);
   }
 

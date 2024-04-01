@@ -1,7 +1,7 @@
 'use client';
 
 import { sizes, processes } from '@/constants/lab-options';
-import SubmitButton from '@/app/(pages)/addlab/SubmitButton';
+import SubmitButton from '@/components/forms/SubmitButton';
 import { twMerge } from 'tailwind-merge';
 import styles from '@/styles/styles';
 import { useFormState } from 'react-dom';
@@ -12,9 +12,9 @@ import {
   FormLabel,
   FormRow,
   FormErrorParagraph
-} from '@/app/(pages)/addlab/FormElements';
+} from '@/components/forms/FormElements';
 import { LOCATION } from '@/constants/location-form-fields';
-import MyDropzone from '@/app/(pages)/addlab/Dropzone';
+import MyDropzone from '@/components/forms/Dropzone';
 import { ILab } from '@/models/Lab';
 import { editDarkroom } from '@/actions/editDarkroom';
 import { useRouter } from 'next/navigation';

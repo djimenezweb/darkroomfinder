@@ -21,7 +21,7 @@ export default function FakePage() {
             website!
           </p>
         </div>
-        <h2 className="text-gray-dark-1200 text-2xl mt-8 mb-4">Made with</h2>
+        <h2 className="text-gray-dark-1200 text-2xl mt-8 mb-4">Built with</h2>
         <ul>
           {technologies.map(technology => (
             <li key={technology.url} className="mb-4">

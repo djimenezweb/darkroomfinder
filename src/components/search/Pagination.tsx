@@ -1,14 +1,21 @@
+'use client';
+
 import { RESULTS_PER_PAGE } from '@/constants/search-options';
 import { range } from '@/utils/range';
 import Link from 'next/link';
+import { usePathname, useSearchParams } from 'next/navigation';
 
-export default function Pagination({
-  totalResults,
-  page
-}: {
+interface PaginationProps {
   totalResults: number;
   page: number;
-}) {
+}
+
+export default function Pagination({ totalResults, page }: PaginationProps) {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const params = new URLSearchParams(searchParams);
+  params.delete('page');
+
   const buttons = Math.ceil(totalResults / RESULTS_PER_PAGE);
 
   if (buttons <= 1) return;
@@ -28,7 +35,7 @@ export default function Pagination({
           return (
             <Link
               key={n}
-              href={`/labs?page=${n}`}
+              href={`/labs?${params.toString()}&page=${n}`}
               className="text-center font-regular text-xs px-3 py-1 shadow-sm border rounded cursor-pointer text-gray-dark-1000 hover:text-gray-dark-1200 bg-transparent hover:bg-gray-dark-600 border-gray-dark-700 hover:border-gray-dark-900">
               {n}
             </Link>

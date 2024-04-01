@@ -10,6 +10,7 @@ import {
 import { useCallback, useRef } from 'react';
 import { useClickOutside } from '@/hooks/useClickOutside';
 
+// prettier-ignore
 export default function DropDownMenu({
   closeProfile
 }: {

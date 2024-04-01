@@ -28,7 +28,7 @@ export default function SecondaryNavBar({
           </li>
 
           <li className="text-xs rounded-md font-normal text-gray-dark-1100 hover:text-gray-dark-1200 hover:bg-gray-dark-500">
-            <Link href="#####" className="block px-2.5 py-1">
+            <Link href="#" className="block px-2.5 py-1">
               <EnvelopeIcon className="text-gray-dark-1100 size-6" />
             </Link>
           </li>

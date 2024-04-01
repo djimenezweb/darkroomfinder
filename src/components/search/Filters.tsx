@@ -1,7 +1,7 @@
 'use client';
 
 import { labOptions as options } from '@/constants/lab-options';
-import { useSearchParams, useRouter } from 'next/navigation';
+import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { XMarkIcon } from '@heroicons/react/20/solid';
@@ -15,14 +15,16 @@ const active =
 
 export default function Filters({ name }: { name: 'sizes' | 'processes' }) {
   const searchParams = useSearchParams();
-  const router = useRouter();
+  const pathname = usePathname();
+  // const router = useRouter();
+  const { replace } = useRouter();
 
   // Save possibly existing filter params as array
   const filterParams = searchParams.get(name)?.split('+');
 
   // If search params exist, asign them to initial state.
   // Otherwise initial state is an empty array.
-  const [filters, setFilters] = useState(filterParams || []);
+  const [filters, setFilters] = useState<string[]>(filterParams || []);
 
   // Updates filter state
   function handleClick(id: string) {
@@ -39,18 +41,19 @@ export default function Filters({ name }: { name: 'sizes' | 'processes' }) {
   // Otherwise the filter is updated
   // This should run ONLY if filters are updated (are clicked on)
   useEffect(() => {
-    console.log('I am the useEffect from ' + name);
+    // console.log('I am the useEffect from ' + name);
     function updateSearchParams() {
-      const params = new URLSearchParams();
+      const params = new URLSearchParams(searchParams);
       // Deletes page to start url from scratch
-      // params.delete('page');
+      params.delete('page');
       if (filters.length === 0) {
         params.delete(name);
       } else {
         const filtersQuery = filters.join('+');
         params.set(name, filtersQuery);
       }
-      router.push(`/labs?${params.toString()}`);
+      replace(`${pathname}?${params.toString()}`);
+      //router.push(`/labs?${params.toString()}`);
     }
     updateSearchParams();
   }, [filters]);

@@ -1,6 +1,5 @@
 'use client';
 
-import useToggle from '@/hooks/useToggle';
 import { Session } from 'next-auth';
 import DropDownMenu from './DropDownMenu';
 import HamburgerMenu from '../logos/HamburgerMenu';
@@ -11,8 +10,6 @@ import SecondaryNavBarMobile from './SecondaryNavBarMobile';
 import { useState } from 'react';
 
 export default function Navbar({ session }: { session: Session | null }) {
-  // const [isMobileMenuOpen, setIsMobileMenuOpen] = useToggle();
-  // const [isProfileOpen, setIsProfileOpen] = useToggle();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const closeMobileMenu = () => setIsMobileMenuOpen(false);

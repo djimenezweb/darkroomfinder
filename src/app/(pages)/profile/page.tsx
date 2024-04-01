@@ -5,7 +5,7 @@ import { redirect } from 'next/navigation';
 import defaultProfile from '/public/images/default_profile.png';
 import ContainerWithBorder from '@/components/ContainerWithBorder';
 import StickyAside from '@/components/StickyAside';
-import BackButton from '@/components/BackButton';
+import BackButton from '@/components/buttons/BackButton';
 
 export default async function ProfilePage() {
   const session = await getServerSession(authOptions);
@@ -16,6 +16,9 @@ export default async function ProfilePage() {
   }
 
   const profilePicture = session.user.image || defaultProfile;
+
+  const inputStyle =
+    'w-full rounded-md shadow-sm text-gray-dark-1200 outline-none placeholder-gray-dark-900 bg-gray-dark-1200/[.026] border border-gray-dark-600 text-sm px-4 py-2 opacity-50';
 
   return (
     <section className="pt-16 min-h-screen relative flex items-stretch">
@@ -41,7 +44,7 @@ export default async function ProfilePage() {
                   id="username"
                   readOnly
                   defaultValue={session.user.name || ''}
-                  className="w-full rounded-md shadow-sm text-gray-dark-1200 outline-none placeholder-gray-dark-900 bg-gray-dark-1200/[.026] border border-gray-dark-600 text-sm px-4 py-2 opacity-50"
+                  className={inputStyle}
                 />
               </div>
             </div>
@@ -58,7 +61,7 @@ export default async function ProfilePage() {
                   id="email"
                   readOnly
                   defaultValue={session.user.email || ''}
-                  className="w-full rounded-md shadow-sm text-gray-dark-1200 outline-none placeholder-gray-dark-900 bg-gray-dark-1200/[.026] border border-gray-dark-600 text-sm px-4 py-2 opacity-50"
+                  className={inputStyle}
                 />
               </div>
             </div>

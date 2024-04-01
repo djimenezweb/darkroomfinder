@@ -1,13 +1,13 @@
 import { getLabById } from '@/utils/getLabById';
 import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
-import LabMap from './LabMap';
+import LabMap from '@/components/LabMap';
 import { sizes, processes } from '@/constants/lab-options';
 import Link from 'next/link';
-import Carousel from './Carousel';
+import Carousel from '@/components/carousel/Carousel';
 import ContainerWithBorder from '@/components/ContainerWithBorder';
 import StickyAside from '@/components/StickyAside';
-import BackButton from '@/components/BackButton';
-import EditButton from '@/components/EditButton';
+import BackButton from '@/components/buttons/BackButton';
+import EditButton from '@/components/buttons/EditButton';
 import { redirect } from 'next/navigation';
 
 export default async function DarkroomPage({ params }: { params: Params }) {
