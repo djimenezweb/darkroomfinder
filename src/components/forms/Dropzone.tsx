@@ -9,19 +9,16 @@ import { useDropzone } from 'react-dropzone';
 
 export default function Dropzone({
   files,
-  setFiles,
-  prevFilesRef
+  setFiles
 }: {
   files: (File & { preview: string })[];
   setFiles: Dispatch<SetStateAction<(File & { preview: string })[]>>;
-  prevFilesRef: MutableRefObject<(File & { preview: string })[]>;
 }) {
   const onDrop = useCallback((acceptedFiles: File[]) => {
     const filesWithPreviews = acceptedFiles.map(file =>
       Object.assign(file, { preview: URL.createObjectURL(file) })
     );
-    setFiles([...prevFilesRef.current, ...filesWithPreviews]);
-    prevFilesRef.current = [...prevFilesRef.current, ...filesWithPreviews];
+    setFiles(prev => [...prev, ...filesWithPreviews]);
   }, []);
 
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
