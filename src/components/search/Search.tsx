@@ -2,7 +2,7 @@
 
 import useTypewriter from '@/hooks/useTypewriter';
 import { useSearchParams, useRouter } from 'next/navigation';
-import { FormEvent, useId, useState } from 'react';
+import { Dispatch, FormEvent, SetStateAction, useId, useState } from 'react';
 
 export default function Search() {
   const searchParams = useSearchParams();
@@ -40,7 +40,7 @@ function Input({
   setTerm
 }: {
   term: string;
-  setTerm: React.Dispatch<React.SetStateAction<string>>;
+  setTerm: Dispatch<SetStateAction<string>>;
 }) {
   const id = useId();
   const [isOnFocus, setIsOnFocus] = useState(false);
@@ -57,10 +57,10 @@ function Input({
     'Ilford',
     'London',
     'FOMA',
-    'Rome',
-    'Adox',
     'Schneider',
+    'Rome',
     'Florence',
+    'Adox',
     'vienna',
     'Fuji',
     'Tetenal',

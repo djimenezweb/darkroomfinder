@@ -2,10 +2,17 @@ import Link from 'next/link';
 import { technologies } from '@/constants/technologies';
 import Image from 'next/image';
 import ContainerWithBorder from '@/components/ContainerWithBorder';
+import { TITLE } from '@/constants/metadata';
+
+export function generateMetadata() {
+  return {
+    title: `About this site | ${TITLE}`
+  };
+}
 
 export default function FakePage() {
   return (
-    <section className="pt-16 pb-8">
+    <section className="pb-8">
       <div className="max-w-[540px] mx-auto">
         <h1 className="text-2xl sm:text-4xl mt-12 mb-6">
           This is a fake website

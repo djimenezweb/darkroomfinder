@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { XMarkIcon } from '@heroicons/react/20/solid';
 import { MagnifyingGlassIcon } from '@heroicons/react/16/solid';
 
@@ -13,7 +13,7 @@ export default function SearchMini() {
 
   const [term, setTerm] = useState(query || '');
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const params = new URLSearchParams(searchParams);
     if (term) {
@@ -25,15 +25,16 @@ export default function SearchMini() {
     router.push(`/labs?${params.toString()}`);
   }
 
-  function handleReset(e: React.FormEvent<HTMLFormElement>) {
+  function handleReset(e: FormEvent<HTMLFormElement>) {
     const params = new URLSearchParams(searchParams);
     params.delete('query');
+    params.delete('page');
     setTerm('');
     router.push(`/labs?${params.toString()}`);
   }
 
   return (
-    <form className="" onSubmit={handleSubmit} onReset={handleReset}>
+    <form onSubmit={handleSubmit} onReset={handleReset}>
       <div className="relative">
         <input
           type="search"

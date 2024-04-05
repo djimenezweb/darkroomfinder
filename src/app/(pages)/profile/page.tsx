@@ -6,10 +6,17 @@ import defaultProfile from '/public/images/default_profile.png';
 import ContainerWithBorder from '@/components/ContainerWithBorder';
 import StickyAside from '@/components/StickyAside';
 import BackButton from '@/components/buttons/BackButton';
+import AsideElementWrapper from '@/components/AsideElementWrapper';
+import { TITLE } from '@/constants/metadata';
+
+export function generateMetadata() {
+  return {
+    title: `Profile | ${TITLE}`
+  };
+}
 
 export default async function ProfilePage() {
   const session = await getServerSession(authOptions);
-  // console.log('🚀 ~ ProfilePage ~ session:', session);
 
   if (!session) {
     redirect('/sign-in');
@@ -21,9 +28,11 @@ export default async function ProfilePage() {
     'w-full rounded-md shadow-sm text-gray-dark-1200 outline-none placeholder-gray-dark-900 bg-gray-dark-1200/[.026] border border-gray-dark-600 text-sm px-4 py-2 opacity-50';
 
   return (
-    <section className="pt-16 min-h-screen relative flex items-stretch">
+    <section className="h-full relative flex items-stretch">
       <StickyAside>
-        <BackButton />
+        <AsideElementWrapper>
+          <BackButton />
+        </AsideElementWrapper>
       </StickyAside>
       <div className="p-5 grow max-w-3xl space-y-8">
         <ContainerWithBorder>

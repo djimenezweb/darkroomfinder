@@ -1,11 +1,5 @@
+import { IUser } from '@/types/types';
 import { Schema, model, models } from 'mongoose';
-
-// Create an interface representing a document in MongoDB.
-export interface IUser {
-  username: string;
-  email: string;
-  bookmarks: string[];
-}
 
 // Create a Schema corresponding to the document interface.
 const userSchema = new Schema<IUser>(
@@ -26,4 +20,9 @@ const userSchema = new Schema<IUser>(
   { timestamps: true }
 );
 
-export const User = models.User || model<IUser>('User', userSchema, 'users');
+const UserModel = () => model<IUser>('User', userSchema, 'users');
+
+export const User = (models.User ||
+  model<IUser>('User', userSchema, 'users')) as ReturnType<typeof UserModel>;
+
+// export const User = models?.User || model<IUser>('User', userSchema, 'users');

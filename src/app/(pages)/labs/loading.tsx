@@ -3,18 +3,21 @@ import { RESULTS_PER_PAGE } from '@/constants/search-options';
 import StickyAside from '@/components/StickyAside';
 import SearchMini from '@/components/search/SearchMini';
 import Filters from '@/components/search/Filters';
-import SkeletonLabCard from '@/components/skeletons/SkeletonLabCard';
+import SkeletonLabCard from '@/components/skeletons/LabCardSkeleton';
+import { TITLE } from '@/constants/metadata';
+
+export function generateMetadata() {
+  return {
+    title: `Loading... | ${TITLE}`
+  };
+}
 
 export default async function LabsLoadingPage() {
   return (
-    <section className="pt-16 min-h-screen relative flex items-stretch">
-      <StickyAside
-        items={[
-          <SearchMini key="searchKey" />,
-          <Filters name="sizes" key="sizesKey" />,
-          <Filters name="processes" key="processesKey" />
-        ]}
-      />
+    <section className="h-full relative flex items-stretch">
+      <StickyAside>
+        <></>
+      </StickyAside>
 
       <div className="grow p-5">
         <h2 className="text-lg animate-pulse">Searching darkrooms...</h2>

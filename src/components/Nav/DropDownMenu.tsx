@@ -10,7 +10,6 @@ import {
 import { useCallback, useRef } from 'react';
 import { useClickOutside } from '@/hooks/useClickOutside';
 
-// prettier-ignore
 export default function DropDownMenu({
   closeProfile
 }: {
@@ -34,7 +33,7 @@ export default function DropDownMenu({
         </li>
         <li>
           <Link
-            href="#"
+            href="/favs"
             onClick={closeProfile}
             className="px-4 py-2 flex items-center gap-4 hover:bg-gray-dark-400">
             <StarIcon className="text-gray-dark-900 size-4" />

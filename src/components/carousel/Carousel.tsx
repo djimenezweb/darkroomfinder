@@ -31,7 +31,7 @@ export default function Carousel({ images }: { images: string[] }) {
 
   return (
     <motion.div
-      layoutId={String(index)}
+      // layoutId={'containerKey' + String(index)}
       className="bg-gray-dark-300 p-5 rounded-md border border-gray-dark-500">
       <div className="w-full flex justify-between items-center">
         {length > 1 && (
@@ -51,6 +51,7 @@ export default function Carousel({ images }: { images: string[] }) {
               initial={false}
               custom={direction}>
               <motion.div
+                // onClick={() => setIsModalOpen(true)}
                 key={index}
                 custom={direction}
                 variants={variants}

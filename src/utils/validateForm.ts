@@ -15,12 +15,12 @@ const schema = z.object({
     .string()
     .array()
     .nonempty({ message: 'Select at least one process' }),
-  images: z
-    .any()
-    .array()
-    .refine(files => files[0].size > 0, {
-      message: 'Upload at least one picture'
-    })
+  images: z.any().array().nonempty({
+    message: 'Upload at least one picture'
+  })
+  // .refine(files => files[0].size > 0, {
+  //   message: 'Upload at least one picture'
+  // })
 });
 
 const schemaWithGeoLocation = schema.extend({

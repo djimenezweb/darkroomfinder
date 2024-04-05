@@ -1,4 +1,4 @@
-export default function SkeletonLabCard() {
+export default function LabCardSkeleton() {
   return (
     <div className="relative bg-gray-dark-300 border border-gray-dark-500 rounded-md p-5 block h-44 overflow-hidden animate-pulse">
       <div className="flex gap-4">

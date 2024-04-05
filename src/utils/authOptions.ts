@@ -36,9 +36,9 @@ export const authOptions: AuthOptions = {
           username: profile?.name,
           email: profile?.email
         });
-        user.id = newUser._id;
+        user.id = newUser._id.toString();
       } else {
-        user.id = existingUser._id;
+        user.id = existingUser._id.toString();
       }
       return true;
     },

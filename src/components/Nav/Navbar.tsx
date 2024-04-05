@@ -16,7 +16,7 @@ export default function Navbar({ session }: { session: Session | null }) {
   const closeProfile = () => setIsProfileOpen(false);
 
   return (
-    <div
+    <header
       className={`fixed z-40 w-full h-16 border-solid border-b border-gray-dark-500 text-sm font-medium ${
         isMobileMenuOpen ? 'bg-gray-dark-300 border-none' : 'bg-gray-dark-200'
       } lg:bg-gray-dark-200/75 lg:backdrop-blur`}>
@@ -58,6 +58,6 @@ export default function Navbar({ session }: { session: Session | null }) {
           </button>
         </div>
       </nav>
-    </div>
+    </header>
   );
 }

@@ -6,6 +6,14 @@ import StickyAside from '@/components/StickyAside';
 import SearchMini from '@/components/search/SearchMini';
 import Filters from '@/components/search/Filters';
 import SearchResultsHeading from '@/components/SearchResultsHeading';
+import AsideElementWrapper from '@/components/AsideElementWrapper';
+import { TITLE } from '@/constants/metadata';
+
+export function generateMetadata() {
+  return {
+    title: TITLE
+  };
+}
 
 export default async function Labs({
   searchParams
@@ -29,14 +37,18 @@ export default async function Labs({
   );
 
   return (
-    <section className="pt-16 min-h-screen relative flex items-stretch">
-      <StickyAside
-        items={[
-          <SearchMini key={'searchKey' + query} />,
-          <Filters name="sizes" key={'sizesKey' + sizes} />,
+    <section className="relative flex items-stretch">
+      <StickyAside>
+        <AsideElementWrapper>
+          <SearchMini key={'searchKey' + query} />
+        </AsideElementWrapper>
+        <AsideElementWrapper>
+          <Filters name="sizes" key={'sizesKey' + sizes} />
+        </AsideElementWrapper>
+        <AsideElementWrapper>
           <Filters name="processes" key={'processesKey' + processes} />
-        ]}
-      />
+        </AsideElementWrapper>
+      </StickyAside>
 
       <div className="grow p-5">
         <SearchResultsHeading
@@ -51,8 +63,8 @@ export default async function Labs({
           <>
             <ul className="mx-auto mt-3 grid grid-cols-1 gap-4 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
               {labs.map(lab => (
-                <li key={lab._id}>
-                  <Link href={`/lab/${lab._id}`}>
+                <li key={lab._id.toString()}>
+                  <Link href={`/lab/${lab._id.toString()}`}>
                     <LabCard
                       name={lab.name}
                       city={lab.location.city}

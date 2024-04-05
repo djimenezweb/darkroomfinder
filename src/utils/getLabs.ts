@@ -1,20 +1,14 @@
 import { RESULTS_PER_PAGE } from '@/constants/search-options';
 import dbConnect from '@/utils/dbConnect';
-import { ILab, Lab } from '@/models/Lab';
-
-interface IFetchLabs {
-  labs: ILab[];
-  totalResults: number;
-  showingFrom: number;
-  showingTo: number;
-}
+import { Lab } from '@/models/Lab';
+import { IFetchedLabs } from '@/types/types';
 
 export async function getLabs(
   page: number,
   query: string,
   sizes: string | null,
   processes: string | null
-): Promise<IFetchLabs> {
+): Promise<IFetchedLabs> {
   const itemsPerPage = RESULTS_PER_PAGE || 9;
   const skipValue = (page - 1) * itemsPerPage;
 

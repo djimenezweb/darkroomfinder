@@ -1,29 +1,5 @@
-import { Schema, Types, model, models, PopulatedDoc, Document } from 'mongoose';
-import { IUser } from './User';
-
-// Create an interface representing a document in MongoDB.
-export interface ILab {
-  _id: string;
-  owner: Types.ObjectId;
-  // owner: PopulatedDoc<Document<Types.ObjectId> & IUser>;
-  name: string;
-  description: string;
-  location: {
-    address: string;
-    city: string;
-    state: string;
-    zipcode: string;
-    country: string;
-    latitude: number;
-    longitude: number;
-  };
-  sizes: string[];
-  processes: string[];
-  images: string[];
-  isFeatured: boolean;
-  createdAt?: Date;
-  updatedAt?: Date;
-}
+import { ILab } from '@/types/types';
+import { Schema, model, models } from 'mongoose';
 
 // Create a Schema corresponding to the document interface.
 const labSchema = new Schema<ILab>(

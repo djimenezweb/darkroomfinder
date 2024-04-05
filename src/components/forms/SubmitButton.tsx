@@ -1,16 +1,20 @@
 'use client';
 
 import SpinnerSVG from '@/components/logos/Spinner';
-import { useFormStatus } from 'react-dom';
 
-export default function SubmitButton({ text }: { text: string }) {
-  const { pending } = useFormStatus();
+export default function SubmitButton({
+  text,
+  isPending
+}: {
+  text: string;
+  isPending: boolean;
+}) {
   return (
     <button
       type="submit"
-      disabled={pending}
+      disabled={isPending}
       className="min-w-32 flex justify-center items-center bg-red-800 hover:bg-red-800/80 text-xs px-2.5 py-1 rounded-md font-normal border border-red-600">
-      {pending ? <SpinnerSVG className="w-4 h-4 animate-spin" /> : text}
+      {isPending ? <SpinnerSVG className="w-4 h-4 animate-spin" /> : text}
     </button>
   );
 }

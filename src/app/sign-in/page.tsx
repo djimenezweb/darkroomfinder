@@ -2,6 +2,13 @@ import { getProviders } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import SignInButtons from '@/components/buttons/SignInButtons';
+import { TITLE } from '@/constants/metadata';
+
+export function generateMetadata() {
+  return {
+    title: `Sign in | ${TITLE}`
+  };
+}
 
 export default async function SigninPage() {
   const providers = await getProviders();

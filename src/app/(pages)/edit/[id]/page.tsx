@@ -4,6 +4,13 @@ import { getServerSession } from 'next-auth';
 import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
 import { redirect } from 'next/navigation';
 import EditLabForm from '@/components/forms/EditLabForm';
+import { TITLE } from '@/constants/metadata';
+
+export function generateMetadata() {
+  return {
+    title: `Edit | ${TITLE}`
+  };
+}
 
 export default async function EditLabPage({ params }: { params: Params }) {
   const id = params.id;
@@ -20,15 +27,13 @@ export default async function EditLabPage({ params }: { params: Params }) {
     return;
   }
 
-  //const lab = await JSON.parse(JSON.stringify(data));
-
   // Unauthorized
   if (session.user.email !== lab.owner.email) {
     redirect(`/labs/${id}`);
   }
 
   return (
-    <section className="pt-16">
+    <section>
       <div className="container relative mx-auto my-10 max-w-2xl">
         <EditLabForm lab={lab} />
       </div>

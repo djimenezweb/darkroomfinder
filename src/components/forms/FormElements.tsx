@@ -1,4 +1,11 @@
-export function FormRow({ children }: { children: React.ReactNode }) {
+import {
+  ReactNode,
+  LabelHTMLAttributes,
+  FieldsetHTMLAttributes,
+  InputHTMLAttributes
+} from 'react';
+
+export function FormRow({ children }: { children: ReactNode }) {
   return (
     <div className="bg-gray-dark-300 border-b border-gray-dark-400 flex items-center px-6 py-4">
       <div className="w-full text-sm grid gap-2 md:grid md:grid-cols-3">
@@ -8,8 +15,8 @@ export function FormRow({ children }: { children: React.ReactNode }) {
   );
 }
 
-type FormLabelProps = React.LabelHTMLAttributes<HTMLLabelElement> & {
-  children: React.ReactNode;
+type FormLabelProps = LabelHTMLAttributes<HTMLLabelElement> & {
+  children: ReactNode;
 };
 
 export function FormLabel({ children, ...props }: FormLabelProps) {
@@ -22,8 +29,8 @@ export function FormLabel({ children, ...props }: FormLabelProps) {
   );
 }
 
-type FormFieldSetProps = React.FieldsetHTMLAttributes<HTMLFieldSetElement> & {
-  children: React.ReactNode;
+type FormFieldSetProps = FieldsetHTMLAttributes<HTMLFieldSetElement> & {
+  children: ReactNode;
 };
 
 export function FormFieldSet({ children, ...props }: FormFieldSetProps) {
@@ -34,8 +41,8 @@ export function FormFieldSet({ children, ...props }: FormFieldSetProps) {
   );
 }
 
-type FormInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
-  children?: React.ReactNode;
+type FormInputProps = InputHTMLAttributes<HTMLInputElement> & {
+  children?: ReactNode;
 };
 
 export function FormInput({ children, ...props }: FormInputProps) {
@@ -80,10 +87,6 @@ export function FormCheckBox({
   );
 }
 
-export function FormErrorParagraph({
-  children
-}: {
-  children: React.ReactNode;
-}) {
+export function FormErrorParagraph({ children }: { children: ReactNode }) {
   return <p className="mt-1 text-error-900 text-sm">{children}</p>;
 }

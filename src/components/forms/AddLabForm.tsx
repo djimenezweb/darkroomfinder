@@ -2,7 +2,6 @@
 
 import { sizes, processes } from '@/constants/lab-options';
 import SubmitButton from './SubmitButton';
-import { addDarkroom } from '@/actions/addDarkroom';
 import { twMerge } from 'tailwind-merge';
 import styles from '@/styles/styles';
 import { useFormState } from 'react-dom';
@@ -15,42 +14,39 @@ import {
   FormErrorParagraph
 } from './FormElements';
 import { LOCATION } from '@/constants/location-form-fields';
-import MyDropzone from './Dropzone';
-import { useRouter } from 'next/navigation';
+import { addDarkroom } from '@/actions/addDarkroom';
+import { FormEvent, useState } from 'react';
+import UploadImages from './UploadImages';
+import CancelButton from './CancelButton';
 
 interface IErrorMessages {
-  name: string[] | undefined;
-  description: string[] | undefined;
-  address: string[] | undefined;
-  city: string[] | undefined;
-  state: string[] | undefined;
-  zipcode: string[] | undefined;
-  country: string[] | undefined;
-  sizes: string[] | undefined;
-  processes: string[] | undefined;
-  images: string[] | undefined;
+  [key: string]: string[] | undefined;
 }
 
-const initialState: IErrorMessages = {
-  name: undefined,
-  description: undefined,
-  address: undefined,
-  city: undefined,
-  state: undefined,
-  zipcode: undefined,
-  country: undefined,
-  sizes: undefined,
-  processes: undefined,
-  images: undefined
-};
-
 export default function AddLabForm() {
-  const router = useRouter();
-  const [errors, formAction] = useFormState(addDarkroom, initialState);
+  const [files, setFiles] = useState<(File & { preview: string })[]>([]);
+  const [errors, formAction] = useFormState<
+    IErrorMessages | undefined,
+    FormData
+  >(addDarkroom, {});
+  const [isPending, setIsPending] = useState<boolean>(false);
+
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setIsPending(true);
+    const target = e.target as HTMLFormElement;
+    const formData = new FormData(target);
+    formData.delete('images');
+    for (const file of files) {
+      const blob = new Blob([file], { type: file.type });
+      formData.append('images', blob, file.name);
+    }
+    formAction(formData);
+  }
 
   return (
     <form
-      action={formAction}
+      onSubmit={e => handleSubmit(e)}
       className="rounded-md border border-gray-dark-400 shadow-sm mb-8 overflow-hidden">
       <div className="bg-gray-dark-300 border-b border-gray-dark-400 flex items-center px-6 py-4">
         <h2 className="text-base">Add a new darkroom</h2>
@@ -170,20 +166,15 @@ export default function AddLabForm() {
       <FormRow>
         <FormLabel htmlFor="uploadedPictures">Images</FormLabel>
         <div className="col-span-2">
-          <MyDropzone />
+          <UploadImages files={files} setFiles={setFiles} />
           {errors?.images && (
             <FormErrorParagraph>{errors.images}</FormErrorParagraph>
           )}
         </div>
       </FormRow>
       <div className="bg-gray-dark-300 border-b border-gray-dark-400 flex items-center justify-between px-6 py-4">
-        <button
-          type="button"
-          onClick={() => router.back()}
-          className="bg-gray-dark-500 hover:bg-gray-dark-600 text-xs p-2.5 lg:px-2.5 lg:py-1 rounded-md font-normal border border-gray-dark-700 hover:border-gray-dark-800">
-          Cancel
-        </button>
-        <SubmitButton text="Add new darkroom" />
+        <CancelButton />
+        <SubmitButton isPending={isPending} text="Add new darkroom" />
       </div>
     </form>
   );

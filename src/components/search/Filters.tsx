@@ -2,7 +2,6 @@
 
 import { labOptions as options } from '@/constants/lab-options';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { XMarkIcon } from '@heroicons/react/20/solid';
 
@@ -16,56 +15,44 @@ const active =
 export default function Filters({ name }: { name: 'sizes' | 'processes' }) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
-  // const router = useRouter();
   const { replace } = useRouter();
 
-  // Save possibly existing filter params as array
-  const filterParams = searchParams.get(name)?.split('+');
+  // Save all params and delete page to start from scratch
+  const params = new URLSearchParams(searchParams);
+  params.delete('page');
 
-  // If search params exist, asign them to initial state.
-  // Otherwise initial state is an empty array.
-  const [filters, setFilters] = useState<string[]>(filterParams || []);
+  // Save possibly existing filter params as an array
+  // Otherwise filter is an empty array.
+  const initialFilter = searchParams.get(name)?.split('+') || [];
 
-  // Updates filter state
   function handleClick(id: string) {
-    if (filters.includes(id)) {
-      const nextFilter = filters.filter(item => item !== id);
-      setFilters(nextFilter);
+    let nextFilter;
+    if (initialFilter.includes(id)) {
+      nextFilter = initialFilter.filter(item => item !== id);
     } else {
-      setFilters([...filters, id]);
+      nextFilter = [...initialFilter, id];
     }
+    if (nextFilter.length === 0) {
+      params.delete(name);
+    } else {
+      params.set(name, nextFilter.join('+'));
+    }
+    replace(`${pathname}?${params.toString()}`);
   }
 
-  // Updates searchParams according to the filter state after it has re-rendered
-  // If the filter is empty, the search param is deleted
-  // Otherwise the filter is updated
-  // This should run ONLY if filters are updated (are clicked on)
-  useEffect(() => {
-    // console.log('I am the useEffect from ' + name);
-    function updateSearchParams() {
-      const params = new URLSearchParams(searchParams);
-      // Deletes page to start url from scratch
-      params.delete('page');
-      if (filters.length === 0) {
-        params.delete(name);
-      } else {
-        const filtersQuery = filters.join('+');
-        params.set(name, filtersQuery);
-      }
-      replace(`${pathname}?${params.toString()}`);
-      //router.push(`/labs?${params.toString()}`);
-    }
-    updateSearchParams();
-  }, [filters]);
+  function handleReset() {
+    params.delete(name);
+    replace(`${pathname}?${params.toString()}`);
+  }
 
   return (
     <>
       <div className="mb-2 h-6 flex justify-between items-center">
         <p className="text-sm text-gray-dark-1000 capitalize">{name}</p>
-        {filters.length > 0 && (
+        {initialFilter.length > 0 && (
           <button
             type="button"
-            onClick={() => setFilters([])}
+            onClick={handleReset}
             className="bg-gray-dark-1200/[.026] border border-gray-dark-600 rounded-md text-gray-dark-900 hover:text-gray-dark-1100 hover:border-gray-dark-900 hover:bg-gray-dark-500">
             <XMarkIcon className="size-5" />
           </button>
@@ -78,7 +65,7 @@ export default function Filters({ name }: { name: 'sizes' | 'processes' }) {
               type="button"
               className={twMerge(
                 base,
-                filters.includes(option.id) ? active : inactive
+                initialFilter.includes(option.id) ? active : inactive
               )}
               onClick={() => handleClick(option.id)}>
               {option.fullName}

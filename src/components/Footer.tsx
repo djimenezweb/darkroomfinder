@@ -7,7 +7,7 @@ import { footerlinks } from '@/constants/footerlinks';
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-dark-100">
+    <footer className="h-auto bg-gray-dark-100">
       <div className="container relative mx-auto py-12 px-6 lg:px-16 xl:px-20">
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="space-y-8 xl:col-span-1">

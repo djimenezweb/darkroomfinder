@@ -1,7 +1,6 @@
 import { Session } from 'next-auth';
 import Link from 'next/link';
 
-// prettiter-ignore
 export default function PrimaryNavBar({
   session
 }: {

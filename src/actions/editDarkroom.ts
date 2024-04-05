@@ -50,7 +50,7 @@ export async function editDarkroom(
         processes: formData.getAll('processes'),
         images: imagesURL
       });
-      console.log('Darkroom added to db:', result);
+      //console.log('Darkroom added to db:', result);
     } catch (error) {
       console.log(error);
     }

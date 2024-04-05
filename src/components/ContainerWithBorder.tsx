@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 export default function ContainerWithBorder({
@@ -5,7 +6,7 @@ export default function ContainerWithBorder({
   className,
   transparent
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
   transparent?: boolean;
 }) {

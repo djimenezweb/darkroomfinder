@@ -4,13 +4,14 @@ import GitHubLogoNav from '../logos/GitHubLogoNav';
 import Image from 'next/image';
 import defaultProfile from '/public/images/default_profile.png';
 import { EnvelopeIcon } from '@heroicons/react/16/solid';
+import { Dispatch, SetStateAction } from 'react';
 
 export default function SecondaryNavBar({
   session,
   setIsProfileOpen
 }: {
   session: Session | null;
-  setIsProfileOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsProfileOpen: Dispatch<SetStateAction<boolean>>;
 }) {
   const profilePicture = session?.user.image || defaultProfile;
 

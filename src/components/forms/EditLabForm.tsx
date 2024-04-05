@@ -14,11 +14,10 @@ import {
   FormErrorParagraph
 } from '@/components/forms/FormElements';
 import { LOCATION } from '@/constants/location-form-fields';
-import MyDropzone from '@/components/forms/Dropzone';
-import { ILab } from '@/models/Lab';
+import MyDropzone from '@/old_upload_files/OldDropzone';
 import { editDarkroom } from '@/actions/editDarkroom';
-import { useRouter } from 'next/navigation';
-import { ILabWithOwner } from '@/utils/getLabById';
+import { ILabWithOwner, ILocation } from '@/types/types';
+import CancelButton from './CancelButton';
 
 interface IErrorMessages {
   name: string[] | undefined;
@@ -53,8 +52,7 @@ const initialState: IErrorMessages = {
 // type TLocation = ILab['location'];
 
 export default function EditLabForm({ lab }: { lab: ILabWithOwner }) {
-  const router = useRouter();
-  const documentId = lab._id;
+  const documentId = lab._id.toString();
   const editDarkroomWithId = editDarkroom.bind(null, documentId);
   const [errors, formAction] = useFormState(editDarkroomWithId, initialState);
 
@@ -111,7 +109,7 @@ export default function EditLabForm({ lab }: { lab: ILabWithOwner }) {
                 id={id}
                 name={id}
                 type="text"
-                defaultValue={lab.location[id as keyof ILab['location']]}
+                defaultValue={lab.location[id as keyof ILocation]}
                 className={twMerge(
                   'bg-gray-dark-400',
                   styles.inputTextStyles,
@@ -208,12 +206,7 @@ export default function EditLabForm({ lab }: { lab: ILabWithOwner }) {
         </div>
       </FormRow>
       <div className="bg-gray-dark-300 border-b border-gray-dark-400 flex items-center justify-between px-6 py-4">
-        <button
-          type="button"
-          onClick={() => router.back()}
-          className="bg-gray-dark-500 hover:bg-gray-dark-600 text-xs p-2.5 lg:px-2.5 lg:py-1 rounded-md font-normal border border-gray-dark-700 hover:border-gray-dark-800">
-          Cancel
-        </button>
+        <CancelButton />
         <SubmitButton text="Save changes" />
       </div>
     </form>
