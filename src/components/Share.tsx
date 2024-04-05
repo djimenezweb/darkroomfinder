@@ -1,12 +1,13 @@
 'use client';
 
+import { twMerge } from 'tailwind-merge';
+import Link from 'next/link';
 import TwitterLogo from './logos/TwitterLogo';
 import FacebookLogo from './logos/FacebookLogo';
 import LinkedInLogo from './logos/LinkedInLogo';
-import WhatsAppLogo from './logos/WhatsAppLogo';
-import { twMerge } from 'tailwind-merge';
-import TelegramLogo from './logos/TelegramLogo';
-import Link from 'next/link';
+import RedditLogo from './logos/RedditLogo';
+// import WhatsAppLogo from './logos/WhatsAppLogo';
+// import TelegramLogo from './logos/TelegramLogo';
 
 const brandColors = {
   twitter: '#000',
@@ -30,14 +31,17 @@ export default function Share({ id }: { id: string }) {
           <LinkedInLogo className="size-6" />
         </button>
         <button className={twMerge(baseStyles)}>
-          <WhatsAppLogo className="size-6" />
+          <RedditLogo className="size-6" />
         </button>
         <button className={twMerge(baseStyles)}>
           <FacebookLogo className="size-6" />
         </button>
+        {/* <button className={twMerge(baseStyles)}>
+          <WhatsAppLogo className="size-6" />
+        </button>
         <button className={twMerge(baseStyles)}>
           <TelegramLogo className="size-6" />
-        </button>
+        </button> */}
       </div>
     </div>
   );
