@@ -59,6 +59,7 @@ export async function addDarkroom(prevState: any, formData: FormData) {
       documentId = result._id.toString();
     } catch (error) {
       console.log(error);
+      throw new Error('An error ocurred while trying to add a new darkroom');
     }
     redirect('/lab/' + documentId);
   }

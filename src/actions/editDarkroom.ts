@@ -53,6 +53,7 @@ export async function editDarkroom(
       //console.log('Darkroom added to db:', result);
     } catch (error) {
       console.log(error);
+      throw new Error('An error ocurred while trying to edit the darkroom');
     }
 
     // Revalidate and redirect user

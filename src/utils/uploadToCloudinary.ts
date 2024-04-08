@@ -1,23 +1,27 @@
 import cloudinary from '@/utils/cloudinary';
 
 export async function uploadToCloudinary(images: File[]) {
-  const imageUploadPromises = [];
+  try {
+    const imageUploadPromises = [];
+    for (const image of images) {
+      const public_id = image.name.split('.')[0];
+      const arrayBuffer = await image.arrayBuffer();
+      const uint8Array = new Uint8Array(arrayBuffer);
+      const buffer = Buffer.from(uint8Array);
+      const base64String = buffer.toString('base64');
+      const result = await cloudinary.uploader.upload(
+        `data:${image.type};base64,${base64String}`,
+        { folder: 'darkroomfinder', public_id }
+      );
+      imageUploadPromises.push(result.secure_url);
+    }
 
-  for (const image of images) {
-    const public_id = image.name.split('.')[0];
-    const arrayBuffer = await image.arrayBuffer();
-    const uint8Array = new Uint8Array(arrayBuffer);
-    const buffer = Buffer.from(uint8Array);
-    const base64String = buffer.toString('base64');
-    const result = await cloudinary.uploader.upload(
-      `data:${image.type};base64,${base64String}`,
-      { folder: 'darkroomfinder', public_id }
-    );
-    imageUploadPromises.push(result.secure_url);
+    const uploadedImages = await Promise.all(imageUploadPromises);
+    return uploadedImages;
+  } catch (error) {
+    console.log(error);
+    throw new Error('Failed to upload images');
   }
-
-  const uploadedImages = await Promise.all(imageUploadPromises);
-  return uploadedImages;
 }
 
 const RESULT_EXAMPLE = {

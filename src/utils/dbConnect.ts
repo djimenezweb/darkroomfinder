@@ -31,7 +31,8 @@ async function dbConnect() {
     cached.conn = await cached.promise;
   } catch (e) {
     cached.promise = null;
-    throw e;
+    // throw e;
+    throw new Error('Failed to connect to the database');
   }
 
   return cached.conn;

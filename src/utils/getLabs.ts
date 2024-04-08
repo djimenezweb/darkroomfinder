@@ -40,39 +40,44 @@ export async function getLabs(
     filters.processes = { processes: { $all: processes.split('+') } };
   }
 
-  await dbConnect();
+  try {
+    await dbConnect();
 
-  const [results] = await Lab.aggregate([
-    {
-      $match: {
-        $or: [...filters.query],
-        $and: [filters.sizes, filters.processes]
+    const [results] = await Lab.aggregate([
+      {
+        $match: {
+          $or: [...filters.query],
+          $and: [filters.sizes, filters.processes]
+        }
+      },
+      {
+        $project: {
+          name: true,
+          'location.city': true,
+          images: true,
+          isFeatured: true
+        }
+      },
+      {
+        $facet: {
+          metaData: [{ $count: 'count' }],
+          data: [{ $skip: (page - 1) * itemsPerPage }, { $limit: itemsPerPage }]
+        }
       }
-    },
-    {
-      $project: {
-        name: true,
-        'location.city': true,
-        images: true,
-        isFeatured: true
-      }
-    },
-    {
-      $facet: {
-        metaData: [{ $count: 'count' }],
-        data: [{ $skip: (page - 1) * itemsPerPage }, { $limit: itemsPerPage }]
-      }
-    }
-  ]);
+    ]);
 
-  // console.log('🚀 ~ results:', results);
+    // console.log('🚀 ~ results:', results);
 
-  const totalResults = results.metaData[0]?.count | 0;
-  const labs = results.data;
+    const totalResults = results.metaData[0]?.count | 0;
+    const labs = results.data;
 
-  const showingFrom = skipValue + 1;
-  const showingTo =
-    totalResults < itemsPerPage * page ? totalResults : itemsPerPage * page;
+    const showingFrom = skipValue + 1;
+    const showingTo =
+      totalResults < itemsPerPage * page ? totalResults : itemsPerPage * page;
 
-  return { labs, totalResults, showingFrom, showingTo };
+    return { labs, totalResults, showingFrom, showingTo };
+  } catch (error) {
+    console.log(error);
+    throw new Error('Failed to get darkrooms data');
+  }
 }

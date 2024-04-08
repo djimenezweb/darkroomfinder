@@ -3,12 +3,19 @@ import { ILabWithOwner, IUser } from '@/types/types';
 import dbConnect from './dbConnect';
 
 export async function getLabById(id: string) {
-  await dbConnect();
-  const data = await Lab.findById(id).populate<{ owner: IUser }>('owner');
+  try {
+    await dbConnect();
+    const data = await Lab.findById(id).populate<{ owner: IUser }>('owner');
 
-  if (data) {
-    const lab: ILabWithOwner = await JSON.parse(JSON.stringify(data));
-    return lab;
+    if (data) {
+      const lab: ILabWithOwner = await JSON.parse(JSON.stringify(data));
+      return lab;
+    }
+
+    return null;
+  } catch (error) {
+    console.log(error);
+    throw new Error('Failed to get darkroom data');
   }
 }
 
