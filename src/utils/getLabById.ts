@@ -15,7 +15,7 @@ export async function getLabById(id: string) {
     return null;
   } catch (error) {
     console.log(error);
-    throw new Error('Failed to get darkroom data');
+    return null;
   }
 }
 

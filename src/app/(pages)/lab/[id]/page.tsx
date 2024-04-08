@@ -47,8 +47,8 @@ export default async function DarkroomPage({ params }: { params: Params }) {
           <BackButton />
         </AsideElementWrapper>
       </StickyAside>
-      <div className="p-5 grow border-yellow-400">
-        <div className="mx-auto max-w-3xl space-y-4 border-red-400">
+      <div className="p-5 grow">
+        <div className="mx-auto max-w-3xl space-y-4">
           <div>
             <h1 className="text-2xl sm:text-3xl mb-4">{lab.name}</h1>
             <span className="inline-flex gap-2 text-sm text-gray-dark-1100 hover:text-gray-dark-1200">
@@ -59,7 +59,7 @@ export default async function DarkroomPage({ params }: { params: Params }) {
             </span>
           </div>
 
-          <div className="flex gap-12 items-start border-blue-500">
+          <div className="flex gap-12 items-start">
             <div className="space-y-4 pb-16">
               <ContainerWithBorder>
                 <p className="text-base text-gray-dark-1100">
