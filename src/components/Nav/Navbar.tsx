@@ -8,6 +8,8 @@ import PrimaryNavBar from './PrimaryNavBar';
 import SecondaryNavBar from './SecondaryNavBar';
 import SecondaryNavBarMobile from './SecondaryNavBarMobile';
 import { useState } from 'react';
+import logo from '/public/images/logo.png';
+import Image from 'next/image';
 
 export default function Navbar({ session }: { session: Session | null }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -21,10 +23,11 @@ export default function Navbar({ session }: { session: Session | null }) {
         isMobileMenuOpen ? 'bg-gray-dark-300 border-none' : 'bg-gray-dark-200'
       } lg:bg-gray-dark-200/75 lg:backdrop-blur`}>
       <nav className="flex h-full items-center justify-between lg:container mx-auto px-6 lg:px-16 xl:px-20">
-        <div className="flex items-center">
-          <div className="rounded-full bg-red-800 w-4 h-4" />
-          <span className="text-xl">darkroomFinder</span>
-        </div>
+        <Image
+          src={logo}
+          alt="Darkroom Finder logo"
+          className="h-6 w-auto object-contain"
+        />
         <div
           className={`${
             isMobileMenuOpen
