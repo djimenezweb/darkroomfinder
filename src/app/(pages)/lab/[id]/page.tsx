@@ -1,4 +1,5 @@
 import { getLabById } from '@/utils/getLabById';
+import { Types } from 'mongoose';
 import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
 import LabMap from '@/components/LabMap';
 import { sizes, processes } from '@/constants/lab-options';
@@ -21,6 +22,12 @@ import { formatDate } from '@/utils/formatDate';
 
 export async function generateMetadata({ params }: { params: Params }) {
   const id: string = params.id;
+
+  const isValid = Types.ObjectId.isValid(id);
+  if (!isValid) {
+    notFound();
+  }
+
   const lab = await getLabById(id);
   return {
     title: `${lab?.name} | ${TITLE}`
@@ -29,6 +36,12 @@ export async function generateMetadata({ params }: { params: Params }) {
 
 export default async function DarkroomPage({ params }: { params: Params }) {
   const id: string = params.id;
+
+  const isValid = Types.ObjectId.isValid(id);
+  if (!isValid) {
+    notFound();
+  }
+
   const lab = await getLabById(id);
 
   // Not found
