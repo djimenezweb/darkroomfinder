@@ -1,10 +1,12 @@
+'use client';
+
 import { Session } from 'next-auth';
 import Link from 'next/link';
 import GitHubLogoNav from '../logos/GitHubLogoNav';
 import Image from 'next/image';
 import defaultProfile from '/public/images/default_profile.png';
-import { EnvelopeIcon } from '@heroicons/react/16/solid';
 import { Dispatch, SetStateAction } from 'react';
+import { usePathname } from 'next/navigation';
 
 export default function SecondaryNavBar({
   session,
@@ -14,6 +16,7 @@ export default function SecondaryNavBar({
   setIsProfileOpen: Dispatch<SetStateAction<boolean>>;
 }) {
   const profilePicture = session?.user.image || defaultProfile;
+  const pathname = usePathname();
 
   return (
     <ul className="bg-gray-dark-100 relative bg-transparent flex items-center gap-2">
@@ -25,12 +28,6 @@ export default function SecondaryNavBar({
               target="_blank"
               className="block px-2.5 py-1">
               <GitHubLogoNav className="w-6 h-6" />
-            </Link>
-          </li>
-
-          <li className="text-xs rounded-md font-normal text-gray-dark-1100 hover:text-gray-dark-1200 hover:bg-gray-dark-500">
-            <Link href="#" className="block px-2.5 py-1">
-              <EnvelopeIcon className="text-gray-dark-1100 size-6" />
             </Link>
           </li>
 
@@ -53,11 +50,9 @@ export default function SecondaryNavBar({
         </>
       )}
 
-      {/* HABRÍA QUE PONER UN USEPATHNAME PARA RECOGER LA POSIBLE DIRECCIÓN QUE HUBIERA Y REDIRIGIR AL USUARIO */}
-
       {!session && (
         <li>
-          <Link href="/sign-in" className="block">
+          <Link href={`/sign-in?callbackUrl=${pathname}`} className="block">
             <button
               type="button"
               className="bg-red-800 hover:bg-red-800/80 text-xs px-2.5 py-1 rounded-md font-normal border border-red-600">
