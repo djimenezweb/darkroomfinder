@@ -9,6 +9,13 @@ import { User } from '@/models/User';
 // Custom login pages: https://conermurphy.com/blog/implementing-authjs-nextauthjs-nextjs-app-router-application
 // Next Auth - JWT & Session Callback & How to Update User Session: https://www.youtube.com/watch?v=bkUmN9TH_hQ
 
+if (typeof process.env.GOOGLE_CLIENT_ID === 'undefined') {
+  throw new Error('Environment variable GOOGLE_CLIENT_ID is undefined');
+}
+if (typeof process.env.GOOGLE_CLIENT_SECRET === 'undefined') {
+  throw new Error('Environment variable GOOGLE_CLIENT_SECRET is undefined');
+}
+
 export const authOptions: AuthOptions = {
   providers: [
     GoogleProvider({

@@ -3,13 +3,11 @@ declare global {
   var mongoose: any; // This must be a `var` and not a `let / const`
 }
 
-const MONGODB_URI = process.env.MONGODB_URI;
-
-if (!MONGODB_URI) {
-  throw new Error(
-    'Please define the MONGODB_URI environment variable inside .env.local'
-  );
+if (typeof process.env.MONGODB_URI === 'undefined') {
+  throw new Error('Environment variable MONGODB_URI is undefined');
 }
+
+const MONGODB_URI = process.env.MONGODB_URI;
 
 let cached = global.mongoose;
 

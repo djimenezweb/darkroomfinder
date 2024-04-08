@@ -1,6 +1,12 @@
 import { config, geocoding } from '@maptiler/client';
 // import type { Geometry } from 'geojson'
 
+if (typeof process.env.NEXT_PUBLIC_MAPTILER_API_KEY === 'undefined') {
+  throw new Error(
+    'Environment variable NEXT_PUBLIC_MAPTILER_API_KEY is undefined'
+  );
+}
+
 config.apiKey = process.env.NEXT_PUBLIC_MAPTILER_API_KEY;
 
 export async function geocodeAddress(formData: FormData) {

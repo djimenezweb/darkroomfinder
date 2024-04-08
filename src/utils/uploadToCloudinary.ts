@@ -1,11 +1,3 @@
-// import { v2 as cloudinary } from 'cloudinary';
-
-// cloudinary.config({
-//   cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
-//   api_key: process.env.CLOUDINARY_API_KEY,
-//   api_secret: process.env.CLOUDINARY_API_SECRET
-// });
-
 import cloudinary from '@/utils/cloudinary';
 
 export async function uploadToCloudinary(images: File[]) {
@@ -27,23 +19,6 @@ export async function uploadToCloudinary(images: File[]) {
   const uploadedImages = await Promise.all(imageUploadPromises);
   return uploadedImages;
 }
-
-// https://cloudinary.com/documentation/node_image_and_video_upload
-//
-// const byteArrayBuffer = ????
-// const uploadResult = await new Promise((resolve) => {
-// cloudinary.uploader.upload_stream((error, uploadResult) => {
-// return resolve(uploadResult)
-// }).end(byteArrayBuffer)
-// })
-
-// const uploadResult = await new Promise(resolve => {
-//   cloudinary.uploader
-//     .upload_stream({folder: 'darkroomfinder', use_filename: true}, (error: UploadApiErrorResponse | undefined, uploadResult: UploadApiResponse | undefined) => {
-//       return resolve(uploadResult);
-//     })
-//     .end(byteArrayBuffer);
-// });
 
 const RESULT_EXAMPLE = {
   asset_id: '1a613a3d9994680c6d6bf48ff6ca998c',

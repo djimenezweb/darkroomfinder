@@ -14,6 +14,12 @@ export default function LabMap({ lat, lon }: { lat: number; lon: number }) {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
 
+  if (typeof process.env.NEXT_PUBLIC_MAPTILER_API_KEY === 'undefined') {
+    throw new Error(
+      'Environment variable NEXT_PUBLIC_MAPTILER_API_KEY is undefined'
+    );
+  }
+
   if (!lat || !lon)
     return (
       <div className="w-full">
