@@ -3,7 +3,7 @@
 import { sizes, processes } from '@/constants/lab-options';
 import SubmitButton from '@/components/forms/SubmitButton';
 import { twMerge } from 'tailwind-merge';
-import styles from '@/styles/styles';
+import { styles } from '@/styles/styles';
 import { useFormState } from 'react-dom';
 import {
   FormCheckBox,

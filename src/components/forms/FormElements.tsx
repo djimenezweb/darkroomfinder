@@ -87,6 +87,6 @@ export function FormCheckBox({
   );
 }
 
-export function FormErrorParagraph({ children }: { children: ReactNode }) {
+export function FormError({ children }: { children: ReactNode }) {
   return <p className="mt-1 text-error-900 text-sm">{children}</p>;
 }

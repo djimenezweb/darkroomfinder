@@ -3,7 +3,7 @@
 import { sizes, processes } from '@/constants/lab-options';
 import SubmitButton from './SubmitButton';
 import { twMerge } from 'tailwind-merge';
-import styles from '@/styles/styles';
+import { styles } from '@/styles/styles';
 import { useFormState } from 'react-dom';
 import {
   FormCheckBox,
@@ -11,7 +11,7 @@ import {
   FormInput,
   FormLabel,
   FormRow,
-  FormErrorParagraph
+  FormError
 } from './FormElements';
 import { LOCATION } from '@/constants/location-form-fields';
 import { addDarkroom } from '@/actions/addDarkroom';
@@ -72,9 +72,7 @@ export default function AddLabForm() {
               'bg-error-200 border-error-500 placeholder-error-500'
           )}
           defaultValue="">
-          {errors?.name && (
-            <FormErrorParagraph>{errors.name}</FormErrorParagraph>
-          )}
+          {errors?.name && <FormError>{errors.name}</FormError>}
         </FormInput>
       </FormRow>
       <FormRow>
@@ -87,14 +85,13 @@ export default function AddLabForm() {
             placeholder="Description"
             className={twMerge(
               styles.inputTextStyles,
+              'h-28',
               errors?.description &&
                 'bg-error-200 border-error-500 placeholder-error-500'
             )}
             defaultValue=""
           />
-          {errors?.description && (
-            <FormErrorParagraph>{errors.description}</FormErrorParagraph>
-          )}
+          {errors?.description && <FormError>{errors.description}</FormError>}
         </div>
       </FormRow>
       <FormRow>
@@ -116,9 +113,7 @@ export default function AddLabForm() {
                 )}
               />
               {errors?.[id as keyof IErrorMessages] && (
-                <FormErrorParagraph>
-                  {errors[id as keyof IErrorMessages]}
-                </FormErrorParagraph>
+                <FormError>{errors[id as keyof IErrorMessages]}</FormError>
               )}
             </div>
           ))}
@@ -138,9 +133,7 @@ export default function AddLabForm() {
               />
             ))}
           </ul>
-          {errors?.sizes && (
-            <FormErrorParagraph>{errors.sizes}</FormErrorParagraph>
-          )}
+          {errors?.sizes && <FormError>{errors.sizes}</FormError>}
         </div>
       </FormRow>
       <FormRow>
@@ -158,18 +151,14 @@ export default function AddLabForm() {
               />
             ))}
           </ul>
-          {errors?.processes && (
-            <FormErrorParagraph>{errors.processes}</FormErrorParagraph>
-          )}
+          {errors?.processes && <FormError>{errors.processes}</FormError>}
         </div>
       </FormRow>
       <FormRow>
         <FormLabel htmlFor="uploadedPictures">Images</FormLabel>
         <div className="col-span-2">
           <UploadImages files={files} setFiles={setFiles} />
-          {errors?.images && (
-            <FormErrorParagraph>{errors.images}</FormErrorParagraph>
-          )}
+          {errors?.images && <FormError>{errors.images}</FormError>}
         </div>
       </FormRow>
       <div className="bg-gray-dark-300 border-b border-gray-dark-400 flex items-center justify-between px-6 py-4">
