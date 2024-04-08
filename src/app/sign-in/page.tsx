@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import SignInButtons from '@/components/buttons/SignInButtons';
 import { TITLE } from '@/constants/metadata';
-import Logo from '@/components/logos/Logo';
+import logo from '/public/images/logo.png';
 
 export function generateMetadata() {
   return {
@@ -19,7 +19,11 @@ export default async function SigninPage() {
     <>
       <header className="absolute top-0 w-full h-16 px-8 flex items-end">
         <Link href="/">
-          <Logo size="xl" />
+          <Image
+            src={logo}
+            alt="Darkroom Finder logo"
+            className="h-6 w-auto object-contain"
+          />
         </Link>
       </header>
       <div className="flex h-screen">
