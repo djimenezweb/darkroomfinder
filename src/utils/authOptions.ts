@@ -66,7 +66,6 @@ export const authOptions: AuthOptions = {
     async session({ session, token }) {
       return { ...session, user: { ...session.user, id: token.id } };
       // if (!session.user.email) {
-      //   console.log('No session.user.email => Connecting to db');
       //   await dbConnect();
       //   const user = await User.findOne({ email: session.user?.email });
       //   if (user) {

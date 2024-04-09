@@ -10,11 +10,13 @@ export async function getFavLabs(email: string) {
       })
       .lean()
       .exec();
-
-    console.log(data);
-    return (data || []) as IUserWithLabs;
+    if (data) {
+      return data as IUserWithLabs;
+    }
+    return null;
   } catch (error) {
-    return [];
+    console.error('🔺 ~ getFavLabs.ts ~ will return null ~ 🔺', error);
+    return null;
   }
 
   //   if (data) {

@@ -7,31 +7,42 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/utils/authOptions';
 import { User } from '@/models/User';
 import { validateEditForm } from '@/utils/validateForm';
-import { geocodeAddress } from '@/utils/geocodeAddress';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
+import { deleteFromCloudinary } from '@/utils/deleteFromCloudinary';
 
 export async function editDarkroom(
   documentId: string,
   prevState: any,
   formData: FormData
 ) {
-  // Validate form fields with Zod
-  const validatedForm = validateEditForm(formData);
+  const session = await getServerSession(authOptions);
+  if (!session?.user.email) return;
 
+  // Validate form
   // If validation fails, send errors
   // If validation is successful, send data to Cloudinary and MongoDB
+  const validatedForm = validateEditForm(formData);
   if (!validatedForm.success) {
     return { ...validatedForm.error.flatten().fieldErrors };
   } else {
     try {
-      // Connect to MongoDB
+      // Connect to MongoDB and get userId
       await dbConnect();
+      const user = await User.findOne({ email: session.user.email });
+      if (!user) return;
+      const userId = user._id.toString();
+
+      const toBeDeletedImages = formData.getAll(
+        'toBeDeletedImages'
+      ) as string[];
+      const destroyResult = await deleteFromCloudinary(toBeDeletedImages);
 
       // Get all images as an array of files
       const images = formData.getAll('images') as File[];
       // Upload images to Cloudinary and get URLs
-      const imagesURL = await uploadToCloudinary(images);
+      const imagesURL = await uploadToCloudinary(images, userId);
+      const savedImages = formData.getAll('savedImages');
 
       // Send data to MongoDB
       const result = await Lab.findByIdAndUpdate(documentId, {
@@ -48,11 +59,10 @@ export async function editDarkroom(
         },
         sizes: formData.getAll('sizes'),
         processes: formData.getAll('processes'),
-        images: imagesURL
+        images: [...savedImages, ...imagesURL]
       });
-      //console.log('Darkroom added to db:', result);
     } catch (error) {
-      console.log(error);
+      console.error('🔺 ~ editaddDarkroom.ts ~ 🔺', error);
       throw new Error('An error ocurred while trying to edit the darkroom');
     }
 

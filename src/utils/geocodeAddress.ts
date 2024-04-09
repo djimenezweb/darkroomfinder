@@ -20,10 +20,13 @@ export async function geocodeAddress(formData: FormData) {
   try {
     // Get result from geocoding client
     const geocodingResult = await geocoding.forward(fullAdress);
+    if (!geocodingResult.features[0].center) {
+      return [0, 0];
+    }
     const [longitude, latitude] = geocodingResult.features[0].center;
     return [longitude, latitude];
   } catch (error) {
-    console.error(error);
+    // console.error(error);
     // If error, return coordinates [0, 0]
     return [0, 0];
   }

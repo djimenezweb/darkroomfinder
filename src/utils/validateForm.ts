@@ -14,13 +14,13 @@ const schema = z.object({
   processes: z
     .string()
     .array()
-    .nonempty({ message: 'Select at least one process' }),
+    .nonempty({ message: 'Select at least one process' })
+});
+
+const schemaWithImages = schema.extend({
   images: z.any().array().nonempty({
     message: 'Upload at least one picture'
   })
-  // .refine(files => files[0].size > 0, {
-  //   message: 'Upload at least one picture'
-  // })
 });
 
 const schemaWithGeoLocation = schema.extend({
@@ -28,6 +28,7 @@ const schemaWithGeoLocation = schema.extend({
   longitude: z.string()
 });
 
+// Validate ADD NEW darkroom form
 export function validateForm(formData: FormData) {
   const fieldsToValidate = {
     name: formData.get('name'),
@@ -42,9 +43,10 @@ export function validateForm(formData: FormData) {
     images: formData.getAll('images')
   };
 
-  return schema.safeParse(fieldsToValidate);
+  return schemaWithImages.safeParse(fieldsToValidate);
 }
 
+// Validate EDIT darkroom form
 export function validateEditForm(formData: FormData) {
   const fieldsToValidate = {
     name: formData.get('name'),
@@ -57,8 +59,7 @@ export function validateEditForm(formData: FormData) {
     latitude: formData.get('latitude'),
     longitude: formData.get('longitude'),
     sizes: formData.getAll('sizes'),
-    processes: formData.getAll('processes'),
-    images: formData.getAll('images')
+    processes: formData.getAll('processes')
   };
 
   return schemaWithGeoLocation.safeParse(fieldsToValidate);

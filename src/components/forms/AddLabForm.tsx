@@ -16,8 +16,9 @@ import {
 import { LOCATION } from '@/constants/location-form-fields';
 import { addDarkroom } from '@/actions/addDarkroom';
 import { FormEvent, useState } from 'react';
-import UploadImages from './UploadImages';
 import CancelButton from './CancelButton';
+import Dropzone from './Dropzone';
+import Previews from './Previews';
 
 interface IErrorMessages {
   [key: string]: string[] | undefined;
@@ -156,8 +157,10 @@ export default function AddLabForm() {
       </FormRow>
       <FormRow>
         <FormLabel htmlFor="uploadedPictures">Images</FormLabel>
-        <div className="col-span-2">
-          <UploadImages files={files} setFiles={setFiles} />
+        <div className="col-span-2 space-y-4">
+          <Dropzone files={files} setFiles={setFiles} />
+          {files.length > 0 && <Previews files={files} setFiles={setFiles} />}
+
           {errors?.images && <FormError>{errors.images}</FormError>}
         </div>
       </FormRow>

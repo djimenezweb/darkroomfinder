@@ -1,14 +1,21 @@
 import Image from 'next/image';
+import { Dispatch, SetStateAction } from 'react';
 
 export default function Previews({
   files,
-  handleDelete
+  setFiles
 }: {
   files: (File & { preview: string })[];
-  handleDelete: (i: number) => void;
+  setFiles: Dispatch<SetStateAction<(File & { preview: string })[]>>;
 }) {
+  function handleDelete(i: number) {
+    const nextFiles = [...files];
+    nextFiles.splice(i, 1);
+    setFiles(nextFiles);
+  }
+
   return (
-    <ul className="flex flex-wrap gap-2 mt-4">
+    <ul className="flex flex-wrap gap-2">
       {files.map((file, index) => (
         <li
           key={index + file.name}

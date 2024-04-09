@@ -1,6 +1,6 @@
 import { authOptions } from '@/utils/authOptions';
 import { getServerSession } from 'next-auth';
-import { redirect } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { TITLE } from '@/constants/metadata';
 import { getFavLabs } from '@/utils/getFavLabs';
 import StickyAside from '@/components/StickyAside';
@@ -23,11 +23,9 @@ export default async function FavsPage() {
   }
 
   const userWithFavs = await getFavLabs(session?.user?.email);
-  console.log('🚀 ~ FavsPage ~ userWithFavs:', userWithFavs);
 
   if (!userWithFavs) {
-    // Redirect to notfound
-    return;
+    notFound();
   }
 
   const labs = userWithFavs.bookmarks;

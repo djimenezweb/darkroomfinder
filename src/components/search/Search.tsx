@@ -17,7 +17,6 @@ export default function Search() {
     } else {
       params.delete('query');
     }
-    // console.log(params);
     router.push(`/labs?${params.toString()}`);
   }
 

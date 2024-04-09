@@ -45,7 +45,6 @@ export default function FiltersWithUseEffect({
   // Otherwise the filter is updated
   // This should run ONLY if filters are updated (are clicked on)
   useEffect(() => {
-    // console.log('I am the useEffect from ' + name);
     function updateSearchParams() {
       const params = new URLSearchParams(searchParams);
       // Deletes page to start url from scratch

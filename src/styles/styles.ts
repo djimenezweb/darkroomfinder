@@ -23,7 +23,8 @@ const dropzoneStyles: { [key: string]: CSSProperties } = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    cursor: 'default'
   },
   accept: {
     backgroundColor: '#1c1c1c',

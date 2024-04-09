@@ -32,7 +32,7 @@ export async function addDarkroom(prevState: any, formData: FormData) {
       // Get all images as an array of files
       const images = formData.getAll('images') as File[];
       // Upload images to Cloudinary and get URLs
-      const imagesURL = await uploadToCloudinary(images);
+      const imagesURL = await uploadToCloudinary(images, userId);
 
       // Geocode address
       const [longitude, latitude] = await geocodeAddress(formData);
@@ -55,10 +55,9 @@ export async function addDarkroom(prevState: any, formData: FormData) {
         processes: formData.getAll('processes'),
         images: imagesURL
       });
-      console.log(result);
       documentId = result._id.toString();
     } catch (error) {
-      console.log(error);
+      console.error('🔺 ~ addDarkroom.ts ~ 🔺', error);
       throw new Error('An error ocurred while trying to add a new darkroom');
     }
     redirect('/lab/' + documentId);

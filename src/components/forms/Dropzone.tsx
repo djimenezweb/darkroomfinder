@@ -12,11 +12,15 @@ import { dropzoneStyles as styles } from '@/styles/styles';
 
 export default function Dropzone({
   files,
-  setFiles
+  setFiles,
+  savedImages = 0
 }: {
   files: (File & { preview: string })[];
   setFiles: Dispatch<SetStateAction<(File & { preview: string })[]>>;
+  savedImages?: number;
 }) {
+  const limit = 6 - files.length - savedImages;
+
   const onDrop = useCallback((acceptedFiles: File[]) => {
     const filesWithPreviews = acceptedFiles.map(file =>
       Object.assign(file, { preview: URL.createObjectURL(file) })
@@ -27,7 +31,7 @@ export default function Dropzone({
   const { getRootProps, getInputProps, isDragAccept, isDragReject } =
     useDropzone({
       accept: { 'image/png': ['.png'], 'image/jpeg': ['.jpg'] },
-      disabled: files.length >= 6,
+      disabled: files.length >= limit,
       maxFiles: 6,
       onDrop
     });
@@ -52,7 +56,7 @@ export default function Dropzone({
       {isDragReject && (
         <>
           <p className="text-sm text-error-900">JPG or PNG images only</p>
-          <p className="text-sm text-error-900">Max 6 files</p>
+          <p className="text-sm text-error-900">Max {limit} files</p>
         </>
       )}
       {isDragAccept && (
@@ -61,7 +65,7 @@ export default function Dropzone({
       {!isDragAccept && !isDragReject && (
         <>
           <p className="text-sm text-gray-dark-1000">
-            Drop up to 6 images here
+            Drop up to {limit} images here
           </p>
           <p className="text-xs text-gray-dark-1000">or click to upload</p>
         </>

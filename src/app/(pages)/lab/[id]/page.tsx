@@ -51,7 +51,6 @@ export default async function DarkroomPage({ params }: { params: Params }) {
 
   const session = await getServerSession(authOptions);
   const isFav = await getIsFav(id, session?.user?.email);
-  //console.log('🚀 ~ DarkroomPage ~ isFav:', isFav);
 
   return (
     <section className="relative flex items-stretch">

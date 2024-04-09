@@ -66,8 +66,6 @@ export async function getLabs(
       }
     ]);
 
-    // console.log('🚀 ~ results:', results);
-
     const totalResults = results.metaData[0]?.count | 0;
     const labs = results.data;
 
@@ -77,7 +75,7 @@ export async function getLabs(
 
     return { labs, totalResults, showingFrom, showingTo };
   } catch (error) {
-    console.log(error);
+    console.error('🔺 ~ getLabs.ts ~ 🔺', error);
     throw new Error('Failed to get darkrooms data');
   }
 }

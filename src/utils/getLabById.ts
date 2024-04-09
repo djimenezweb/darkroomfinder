@@ -14,7 +14,7 @@ export async function getLabById(id: string) {
 
     return null;
   } catch (error) {
-    console.log(error);
+    console.error('🔺 ~ getLabById.ts ~ will return null ~ 🔺', error);
     return null;
   }
 }

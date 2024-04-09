@@ -2,9 +2,10 @@ import { authOptions } from '@/utils/authOptions';
 import { getLabById } from '@/utils/getLabById';
 import { getServerSession } from 'next-auth';
 import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
-import { redirect } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import EditLabForm from '@/components/forms/EditLabForm';
 import { TITLE } from '@/constants/metadata';
+import { Types } from 'mongoose';
 
 export function generateMetadata() {
   return {
@@ -14,6 +15,12 @@ export function generateMetadata() {
 
 export default async function EditLabPage({ params }: { params: Params }) {
   const id = params.id;
+
+  const isValid = Types.ObjectId.isValid(id);
+  if (!isValid) {
+    notFound();
+  }
+
   const session = await getServerSession(authOptions);
 
   // Not logged in
@@ -22,9 +29,10 @@ export default async function EditLabPage({ params }: { params: Params }) {
   }
 
   const lab = await getLabById(id);
+
+  // Not found
   if (!lab) {
-    // Redirect to notfound
-    return;
+    notFound();
   }
 
   // Unauthorized
