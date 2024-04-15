@@ -43,6 +43,7 @@ export default function AddLabForm() {
       formData.append('images', blob, file.name);
     }
     formAction(formData);
+    setIsPending(false);
   }
 
   return (
