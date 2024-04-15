@@ -6,9 +6,8 @@ import { useState } from 'react';
 import { wrap } from '@/utils/wrap';
 import { AnimatePresence, motion } from 'framer-motion';
 import { twMerge } from 'tailwind-merge';
-import ContainerWithBorder from '@/components/ContainerWithBorder';
 
-export default function Carousel({ images }: { images: string[] }) {
+export function Carousel({ images }: { images: string[] }) {
   const [[index, direction], setIndex] = useState([0, 0]);
   const [pillWidth, setPillWidth] = useState<number | number[]>(8);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -32,7 +31,7 @@ export default function Carousel({ images }: { images: string[] }) {
   return (
     <motion.div
       // layoutId={'containerKey' + String(index)}
-      className="bg-gray-dark-300 p-5 rounded-md border border-gray-dark-500">
+      className="bg-gray-dark-300 p-5 rounded-md border border-gray-dark-500 min-h-[262px]">
       <div className="w-full flex justify-between items-center">
         {length > 1 && (
           <button
@@ -58,13 +57,14 @@ export default function Carousel({ images }: { images: string[] }) {
                 initial="enter"
                 animate="center"
                 exit="exit"
-                transition={{ duration: 0.5 }}>
+                transition={{ duration: 0.5 }}
+                className="relative">
                 <Image
                   src={images[index]}
                   alt={`Picture ${index + 1}`}
-                  width={300}
+                  width={332}
                   height={200}
-                  className="h-[200px] object-contain mx-4"
+                  className="h-[200px] mx-4 object-contain"
                 />
               </motion.div>
             </AnimatePresence>
@@ -81,12 +81,7 @@ export default function Carousel({ images }: { images: string[] }) {
       </div>
       <div className="mt-3 flex justify-center gap-2">
         {images.map((picture, i) => (
-          <div
-            key={picture}
-            className={twMerge(
-              'size-2 rounded-full',
-              i === index ? 'bg-gray-dark-900' : 'bg-gray-dark-900'
-            )}>
+          <div key={picture} className="size-2 rounded-full bg-gray-dark-900">
             {i === index && (
               <motion.div
                 layoutId="pill"

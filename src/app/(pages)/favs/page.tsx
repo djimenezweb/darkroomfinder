@@ -31,14 +31,14 @@ export default async function FavsPage() {
   const labs = userWithFavs.bookmarks;
 
   return (
-    <section className="h-full flex items-stretch">
+    <div className="h-full relative md:flex md:items-stretch">
       <StickyAside>
         <AsideElementWrapper>
           <BackButton />
         </AsideElementWrapper>
       </StickyAside>
 
-      <div className="grow p-5">
+      <div className="grow p-5 max-w-screen-2xl mb-16">
         <h2 className="text-lg">Saved darkrooms</h2>
 
         {labs.length == 0 && (
@@ -66,6 +66,6 @@ export default async function FavsPage() {
           </>
         )}
       </div>
-    </section>
+    </div>
   );
 }

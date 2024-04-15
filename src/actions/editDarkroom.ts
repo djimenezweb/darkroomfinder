@@ -47,12 +47,12 @@ export async function editDarkroom(
       // Send data to MongoDB
       const result = await Lab.findByIdAndUpdate(documentId, {
         name: formData.get('name'),
+        link: formData.get('link'),
         description: formData.get('description'),
         location: {
           address: formData.get('address'),
           city: formData.get('city'),
-          state: formData.get('state'),
-          zipcode: formData.get('zipcode'),
+          postalcode: formData.get('postalcode'),
           country: formData.get('country'),
           latitude: formData.get('latitude'),
           longitude: formData.get('longitude')

@@ -57,7 +57,6 @@ export default function LabMap({ lat, lon }: { lat: number; lon: number }) {
         mapStyle={`https://api.maptiler.com/maps/5cde18f8-54d9-4506-b93a-4ffa7a3aeaa2/style.json?key=${process.env.NEXT_PUBLIC_MAPTILER_API_KEY}`}
         attributionControl={false}>
         <Marker longitude={lon} latitude={lat} anchor="bottom" offset={[0, -4]}>
-          {/* <div className="rounded-full bg-red-600 w-4 h-4 animate-pulse" /> */}
           <MapPinIcon className="text-red-600 size-8 animate-bounce" />
         </Marker>
         <FullscreenControl />

@@ -46,9 +46,11 @@ export default function Filters({ name }: { name: 'sizes' | 'processes' }) {
   }
 
   return (
-    <>
-      <div className="mb-2 h-6 flex justify-between items-center">
-        <p className="text-sm text-gray-dark-1000 capitalize">{name}</p>
+    <div className="flex flex-wrap gap-x-4 gap-y-2 md:block md:gap-0">
+      <div className="md:mb-2 h-6 flex justify-between items-center">
+        <p className="min-w-16 text-sm text-gray-dark-1000 capitalize">
+          {name}
+        </p>
         {initialFilter.length > 0 && (
           <button
             type="button"
@@ -73,6 +75,6 @@ export default function Filters({ name }: { name: 'sizes' | 'processes' }) {
           </li>
         ))}
       </ul>
-    </>
+    </div>
   );
 }

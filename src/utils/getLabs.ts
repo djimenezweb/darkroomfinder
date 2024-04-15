@@ -26,7 +26,7 @@ export async function getLabs(
       { description: { $regex: query, $options: 'i' } },
       { 'location.address': { $regex: query, $options: 'i' } },
       { 'location.city': { $regex: query, $options: 'i' } },
-      { 'location.state': { $regex: query, $options: 'i' } }
+      { 'location.country': { $regex: query, $options: 'i' } }
     ];
   }
 

@@ -1,5 +1,4 @@
 import { config, geocoding } from '@maptiler/client';
-// import type { Geometry } from 'geojson'
 
 if (typeof process.env.NEXT_PUBLIC_MAPTILER_API_KEY === 'undefined') {
   throw new Error(
@@ -11,11 +10,9 @@ config.apiKey = process.env.NEXT_PUBLIC_MAPTILER_API_KEY;
 
 export async function geocodeAddress(formData: FormData) {
   // Save full address in a single string
-  const fullAdress = `${formData.get('address')} ${formData.get(
-    'city'
-  )} ${formData.get('zipcode')} ${formData.get('state')} ${formData.get(
-    'country'
-  )}`;
+  const fullAdress = `${formData.get('address')}, ${formData.get(
+    'postalcode'
+  )}, ${formData.get('city')}, ${formData.get('country')}`;
 
   try {
     // Get result from geocoding client
@@ -26,8 +23,8 @@ export async function geocodeAddress(formData: FormData) {
     const [longitude, latitude] = geocodingResult.features[0].center;
     return [longitude, latitude];
   } catch (error) {
-    // console.error(error);
     // If error, return coordinates [0, 0]
+    console.error('🔺 ~ geocodeAddress.ts ~ 🔺', error);
     return [0, 0];
   }
 }

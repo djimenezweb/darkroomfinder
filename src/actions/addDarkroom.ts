@@ -42,11 +42,11 @@ export async function addDarkroom(prevState: any, formData: FormData) {
         owner: userId,
         name: formData.get('name'),
         description: formData.get('description'),
+        link: formData.get('link'),
         location: {
           address: formData.get('address'),
+          postalcode: formData.get('postalcode'),
           city: formData.get('city'),
-          state: formData.get('state'),
-          zipcode: formData.get('zipcode'),
           country: formData.get('country'),
           latitude,
           longitude

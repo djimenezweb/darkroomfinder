@@ -7,11 +7,11 @@ const labSchema = new Schema<ILab>(
     owner: { type: Schema.Types.ObjectId, ref: 'User', required: true },
     name: { type: String, required: true },
     description: { type: String },
+    link: { type: String },
     location: {
       address: String,
+      postalcode: String,
       city: String,
-      state: String,
-      zipcode: String,
       country: String,
       latitude: Number,
       longitude: Number

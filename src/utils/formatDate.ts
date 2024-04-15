@@ -1,4 +1,3 @@
 export function formatDate(date: string | Date) {
-  const formattedDate = new Date(date).toLocaleDateString();
-  return formattedDate;
+  return new Date(date).toLocaleDateString();
 }

@@ -48,7 +48,7 @@ export default function AddLabForm() {
   return (
     <form
       onSubmit={e => handleSubmit(e)}
-      className="rounded-md border border-gray-dark-400 shadow-sm mb-8 overflow-hidden">
+      className="rounded-md border border-gray-dark-400 shadow-sm overflow-hidden">
       <div className="bg-gray-dark-300 border-b border-gray-dark-400 flex items-center px-6 py-4">
         <h2 className="text-base">Add a new darkroom</h2>
       </div>
@@ -76,6 +76,24 @@ export default function AddLabForm() {
           {errors?.name && <FormError>{errors.name}</FormError>}
         </FormInput>
       </FormRow>
+
+      <FormRow>
+        <FormLabel htmlFor="link">Link</FormLabel>
+        <FormInput
+          id="link"
+          name="link"
+          placeholder="Website"
+          type="text"
+          className={twMerge(
+            styles.inputTextStyles,
+            errors?.link &&
+              'bg-error-200 border-error-500 placeholder-error-500'
+          )}
+          defaultValue="">
+          {errors?.link && <FormError>{errors.link}</FormError>}
+        </FormInput>
+      </FormRow>
+
       <FormRow>
         <FormLabel htmlFor="description">Description</FormLabel>
 
@@ -95,6 +113,7 @@ export default function AddLabForm() {
           {errors?.description && <FormError>{errors.description}</FormError>}
         </div>
       </FormRow>
+
       <FormRow>
         <FormLabel htmlFor="address">Location</FormLabel>
         <div className="col-span-2 space-y-2">

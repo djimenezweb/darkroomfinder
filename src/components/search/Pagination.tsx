@@ -44,6 +44,7 @@ export default function Pagination({ totalResults, page }: PaginationProps) {
             <Link
               key={n}
               href={`${baseLink}&page=${n}`}
+              replace={false}
               className={twMerge(
                 baseStyle,
                 'text-gray-dark-1000 hover:text-gray-dark-1200 bg-transparent hover:bg-gray-dark-600 border-gray-dark-700 hover:border-gray-dark-900'

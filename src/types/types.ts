@@ -4,15 +4,14 @@ interface IPlainUser {
   _id: Types.ObjectId;
   username: string;
   email: string;
-  createdAt?: Date;
-  updatedAt?: Date;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export interface ILocation {
   address: string;
+  postalcode: string;
   city: string;
-  state: string;
-  zipcode: string;
   country: string;
   latitude: number;
   longitude: number;
@@ -22,13 +21,14 @@ interface IPlainLab {
   _id: Types.ObjectId;
   name: string;
   description: string;
+  link: string;
   location: ILocation;
   sizes: string[];
   processes: string[];
   images: string[];
   isFeatured: boolean;
-  createdAt?: Date;
-  updatedAt?: Date;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export interface ILab extends IPlainLab {

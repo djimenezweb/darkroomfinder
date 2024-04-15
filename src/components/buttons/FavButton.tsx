@@ -37,7 +37,7 @@ export default function FavButton({
         onClick={handleClick}
         disabled={isLoading}
         type="button"
-        className="group flex gap-2 items-center bg-gray-dark-500 hover:bg-gray-dark-600 text-xs p-2.5 lg:px-2.5 lg:py-1 rounded-md font-normal border border-gray-dark-700 hover:border-gray-dark-800">
+        className="group flex gap-2 items-center bg-gray-dark-500 hover:bg-gray-dark-600 text-xs px-2.5 py-1 rounded-md font-normal border border-gray-dark-700 hover:border-gray-dark-800">
         {isLoading ? (
           <SpinnerSVG className="size-5 animate-spin" />
         ) : (

@@ -28,13 +28,13 @@ export default async function ProfilePage() {
     'w-full rounded-md shadow-sm text-gray-dark-1200 outline-none placeholder-gray-dark-900 bg-gray-dark-1200/[.026] border border-gray-dark-600 text-sm px-4 py-2 opacity-50';
 
   return (
-    <section className="h-full relative flex items-stretch">
+    <div className="h-full md:grid md:grid-cols-[10rem_1fr] lg:grid-cols-[13rem_1fr] xl:grid-cols-[16rem_1fr]">
       <StickyAside>
         <AsideElementWrapper>
           <BackButton />
         </AsideElementWrapper>
       </StickyAside>
-      <div className="p-5 grow max-w-3xl space-y-8">
+      <div className="w-full max-w-3xl mx-auto p-5 grow space-y-8 mb-16">
         <ContainerWithBorder>
           <h3 className="text-base mb-8">Profile Information</h3>
           <div className="space-y-2">
@@ -102,6 +102,6 @@ export default async function ProfilePage() {
           </div>
         </ContainerWithBorder>
       </div>
-    </section>
+    </div>
   );
 }

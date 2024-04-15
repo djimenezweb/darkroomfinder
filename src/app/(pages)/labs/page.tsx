@@ -37,7 +37,7 @@ export default async function Labs({
   );
 
   return (
-    <section className="relative flex items-stretch">
+    <div className="h-full relative md:flex md:items-stretch">
       <StickyAside>
         <AsideElementWrapper>
           <SearchMini key={'searchKey' + query} />
@@ -50,7 +50,7 @@ export default async function Labs({
         </AsideElementWrapper>
       </StickyAside>
 
-      <div className="grow p-5">
+      <div className="grow p-5 max-w-screen-2xl mb-16">
         <SearchResultsHeading
           length={labs.length}
           from={showingFrom}
@@ -61,7 +61,7 @@ export default async function Labs({
 
         {labs.length > 0 && (
           <>
-            <ul className="mx-auto mt-3 grid grid-cols-1 gap-4 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
+            <ul className="mx-auto mt-3 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-[repeat(auto-fit,minmax(300px,1fr))] lg:grid-cols-2 xl:grid-cols-3">
               {labs.map(lab => (
                 <li key={lab._id.toString()}>
                   <Link href={`/lab/${lab._id.toString()}`}>
@@ -78,6 +78,6 @@ export default async function Labs({
           </>
         )}
       </div>
-    </section>
+    </div>
   );
 }

@@ -9,7 +9,9 @@ const config: Config = {
   theme: {
     extend: {
       gridTemplateRows: { layout: '1fr auto' },
-      gridTemplateColumns: { layout: 'minmax(0, 1fr)' },
+      gridTemplateColumns: {
+        layout: 'minmax(0, 1fr)'
+      },
       colors: {
         'gray-dark': {
           100: 'hsl(0, 0%, 8.6%)',

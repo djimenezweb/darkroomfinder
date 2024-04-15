@@ -10,7 +10,7 @@ export function generateMetadata() {
 
 export default function NotFound() {
   return (
-    <section className="relative h-full flex items-stretch">
+    <div className="relative h-full flex items-stretch">
       <StickyAside>
         <AsideElementWrapper>
           <BackButton />
@@ -26,6 +26,6 @@ export default function NotFound() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

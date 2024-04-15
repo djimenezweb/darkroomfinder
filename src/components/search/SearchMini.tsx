@@ -35,13 +35,13 @@ export default function SearchMini() {
 
   return (
     <form onSubmit={handleSubmit} onReset={handleReset}>
-      <div className="relative">
+      <div className="relative max-w-md">
         <input
           type="search"
           value={term}
           onChange={e => setTerm(e.target.value)}
           id="search"
-          className="w-full text-xs px-8 py-1 rounded-md shadow-sm text-gray-dark-1200 placeholder-gray-dark-900 bg-gray-dark-1200/[.026] border border-gray-dark-600 outline-none focus-visible:shadow-md focus:ring-current focus:ring-2 focus-visible:border-gray-dark-900 focus-visible:ring-gray-dark-300"
+          className="w-full text-sm md:text-xs px-8 py-1 rounded-md shadow-sm text-gray-dark-1200 placeholder-gray-dark-900 bg-gray-dark-1200/[.026] border border-gray-dark-600 outline-none focus-visible:shadow-md focus:ring-current focus:ring-2 focus-visible:border-gray-dark-900 focus-visible:ring-gray-dark-300"
         />
         <div className="absolute left-2 top-2 size-4 text-gray-dark-900">
           <MagnifyingGlassIcon className="size-4" />

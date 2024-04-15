@@ -48,8 +48,10 @@ function Input({
     'Meopta',
     'nikon',
     'madrid',
+    'Jobo',
     'Paris',
     'durst',
+    'LPL',
     'New York',
     'Beseler',
     'kodak',
@@ -58,12 +60,14 @@ function Input({
     'FOMA',
     'Schneider',
     'Rome',
+    'De Vere',
     'Florence',
     'Adox',
     'vienna',
     'Fuji',
     'Tetenal',
-    'paterson'
+    'paterson',
+    'Kaiser'
   ]);
 
   return (

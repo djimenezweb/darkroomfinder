@@ -18,10 +18,8 @@ import { FormEvent, Fragment, useState } from 'react';
 import CancelButton from './CancelButton';
 import { ILabWithOwner, ILocation } from '@/types/types';
 import { editDarkroom } from '@/actions/editDarkroom';
-import Image from 'next/image';
 import Dropzone from './Dropzone';
 import Previews from './Previews';
-import PreviewsEditForm from './PreviewsEditForm';
 
 interface IErrorMessages {
   [key: string]: string[] | undefined;
@@ -74,7 +72,7 @@ export default function EditLabForm({ lab }: { lab: ILabWithOwner }) {
   return (
     <form
       onSubmit={e => handleSubmit(e)}
-      className="rounded-md border border-gray-dark-400 shadow-sm mb-8 overflow-hidden">
+      className="rounded-md border border-gray-dark-400 shadow-sm overflow-hidden">
       <div className="bg-gray-dark-300 border-b border-gray-dark-400 flex items-center px-6 py-4">
         <input
           type="text"
@@ -90,6 +88,23 @@ export default function EditLabForm({ lab }: { lab: ILabWithOwner }) {
         />
         {errors?.name && <FormError>{errors.name}</FormError>}
       </div>
+
+      <FormRow>
+        <FormLabel htmlFor="link">Link</FormLabel>
+        <FormInput
+          id="link"
+          name="link"
+          placeholder="Website"
+          type="text"
+          className={twMerge(
+            styles.inputTextStyles,
+            errors?.link &&
+              'bg-error-200 border-error-500 placeholder-error-500'
+          )}
+          defaultValue={lab.link}>
+          {errors?.link && <FormError>{errors.link}</FormError>}
+        </FormInput>
+      </FormRow>
 
       <FormRow>
         <FormLabel htmlFor="description">Description</FormLabel>
@@ -109,6 +124,7 @@ export default function EditLabForm({ lab }: { lab: ILabWithOwner }) {
           {errors?.description && <FormError>{errors.description}</FormError>}
         </div>
       </FormRow>
+
       <FormRow>
         {LOCATION.map(({ id }) => (
           <Fragment key={id}>
@@ -209,7 +225,7 @@ export default function EditLabForm({ lab }: { lab: ILabWithOwner }) {
             savedImages={savedImages.length}
           />
           {totalImages > 0 && (
-            <PreviewsEditForm
+            <Previews
               savedImages={savedImages}
               setSavedImages={setSavedImages}
               files={files}
