@@ -2,13 +2,11 @@
 
 import { User } from '@/models/User';
 import dbConnect from './dbConnect';
+import { artificialDelay } from './artificialDelay';
 //import { Types } from 'mongoose';
 
 // Según Traversy esto puede funcionar en local pero da fallos en Vercel
 // Si da fallos se corrige con export const dynamic = 'force-dynamic'
-
-const artificialDelay = (ms: number) =>
-  new Promise(resolve => setTimeout(resolve, ms));
 
 export async function toggleFav(
   labId: string,

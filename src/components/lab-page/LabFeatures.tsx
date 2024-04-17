@@ -1,6 +1,7 @@
 import { ILabWithOwner } from '@/types/types';
 import ContainerWithBorder from '../ContainerWithBorder';
 import { processes, sizes } from '@/constants/lab-options';
+import Tag from '@/components/Tag';
 
 type Props = {
   featuredSizes: ILabWithOwner['sizes'];
@@ -15,9 +16,9 @@ export function LabFeatures({ featuredSizes, featuredProcesses }: Props) {
         <ul className="flex gap-2 flex-wrap">
           {featuredSizes.map(size => (
             <li key={size}>
-              <span className="text-center text-xs px-2.5 py-1 rounded border text-gray-dark-1200 bg-gray-dark-500 border-gray-dark-700 shadow-sm">
+              <Tag type="span">
                 {sizes.find(item => item.id === size)?.fullName}
-              </span>
+              </Tag>
             </li>
           ))}
         </ul>
@@ -29,9 +30,9 @@ export function LabFeatures({ featuredSizes, featuredProcesses }: Props) {
         <ul className="flex gap-2 flex-wrap">
           {featuredProcesses.map(process => (
             <li key={process}>
-              <span className="text-center text-xs px-2.5 py-1 rounded border text-gray-dark-1200 bg-gray-dark-500 border-gray-dark-700 shadow-sm">
+              <Tag type="span">
                 {processes.find(item => item.id === process)?.longName}
-              </span>
+              </Tag>
             </li>
           ))}
         </ul>
