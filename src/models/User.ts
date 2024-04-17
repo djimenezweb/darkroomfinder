@@ -1,5 +1,6 @@
 import { IUser } from '@/types/types';
 import { Schema, model, models } from 'mongoose';
+import { Lab } from '@/models/Lab';
 
 // Create a Schema corresponding to the document interface.
 const userSchema = new Schema<IUser>(
@@ -13,7 +14,7 @@ const userSchema = new Schema<IUser>(
     bookmarks: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'Lab'
+        ref: Lab
       }
     ]
   },
