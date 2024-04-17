@@ -4,6 +4,7 @@ import SpinnerSVG from '@/components/logos/Spinner';
 import useToggle from '@/hooks/useToggle';
 import { ClientSafeProvider, LiteralUnion, signIn } from 'next-auth/react';
 import { useSearchParams } from 'next/navigation';
+import GitHubLogo from '../logos/GitHubLogo';
 
 interface ISignInButtonsProps {
   providers: Record<LiteralUnion<string, string>, ClientSafeProvider>;
@@ -14,7 +15,8 @@ interface IButtonProps {
 }
 
 const providerLogos: { [name: string]: JSX.Element } = {
-  google: <GoogleLogo className="w-5 h-5" />
+  google: <GoogleLogo className="w-5 h-5" />,
+  github: <GitHubLogo className="w-5 h-5" />
 };
 
 const buttonStyles =
@@ -25,13 +27,13 @@ export default function SignInButtons({ providers }: ISignInButtonsProps) {
   const callbackUrl = searchParams.get('callbackUrl');
 
   return (
-    <>
+    <div className="flex flex-col gap-5">
       {Object.values(providers).map(provider => (
         <div key={provider.name}>
           <Button provider={provider} callbackUrl={callbackUrl} />
         </div>
       ))}
-    </>
+    </div>
   );
 }
 

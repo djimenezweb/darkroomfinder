@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: { params: Params }) {
     title: `${lab?.name} | ${TITLE}`,
     openGraph: {
       title: lab?.name,
-      url: process.env.NEXTAUTH_URL + '/lab/' + lab?._id.toString(),
+      url: process.env.NEXT_PUBLIC_URL + '/lab/' + lab?._id.toString(),
       siteName: TITLE,
       images: [
         {
@@ -83,7 +83,7 @@ export default async function DarkroomPage({ params }: { params: Params }) {
           city={lab.location.city}
           link={lab.link}
         />
-        <div className="md:grid md:grid-cols-[1fr_10rem] gap-8">
+        <div className="md:grid md:grid-cols-[1fr_11rem] gap-8">
           <div className="space-y-8">
             <LabDescription description={lab.description} />
             <LabFeatures

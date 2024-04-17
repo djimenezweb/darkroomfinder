@@ -1,5 +1,6 @@
 import { AuthOptions } from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
+import GitHubProvider from 'next-auth/providers/github';
 import dbConnect from '@/utils/dbConnect';
 import { User } from '@/models/User';
 
@@ -15,6 +16,12 @@ if (typeof process.env.GOOGLE_CLIENT_ID === 'undefined') {
 if (typeof process.env.GOOGLE_CLIENT_SECRET === 'undefined') {
   throw new Error('Environment variable GOOGLE_CLIENT_SECRET is undefined');
 }
+if (typeof process.env.GITHUB_ID === 'undefined') {
+  throw new Error('Environment variable GITHUB_ID is undefined');
+}
+if (typeof process.env.GITHUB_SECRET === 'undefined') {
+  throw new Error('Environment variable GITHUB_SECRET is undefined');
+}
 
 export const authOptions: AuthOptions = {
   providers: [
@@ -28,6 +35,10 @@ export const authOptions: AuthOptions = {
           response_type: 'code'
         }
       }
+    }),
+    GitHubProvider({
+      clientId: process.env.GITHUB_ID,
+      clientSecret: process.env.GITHUB_SECRET
     })
   ],
   pages: {

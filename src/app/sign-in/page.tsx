@@ -13,6 +13,7 @@ export function generateMetadata() {
 
 export default async function SigninPage() {
   const providers = await getProviders();
+  console.log('🚀 ~ SigninPage ~ providers:', providers);
   if (!providers) return;
 
   return (

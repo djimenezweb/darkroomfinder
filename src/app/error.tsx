@@ -17,8 +17,8 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="min-h-screen container mx-auto flex justify-center items-center">
-      <div className="bg-error-200 text-error-900 border border-error-500 px-6 py-4 rounded-md space-y-2">
+    <div className="min-h-screen flex justify-center items-center px-4">
+      <div className="max-w-screen-sm bg-error-200 text-error-900 border border-error-500 px-6 py-4 rounded-md space-y-2">
         <h2 className="text-lg">Something went wrong!</h2>
         {error?.message && <p className="text-sm">{error?.message}</p>}
         <button

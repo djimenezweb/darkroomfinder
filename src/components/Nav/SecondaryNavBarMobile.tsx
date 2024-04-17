@@ -6,13 +6,15 @@ import { StarIcon, ArrowUpTrayIcon } from '@heroicons/react/16/solid';
 import { signOut } from 'next-auth/react';
 import { usePathname } from 'next/navigation';
 
+type Props = {
+  session: Session | null;
+  closeMobileMenu: () => void;
+};
+
 export default function SecondaryNavBarMobile({
   session,
   closeMobileMenu
-}: {
-  session: Session | null;
-  closeMobileMenu: () => void;
-}) {
+}: Props) {
   const profilePicture = session?.user.image || defaultProfile;
   const pathname = usePathname();
   return (
@@ -27,7 +29,7 @@ export default function SecondaryNavBarMobile({
 
           <li className="rounded-md font-normal text-gray-dark-1100 hover:text-gray-dark-1200 hover:bg-gray-dark-500">
             <Link
-              href="#"
+              href="/favs"
               className="block px-2.5 py-1"
               onClick={closeMobileMenu}>
               <StarIcon className="text-gray-dark-1100 size-8" />

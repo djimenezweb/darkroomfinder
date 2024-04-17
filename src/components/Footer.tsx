@@ -4,8 +4,7 @@ import GitHubLogo from './logos/GitHubLogo';
 import DiscordLogo from './logos/DiscordLogo';
 import YouTubeLogo from './logos/YouTube';
 import { footerlinks } from '@/constants/footerlinks';
-import logo from '/public/images/logo.png';
-import Image from 'next/image';
+import DarkroomFinderLogo from './logos/DarkroomFinderLogo';
 
 export default function Footer() {
   return (
@@ -13,13 +12,7 @@ export default function Footer() {
       <div className="container relative mx-auto py-12 px-6 lg:px-16 xl:px-20">
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="space-y-8 xl:col-span-1">
-            <Link href="/">
-              <Image
-                src={logo}
-                alt="Darkroom Finder logo"
-                className="h-7 w-auto object-contain"
-              />
-            </Link>
+            <DarkroomFinderLogo className="h-7" />
 
             <div className="flex gap-5">
               <Link href="https://www.twitter.com">

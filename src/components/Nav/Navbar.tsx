@@ -8,8 +8,7 @@ import PrimaryNavBar from './PrimaryNavBar';
 import SecondaryNavBar from './SecondaryNavBar';
 import SecondaryNavBarMobile from './SecondaryNavBarMobile';
 import { useState } from 'react';
-import logo from '/public/images/logo.png';
-import Image from 'next/image';
+import DarkroomFinderLogo from '../logos/DarkroomFinderLogo';
 
 export default function Navbar({ session }: { session: Session | null }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -23,18 +22,14 @@ export default function Navbar({ session }: { session: Session | null }) {
         isMobileMenuOpen ? 'bg-gray-dark-300 border-none' : 'bg-gray-dark-200'
       } lg:bg-gray-dark-200/75 lg:backdrop-blur`}>
       <nav className="flex h-full items-center justify-between lg:container mx-auto px-6 lg:px-16 xl:px-20">
-        <Image
-          src={logo}
-          alt="Darkroom Finder logo"
-          className="h-6 w-auto object-contain"
-        />
+        <DarkroomFinderLogo className="h-6" />
         <div
           className={`${
             isMobileMenuOpen
               ? 'fixed bg-gray-dark-300'
               : 'hidden relative lg:block'
           } lg:bg-transparent lg:flex lg:justify-between lg:items-center lg:grow top-16 lg:top-0 left-0 right-0 bottom-0`}>
-          <PrimaryNavBar session={session} />
+          <PrimaryNavBar session={session} closeMobileMenu={closeMobileMenu} />
           <SecondaryNavBar
             session={session}
             setIsProfileOpen={setIsProfileOpen}

@@ -42,7 +42,7 @@ export default async function EditLabPage({ params }: { params: Params }) {
 
   return (
     <div>
-      <div className="container max-w-2xl relative mx-auto mt-10 mb-16">
+      <div className="container max-w-2xl relative mx-auto mt-10 mb-16 px-4">
         <EditLabForm lab={lab} />
       </div>
     </div>

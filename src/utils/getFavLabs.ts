@@ -1,8 +1,10 @@
 import { User } from '@/models/User';
 import { ILab, IUserWithLabs } from '@/types/types';
+import dbConnect from './dbConnect';
 
 export async function getFavLabs(email: string) {
   try {
+    await dbConnect();
     const data = await User.findOne({ email })
       .populate<{ bookmarks: ILab[] }>({
         path: 'bookmarks',

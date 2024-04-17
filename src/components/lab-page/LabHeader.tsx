@@ -16,21 +16,28 @@ export function LabHeader({ name, address, city, link }: LabHeaderProps) {
   return (
     <div>
       <h1 className="text-2xl sm:text-3xl mt-8 mb-4">{name}</h1>
-
-      <p className="flex gap-2 text-sm text-gray-dark-1100 hover:text-gray-dark-1200">
-        <MapPinIcon className="size-4" />
-        <Link href="#map" replace={true}>
-          {address}, {city}
+      <ul className="flex flex-col gap-2 items-start">
+        <Link
+          href="#map"
+          replace={true}
+          className="text-gray-dark-1100 hover:text-gray-dark-1200">
+          <li className="flex gap-2 text-sm">
+            <MapPinIcon className="size-4" />
+            {address}, {city}
+          </li>
         </Link>
-      </p>
-      {link && (
-        <p className="mt-2 flex gap-2 text-sm text-gray-dark-1100 hover:text-gray-dark-1200">
-          <ArrowTopRightOnSquareIcon className="size-4" />
-          <Link href={link} target="_blank">
-            {formatURL(link)}
+        {link && (
+          <Link
+            href={link}
+            target="_blank"
+            className="text-gray-dark-1100 hover:text-gray-dark-1200">
+            <li className="flex gap-2 text-sm">
+              <ArrowTopRightOnSquareIcon className="size-4" />
+              {formatURL(link)}
+            </li>
           </Link>
-        </p>
-      )}
+        )}
+      </ul>
     </div>
   );
 }
