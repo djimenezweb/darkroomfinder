@@ -4,6 +4,7 @@ import Link from 'next/link';
 import SignInButtons from '@/components/buttons/SignInButtons';
 import { TITLE } from '@/constants/metadata';
 import logo from '/public/images/logo.png';
+import { Suspense } from 'react';
 
 export function generateMetadata() {
   return {
@@ -35,7 +36,9 @@ export default async function SigninPage() {
                 Sign in to your account
               </h2>
             </div>
-            <SignInButtons providers={providers} />
+            <Suspense>
+              <SignInButtons providers={providers} />
+            </Suspense>
             <p className="text-center text-xs text-gray-dark-1000 sm:mx-auto sm:max-w-sm mt-auto">
               By continuing, you agree to darkroomFinder&apos;s{' '}
               <Link
