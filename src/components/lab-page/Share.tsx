@@ -12,13 +12,12 @@ const baseStyles = 'text-gray-dark-1000 hover:text-gray-dark-1200';
 
 export function Share() {
   if (typeof process.env.NEXT_PUBLIC_URL === 'undefined') {
-    throw new Error(
-      'Environment variable NEXT_PUBLIC_MAPTILER_API_KEY is undefined'
-    );
+    throw new Error('Environment variable NEXT_PUBLIC_URL is undefined');
   }
 
   const pathname = usePathname();
   const url = encodeURIComponent(process.env.NEXT_PUBLIC_URL + pathname);
+  console.log('🚀 ~ Share ~ url:', url);
   const text = 'Check out this darkroom!';
 
   return (
