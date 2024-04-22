@@ -52,6 +52,7 @@ export default function FeaturedLabCardAlt({
       </div>
       <div className="relative w-1/2">
         <Image
+          priority
           src={picture || defaultImage}
           alt={name}
           fill

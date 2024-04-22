@@ -60,6 +60,7 @@ export function Carousel({ images }: { images: string[] }) {
                 transition={{ duration: 0.5 }}
                 className="relative">
                 <Image
+                  priority
                   src={images[index]}
                   alt={`Picture ${index + 1}`}
                   width={332}

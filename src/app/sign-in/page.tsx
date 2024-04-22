@@ -21,6 +21,7 @@ export default async function SigninPage() {
       <header className="absolute top-0 w-full h-16 px-8 flex items-end">
         <Link href="/">
           <Image
+            priority
             src={logo}
             alt="Darkroom Finder logo"
             className="h-6 w-auto object-contain"
@@ -59,6 +60,7 @@ export default async function SigninPage() {
         <aside className="hidden md:block relative bg-[#5f0000] grow basis-1/4 border-l border-gray-dark-600 overflow-hidden">
           <figure>
             <Image
+              priority
               src="/images/pexels-ron-lach-10276046.jpg"
               alt="Hands Holding Negative"
               className="object-cover"

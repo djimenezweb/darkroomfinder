@@ -20,6 +20,7 @@ export default function Join() {
 
       <figure className="basis-1/2 relative">
         <Image
+          priority
           src={selectedPicture.src}
           alt={selectedPicture.alt}
           width={1200}
