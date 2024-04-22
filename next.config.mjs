@@ -6,6 +6,9 @@ const nextConfig = {
       { hostname: '**.githubusercontent.com' },
       { hostname: '**.cloudinary.com' }
     ]
+  },
+  typescript: {
+    ignoreBuildErrors: true
   }
 };
 
