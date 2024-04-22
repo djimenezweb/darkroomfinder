@@ -26,8 +26,9 @@ export default function FavButton({
       return;
     }
     setIsLoading(true);
-    await toggleFav(labId, email);
-    setIsFav(prev => !prev);
+    const newValue = await toggleFav(labId, email);
+    setIsFav(!!newValue);
+    //setIsFav(prev => !prev);
     setIsLoading(false);
   }
 

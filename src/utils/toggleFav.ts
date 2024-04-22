@@ -27,6 +27,7 @@ export async function toggleFav(
     }
 
     await user.save();
+    return isFav;
   } catch (error) {
     console.error('🔺 ~ toggleFav.ts ~ 🔺', error);
     throw new Error('Failed to save favorite into database');
