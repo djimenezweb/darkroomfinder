@@ -17,7 +17,6 @@ export function Share() {
 
   const pathname = usePathname();
   const url = encodeURIComponent(process.env.NEXT_PUBLIC_URL + pathname);
-  console.log('🚀 ~ Share ~ url:', url);
   const text = 'Check out this darkroom!';
 
   return (

@@ -46,7 +46,6 @@ export default function AddLabForm() {
       }
       formAction(formData);
     });
-    setIsLoading(false);
   }
 
   return (
