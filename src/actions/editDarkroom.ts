@@ -62,7 +62,7 @@ export async function editDarkroom(
         images: [...savedImages, ...imagesURL]
       });
     } catch (error) {
-      console.error('🔺 ~ editaddDarkroom.ts ~ 🔺', error);
+      console.error('🔺 ~ editDarkroom.ts ~ 🔺', error);
       throw new Error('An error ocurred while trying to edit the darkroom');
     }
 

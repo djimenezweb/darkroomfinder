@@ -14,7 +14,7 @@ export async function toggleFav(
 ) {
   if (!email) return;
   try {
-    await artificialDelay(600);
+    await artificialDelay(300);
     await dbConnect();
     const user = await User.findOne({ email });
     if (!user) return;

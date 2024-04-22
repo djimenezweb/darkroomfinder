@@ -1,7 +1,8 @@
-const regex = /(?:https?:\/\/)?(?:www\.)?(.*)(\/)/i;
+const regex = /https?:\/\/(?:www\.)?(.*)/i;
 
 export function formatURL(url: string) {
-  const match = url.match(regex);
+  const trimmedUrl = url.replace(/\/$/, '');
+  const match = trimmedUrl.match(regex);
   if (match) return match[1];
-  return url;
+  return trimmedUrl;
 }

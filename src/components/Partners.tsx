@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export default function Partners() {
   return (
-    <div className="py-8 sm:py-10 md:py-12">
+    <div className="py-8 sm:py-10 md:py-16">
       <p className="text-xs text-gray-dark-1100 text-center">
         Made possible by
       </p>

@@ -14,6 +14,7 @@ export default function DarkroomFinderLogo({
         src={logo}
         alt="Darkroom Finder logo"
         className={twMerge(className, 'w-auto object-contain')}
+        priority
       />
     </Link>
   );

@@ -15,7 +15,7 @@ import {
 } from './FormElements';
 import { LOCATION } from '@/constants/location-form-fields';
 import { addDarkroom } from '@/actions/addDarkroom';
-import { FormEvent, useState } from 'react';
+import { FormEvent, useState, useTransition } from 'react';
 import CancelButton from './CancelButton';
 import Dropzone from './Dropzone';
 import Previews from './Previews';
@@ -30,20 +30,23 @@ export default function AddLabForm() {
     IErrorMessages | undefined,
     FormData
   >(addDarkroom, {});
-  const [isPending, setIsPending] = useState<boolean>(false);
+  const [isPending, startTransition] = useTransition();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setIsPending(true);
-    const target = e.target as HTMLFormElement;
-    const formData = new FormData(target);
-    formData.delete('images');
-    for (const file of files) {
-      const blob = new Blob([file], { type: file.type });
-      formData.append('images', blob, file.name);
-    }
-    formAction(formData);
-    setIsPending(false);
+    setIsLoading(true);
+    startTransition(() => {
+      const target = e.target as HTMLFormElement;
+      const formData = new FormData(target);
+      formData.delete('images');
+      for (const file of files) {
+        const blob = new Blob([file], { type: file.type });
+        formData.append('images', blob, file.name);
+      }
+      formAction(formData);
+    });
+    setIsLoading(false);
   }
 
   return (
@@ -184,9 +187,15 @@ export default function AddLabForm() {
           {errors?.images && <FormError>{errors.images}</FormError>}
         </div>
       </FormRow>
+      {errors && Object.keys(errors).length > 0 && (
+        <FormRow>
+          <div />
+          <FormError>Check errors and try again</FormError>
+        </FormRow>
+      )}
       <div className="bg-gray-dark-300 border-b border-gray-dark-400 flex items-center justify-between px-6 py-4">
         <CancelButton />
-        <SubmitButton isPending={isPending} text="Add new darkroom" />
+        <SubmitButton isLoading={isLoading} text="Add new darkroom" />
       </div>
     </form>
   );

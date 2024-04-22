@@ -91,16 +91,6 @@ export default async function ProfilePage() {
             </div>
           </div>
         </ContainerWithBorder>
-
-        <ContainerWithBorder className="border-error-500">
-          <h3 className="mb-8 text-base">Delete account</h3>
-          <div className="space-y-2">
-            <p className="text-gray-dark-1000 text-sm">
-              Warning! You will lose access to your Darkroom Finder account once
-              your deletion request has been submitted.
-            </p>
-          </div>
-        </ContainerWithBorder>
       </div>
     </div>
   );

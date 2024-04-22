@@ -14,7 +14,7 @@ import {
   FormError
 } from './FormElements';
 import { LOCATION } from '@/constants/location-form-fields';
-import { FormEvent, Fragment, useState } from 'react';
+import { FormEvent, Fragment, useState, useTransition } from 'react';
 import CancelButton from './CancelButton';
 import { ILabWithOwner, ILocation } from '@/types/types';
 import { editDarkroom } from '@/actions/editDarkroom';
@@ -47,26 +47,30 @@ export default function EditLabForm({ lab }: { lab: ILabWithOwner }) {
   >(editDarkroomWithId, {});
 
   // Pending state
-  const [isPending, setIsPending] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const [isPending, startTransition] = useTransition();
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (totalImages <= 0) return;
-    setIsPending(true);
+    setIsLoading(true);
     const target = e.target as HTMLFormElement;
     const formData = new FormData(target);
     formData.delete('images');
-    for (const file of files) {
-      const blob = new Blob([file], { type: file.type });
-      formData.append('images', blob, file.name);
-    }
-    for (const url of savedImages) {
-      formData.append('savedImages', url);
-    }
-    for (const url of toBeDeletedImages) {
-      formData.append('toBeDeletedImages', url);
-    }
-    formAction(formData);
+    startTransition(() => {
+      for (const file of files) {
+        const blob = new Blob([file], { type: file.type });
+        formData.append('images', blob, file.name);
+      }
+      for (const url of savedImages) {
+        formData.append('savedImages', url);
+      }
+      for (const url of toBeDeletedImages) {
+        formData.append('toBeDeletedImages', url);
+      }
+      formAction(formData);
+    });
   }
 
   return (
@@ -238,7 +242,7 @@ export default function EditLabForm({ lab }: { lab: ILabWithOwner }) {
       </FormRow>
       <div className="bg-gray-dark-300 border-b border-gray-dark-400 flex items-center justify-between px-6 py-4">
         <CancelButton />
-        <SubmitButton isPending={isPending} text="Save changes" />
+        <SubmitButton isLoading={isLoading} text="Save changes" />
       </div>
     </form>
   );

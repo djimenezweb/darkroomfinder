@@ -6,6 +6,7 @@ import { notFound, redirect } from 'next/navigation';
 import EditLabForm from '@/components/forms/EditLabForm';
 import { TITLE } from '@/constants/metadata';
 import { Types } from 'mongoose';
+import DeleteLabForm from '@/components/forms/DeleteLabForm';
 
 export function generateMetadata() {
   return {
@@ -42,8 +43,13 @@ export default async function EditLabPage({ params }: { params: Params }) {
 
   return (
     <div>
-      <div className="container max-w-2xl relative mx-auto mt-10 mb-16 px-4">
+      <div className="container max-w-3xl relative mx-auto mt-10 mb-16 px-4 space-y-16">
         <EditLabForm lab={lab} />
+        <DeleteLabForm
+          documentId={lab._id.toString()}
+          email={lab.owner.email}
+          images={lab.images}
+        />
       </div>
     </div>
   );
