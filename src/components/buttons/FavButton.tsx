@@ -25,11 +25,18 @@ export default function FavButton({
       router.push(`/sign-in?callbackUrl=/lab/${labId}`);
       return;
     }
+    console.log('~ ~ ~ ~ ~ handleClick START ~ ~ ~ ~ ~');
+    console.log('current isFav state: ', isFav);
+    console.log('setIsLoading => true');
     setIsLoading(true);
+    console.log('awaiting newValue');
     const newValue = await toggleFav(labId, email);
+    console.log('newValue', newValue);
     setIsFav(!!newValue);
-    //setIsFav(prev => !prev);
+    console.log('!!newValue', !!newValue);
     setIsLoading(false);
+    console.log('setIsLoading => false');
+    console.log('~ ~ ~ ~ ~ handleClick END ~ ~ ~ ~ ~');
   }
 
   return (
@@ -52,7 +59,7 @@ export default function FavButton({
           />
         )}
         <span className={twMerge('text-xs', isLoading && 'text-gray-dark-900')}>
-          {isFav ? 'Remove from favorites' : 'Add to favorites'}
+          {isFav ? 'Remove' : 'Save'}
         </span>
       </button>
     </div>
