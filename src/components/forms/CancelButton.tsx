@@ -1,6 +1,8 @@
 'use client';
 
+import { styles } from '@/styles/styles';
 import { useRouter } from 'next/navigation';
+import { twMerge } from 'tailwind-merge';
 
 export default function CancelButton() {
   const router = useRouter();
@@ -8,7 +10,11 @@ export default function CancelButton() {
     <button
       type="button"
       onClick={() => router.back()}
-      className="bg-gray-dark-500 hover:bg-gray-dark-600 text-xs p-2.5 lg:px-2.5 lg:py-1 rounded-md font-normal border border-gray-dark-700 hover:border-gray-dark-800">
+      className={twMerge(
+        styles.button.xs,
+        styles.button.gray,
+        'p-2.5 lg:px-2.5 lg:py-1 font-normal'
+      )}>
       Cancel
     </button>
   );

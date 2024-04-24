@@ -5,6 +5,8 @@ import useToggle from '@/hooks/useToggle';
 import { ClientSafeProvider, LiteralUnion, signIn } from 'next-auth/react';
 import { useSearchParams } from 'next/navigation';
 import GitHubLogo from '../logos/GitHubLogo';
+import { styles } from '@/styles/styles';
+import { twMerge } from 'tailwind-merge';
 
 interface ISignInButtonsProps {
   providers: Record<LiteralUnion<string, string>, ClientSafeProvider>;
@@ -18,9 +20,6 @@ const providerLogos: { [name: string]: JSX.Element } = {
   google: <GoogleLogo className="w-5 h-5" />,
   github: <GitHubLogo className="w-5 h-5" />
 };
-
-const buttonStyles =
-  'font-regular rounded-md outline-none outline-0 focus-visible:outline-4 focus-visible:outline-offset-1 border text-gray-dark-1200 bg-gray-dark-500 hover:bg-gray-dark-600 border-gray-dark-700 hover:border-gray-dark-800 focus-visible:outline-red-600 shadow-sm w-full flex items-center justify-center text-base px-4 py-2 gap-2';
 
 export default function SignInButtons({ providers }: ISignInButtonsProps) {
   const searchParams = useSearchParams();
@@ -51,7 +50,13 @@ function Button({ provider, callbackUrl }: IButtonProps) {
 
   return (
     <button
-      className={buttonStyles}
+      className={twMerge(
+        styles.flexCenter,
+        styles.button.sm,
+        styles.button.gray,
+        'w-full gap-2 font-regular shadow-sm',
+        'outline-none outline-0 focus-visible:outline-4 focus-visible:outline-offset-1 focus-visible:outline-red-600'
+      )}
       onClick={() => handleClick(provider.id)}
       disabled={isLoading}>
       <span className="w-5 h-5">

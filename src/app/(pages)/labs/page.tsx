@@ -8,6 +8,8 @@ import Filters from '@/components/search/Filters';
 import SearchResultsHeading from '@/components/SearchResultsHeading';
 import AsideElementWrapper from '@/components/AsideElementWrapper';
 import { TITLE } from '@/constants/metadata';
+import { twMerge } from 'tailwind-merge';
+import { styles } from '@/styles/styles';
 
 export function generateMetadata() {
   return {
@@ -61,7 +63,7 @@ export default async function Labs({
 
         {labs.length > 0 && (
           <>
-            <ul className="mx-auto mt-3 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-[repeat(auto-fit,minmax(300px,1fr))] lg:grid-cols-2 xl:grid-cols-3">
+            <ul className={twMerge(styles.labsGrid)}>
               {labs.map(lab => (
                 <li key={lab._id.toString()}>
                   <Link href={`/lab/${lab._id.toString()}`}>

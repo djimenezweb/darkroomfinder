@@ -1,6 +1,8 @@
 'use client';
 
 import SpinnerSVG from '@/components/logos/Spinner';
+import { styles } from '@/styles/styles';
+import { twMerge } from 'tailwind-merge';
 
 export default function SubmitButton({
   text,
@@ -12,7 +14,12 @@ export default function SubmitButton({
   return (
     <button
       type="submit"
-      className="min-w-32 flex justify-center items-center bg-red-800 hover:bg-red-800/80 text-xs px-2.5 py-1 rounded-md font-normal border border-red-600">
+      className={twMerge(
+        styles.flexCenter,
+        styles.button.xs,
+        styles.button.brand,
+        'min-w-32'
+      )}>
       {isLoading ? <SpinnerSVG className="w-4 h-4 animate-spin" /> : text}
     </button>
   );

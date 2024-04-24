@@ -71,9 +71,8 @@ export default function AddLabForm() {
           placeholder="Darkroom name"
           type="text"
           className={twMerge(
-            styles.inputTextStyles,
-            errors?.name &&
-              'bg-error-200 border-error-500 placeholder-error-500'
+            styles.input.text,
+            errors?.name && styles.input.error
           )}
           defaultValue="">
           {errors?.name && <FormError>{errors.name}</FormError>}
@@ -88,9 +87,8 @@ export default function AddLabForm() {
           placeholder="Website"
           type="text"
           className={twMerge(
-            styles.inputTextStyles,
-            errors?.link &&
-              'bg-error-200 border-error-500 placeholder-error-500'
+            styles.input.text,
+            errors?.link && styles.input.error
           )}
           defaultValue="">
           {errors?.link && <FormError>{errors.link}</FormError>}
@@ -106,10 +104,9 @@ export default function AddLabForm() {
             name="description"
             placeholder="Description"
             className={twMerge(
-              styles.inputTextStyles,
+              styles.input.text,
               'h-28',
-              errors?.description &&
-                'bg-error-200 border-error-500 placeholder-error-500'
+              errors?.description && styles.input.error
             )}
             defaultValue=""
           />
@@ -130,9 +127,8 @@ export default function AddLabForm() {
                 defaultValue=""
                 className={twMerge(
                   'bg-gray-dark-400',
-                  styles.inputTextStyles,
-                  errors?.[id as keyof IErrorMessages] &&
-                    'bg-error-200 border-error-500 placeholder-error-500'
+                  styles.input.text,
+                  errors?.[id as keyof IErrorMessages] && styles.input.error
                 )}
               />
               {errors?.[id as keyof IErrorMessages] && (

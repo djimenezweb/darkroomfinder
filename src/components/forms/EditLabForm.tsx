@@ -83,7 +83,7 @@ export default function EditLabForm({ lab }: { lab: ILabWithOwner }) {
           name="name"
           id="name"
           className={twMerge(
-            styles.inputTextStyles,
+            styles.input.text,
             'w-full text-2xl sm:text-3xl',
             errors?.name &&
               'bg-error-200 border-error-500 placeholder-error-500'
@@ -101,7 +101,7 @@ export default function EditLabForm({ lab }: { lab: ILabWithOwner }) {
           placeholder="Website"
           type="text"
           className={twMerge(
-            styles.inputTextStyles,
+            styles.input.text,
             errors?.link &&
               'bg-error-200 border-error-500 placeholder-error-500'
           )}
@@ -118,7 +118,7 @@ export default function EditLabForm({ lab }: { lab: ILabWithOwner }) {
             name="description"
             placeholder="Description"
             className={twMerge(
-              styles.inputTextStyles,
+              styles.input.text,
               'min-h-28',
               errors?.description &&
                 'bg-error-200 border-error-500 placeholder-error-500'
@@ -143,7 +143,7 @@ export default function EditLabForm({ lab }: { lab: ILabWithOwner }) {
                 defaultValue={lab.location[id as keyof ILocation]}
                 className={twMerge(
                   'bg-gray-dark-400',
-                  styles.inputTextStyles,
+                  styles.input.text,
                   errors?.[id as keyof IErrorMessages] &&
                     'bg-error-200 border-error-500 placeholder-error-500'
                 )}
@@ -163,7 +163,7 @@ export default function EditLabForm({ lab }: { lab: ILabWithOwner }) {
             defaultValue={lab.location.latitude}
             className={twMerge(
               'bg-gray-dark-400',
-              styles.inputTextStyles,
+              styles.input.text,
               errors?.latitude &&
                 'bg-error-200 border-error-500 placeholder-error-500'
             )}
@@ -178,7 +178,7 @@ export default function EditLabForm({ lab }: { lab: ILabWithOwner }) {
             defaultValue={lab.location.longitude}
             className={twMerge(
               'bg-gray-dark-400',
-              styles.inputTextStyles,
+              styles.input.text,
               errors?.longitude &&
                 'bg-error-200 border-error-500 placeholder-error-500'
             )}

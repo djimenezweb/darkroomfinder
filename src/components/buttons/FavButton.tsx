@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 import SpinnerSVG from '../logos/Spinner';
 import { useRouter } from 'next/navigation';
+import { styles } from '@/styles/styles';
 
 export default function FavButton({
   labId,
@@ -37,7 +38,11 @@ export default function FavButton({
         onClick={handleClick}
         disabled={isLoading}
         type="button"
-        className="group flex gap-2 items-center bg-gray-dark-500 hover:bg-gray-dark-600 text-xs px-2.5 py-1 rounded-md font-normal border border-gray-dark-700 hover:border-gray-dark-800">
+        className={twMerge(
+          'group flex gap-2 items-center font-normal',
+          styles.button.xs,
+          styles.button.gray
+        )}>
         {isLoading ? (
           <SpinnerSVG className="size-5 animate-spin" />
         ) : (

@@ -1,7 +1,9 @@
 import { randomImages } from '@/constants/randomImages';
+import { styles } from '@/styles/styles';
 import { random } from '@/utils/random';
 import Image from 'next/image';
 import Link from 'next/link';
+import { twMerge } from 'tailwind-merge';
 
 export default function Join() {
   const selectedPicture = randomImages[random(0, randomImages.length)];
@@ -26,7 +28,15 @@ export default function Join() {
           width={1200}
           height={800}
         />
-        <figcaption className="absolute bottom-2 right-2 cursor-pointer text-center text-xs px-2.5 py-1 border text-gray-dark-1100 border-gray-dark-700 hover:text-gray-dark-1200 bg-gray-dark-300/75 hover:bg-gray-dark-600 hover:border-gray-dark-900 rounded shadow-sm ">
+        <figcaption
+          className={twMerge(
+            styles.tag.xs,
+            styles.tag.button.base,
+            'absolute bottom-2 right-2',
+            'text-gray-dark-1100 hover:text-gray-dark-1200',
+            'bg-gray-dark-300/75 hover:bg-gray-dark-600',
+            'border-gray-dark-700 hover:border-gray-dark-900'
+          )}>
           <Link href={selectedPicture.link}>{selectedPicture.credits}</Link>
         </figcaption>
       </figure>

@@ -4,13 +4,7 @@ import { labOptions as options } from '@/constants/lab-options';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import { twMerge } from 'tailwind-merge';
 import { XMarkIcon } from '@heroicons/react/20/solid';
-
-const base =
-  'cursor-pointer text-center text-xs px-2.5 py-1 border rounded shadow-sm outline-none outline-0 focus-visible:outline-4 focus-visible:outline-offset-1 focus-visible:outline-red-600';
-const inactive =
-  'text-gray-dark-1100 bg-transparent border-gray-dark-700 hover:text-gray-dark-1200 hover:bg-gray-dark-600 hover:border-gray-dark-900';
-const active =
-  'text-gray-dark-1200 bg-gray-dark-500 border-gray-dark-700 hover:bg-gray-dark-600 hover:border-gray-dark-800';
+import { styles } from '@/styles/styles';
 
 export default function Filters({ name }: { name: 'sizes' | 'processes' }) {
   const searchParams = useSearchParams();
@@ -55,7 +49,7 @@ export default function Filters({ name }: { name: 'sizes' | 'processes' }) {
           <button
             type="button"
             onClick={handleReset}
-            className="bg-gray-dark-1200/[.026] border border-gray-dark-600 rounded-md text-gray-dark-900 hover:text-gray-dark-1100 hover:border-gray-dark-900 hover:bg-gray-dark-500">
+            className={twMerge(styles.button.reset)}>
             <XMarkIcon className="size-5" />
           </button>
         )}
@@ -66,8 +60,11 @@ export default function Filters({ name }: { name: 'sizes' | 'processes' }) {
             <button
               type="button"
               className={twMerge(
-                base,
-                initialFilter.includes(option.id) ? active : inactive
+                styles.tag.xs,
+                styles.tag.button.base,
+                initialFilter.includes(option.id)
+                  ? styles.tag.button.active
+                  : styles.tag.button.inactive
               )}
               onClick={() => handleClick(option.id)}>
               {option.fullName}

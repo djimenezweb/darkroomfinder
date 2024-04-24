@@ -1,8 +1,8 @@
 import Image from 'next/image';
-import { ChevronRightIcon } from '@heroicons/react/24/outline';
 import defaultImage from '/public/images/default_image.png';
 import { processes, sizes } from '@/constants/lab-options';
-import Tag from '@/components/Tag';
+import { twMerge } from 'tailwind-merge';
+import { styles } from '@/styles/styles';
 
 export default function FeaturedLabCardAlt({
   name,
@@ -33,17 +33,17 @@ export default function FeaturedLabCardAlt({
               if (process === 'other') return;
               return (
                 <li key={process}>
-                  <Tag type="span">
+                  <span className={twMerge(styles.tag.xs, styles.tag.span)}>
                     {processes.find(item => item.id === process)?.shortName}
-                  </Tag>
+                  </span>
                 </li>
               );
             })}
             {featuredSizes.map(size => (
               <li key={size}>
-                <Tag type="span">
+                <span className={twMerge(styles.tag.xs, styles.tag.span)}>
                   {sizes.find(item => item.id === size)?.shortName}
-                </Tag>
+                </span>
               </li>
             ))}
           </ul>
@@ -62,40 +62,3 @@ export default function FeaturedLabCardAlt({
     </div>
   );
 }
-
-/* 
-    <div className="w-96 shrink-0 overflow-hidden group relative bg-gray-dark-300 border border-gray-dark-500 rounded-xl block cursor-pointer hover:bg-gray-dark-300 hover:border-gray-dark-600">
-      <div className="relative w-full aspect-[2/1]">
-        <Image
-          src={picture || defaultImage}
-          alt={name}
-          fill
-          className="object-cover"
-        />
-      </div>
-      <div className="relative p-5 overflow-hidden">
-        <p className="text-sm text-gray-dark-1100">{city}</p>
-        <p className="text-lg">{name}</p>
-        <ul className="flex gap-2 flex-wrap">
-          {featuredProcesses.map(process => {
-            if (process === 'other') return;
-            return (
-              <li key={process}>
-                <Tag type="span">
-                  {processes.find(item => item.id === process)?.shortName}
-                </Tag>
-              </li>
-            );
-          })}
-          {featuredSizes.map(size => (
-            <li key={size}>
-              <Tag type="span">
-                {sizes.find(item => item.id === size)?.shortName}
-              </Tag>
-            </li>
-          ))}
-        </ul>
-        <div className="absolute left-0 top-0 w-64 h-40 bg-[radial-gradient(100%_100%_at_0%_0%,_#ff0000,_transparent)] opacity-5 scale-100 group-hover:opacity-20 group-hover:scale-150 transition-all duration-1000 ease-out" />
-      </div>
-    </div>
- */

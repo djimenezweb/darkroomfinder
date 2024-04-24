@@ -1,7 +1,8 @@
 import { ILabWithOwner } from '@/types/types';
 import ContainerWithBorder from '../ContainerWithBorder';
 import { processes, sizes } from '@/constants/lab-options';
-import Tag from '@/components/Tag';
+import { twMerge } from 'tailwind-merge';
+import { styles } from '@/styles/styles';
 
 type Props = {
   featuredSizes: ILabWithOwner['sizes'];
@@ -16,9 +17,9 @@ export function LabFeatures({ featuredSizes, featuredProcesses }: Props) {
         <ul className="flex gap-2 flex-wrap">
           {featuredSizes.map(size => (
             <li key={size}>
-              <Tag type="span">
+              <span className={twMerge(styles.tag.xs, styles.tag.span)}>
                 {sizes.find(item => item.id === size)?.fullName}
-              </Tag>
+              </span>
             </li>
           ))}
         </ul>
@@ -30,9 +31,9 @@ export function LabFeatures({ featuredSizes, featuredProcesses }: Props) {
         <ul className="flex gap-2 flex-wrap">
           {featuredProcesses.map(process => (
             <li key={process}>
-              <Tag type="span">
+              <span className={twMerge(styles.tag.xs, styles.tag.span)}>
                 {processes.find(item => item.id === process)?.longName}
-              </Tag>
+              </span>
             </li>
           ))}
         </ul>

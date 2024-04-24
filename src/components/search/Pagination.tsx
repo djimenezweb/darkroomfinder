@@ -1,6 +1,7 @@
 'use client';
 
 import { RESULTS_PER_PAGE } from '@/constants/search-options';
+import { styles } from '@/styles/styles';
 import { range } from '@/utils/range';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
@@ -10,9 +11,6 @@ interface PaginationProps {
   totalResults: number;
   page: number;
 }
-
-const baseStyle =
-  'text-center font-regular text-xs px-3 py-1 shadow-sm border rounded select-none';
 
 export default function Pagination({ totalResults, page }: PaginationProps) {
   const pathname = usePathname();
@@ -33,8 +31,8 @@ export default function Pagination({ totalResults, page }: PaginationProps) {
             <span
               key={n}
               className={twMerge(
-                baseStyle,
-                'text-gray-dark-1200 bg-gray-dark-500 hover:bg-gray-dark-600 border-gray-dark-700 hover:border-gray-dark-800'
+                styles.pagination.base,
+                styles.pagination.active
               )}>
               {n}
             </span>
@@ -46,8 +44,8 @@ export default function Pagination({ totalResults, page }: PaginationProps) {
               href={`${baseLink}&page=${n}`}
               replace={false}
               className={twMerge(
-                baseStyle,
-                'text-gray-dark-1000 hover:text-gray-dark-1200 bg-transparent hover:bg-gray-dark-600 border-gray-dark-700 hover:border-gray-dark-900'
+                styles.pagination.base,
+                styles.pagination.inactive
               )}>
               {n}
             </Link>

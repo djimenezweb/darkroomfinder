@@ -8,6 +8,8 @@ import AsideElementWrapper from '@/components/AsideElementWrapper';
 import Link from 'next/link';
 import LabCard from '@/components/LabCard';
 import BackButton from '@/components/buttons/BackButton';
+import { twMerge } from 'tailwind-merge';
+import { styles } from '@/styles/styles';
 
 export function generateMetadata() {
   return {
@@ -49,7 +51,7 @@ export default async function FavsPage() {
 
         {labs.length > 0 && (
           <>
-            <ul className="mx-auto mt-3 grid grid-cols-1 gap-4 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
+            <ul className={twMerge(styles.labsGrid)}>
               {labs.map(lab => (
                 <li key={lab._id.toString()}>
                   <Link href={`/lab/${lab._id.toString()}`}>

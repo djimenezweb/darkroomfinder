@@ -3,6 +3,8 @@
 import { useSearchParams, useRouter } from 'next/navigation';
 import { FormEvent, useState } from 'react';
 import DynamicInput from './DynamicPlaceholder';
+import { twMerge } from 'tailwind-merge';
+import { styles } from '@/styles/styles';
 
 export default function Search() {
   const searchParams = useSearchParams();
@@ -27,7 +29,7 @@ export default function Search() {
       <DynamicInput term={term} setTerm={setTerm} />
       <button
         type="submit"
-        className="bg-red-800 hover:bg-red-800/80 text-sm px-4 py-2 rounded-md font-normal border border-red-600">
+        className={twMerge(styles.button.sm, styles.button.brand, 'text-sm')}>
         Search
       </button>
     </form>
