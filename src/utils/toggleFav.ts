@@ -4,9 +4,6 @@ import { User } from '@/models/User';
 import dbConnect from './dbConnect';
 import { artificialDelay } from './artificialDelay';
 
-// Según Traversy esto puede funcionar en local pero da fallos en Vercel
-// Si da fallos se corrige con export const dynamic = 'force-dynamic'
-
 export async function toggleFav(
   labId: string,
   email: string | null | undefined

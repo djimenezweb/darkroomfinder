@@ -25,18 +25,10 @@ export default function FavButton({
       router.push(`/sign-in?callbackUrl=/lab/${labId}`);
       return;
     }
-    console.log('~ ~ ~ ~ ~ handleClick START ~ ~ ~ ~ ~');
-    console.log('current isFav state: ', isFav);
-    console.log('setIsLoading => true');
     setIsLoading(true);
-    console.log('awaiting newValue');
     const newValue = await toggleFav(labId, email);
-    console.log('newValue', newValue);
     setIsFav(!!newValue);
-    console.log('!!newValue', !!newValue);
     setIsLoading(false);
-    console.log('setIsLoading => false');
-    console.log('~ ~ ~ ~ ~ handleClick END ~ ~ ~ ~ ~');
   }
 
   return (
