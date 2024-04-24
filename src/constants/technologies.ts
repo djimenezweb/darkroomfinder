@@ -1,5 +1,6 @@
 import cloudinary from '/public/images/logos/cloudinary.png';
-import framermotion from '/public/images/logos/framermotion.png';
+import framermotionPNG from '/public/images/logos/framermotion.png';
+import framermotion from '/public/images/logos/framermotion.webp';
 import maplibre from '/public/images/logos/maplibre.png';
 import maptiler from '/public/images/logos/maptiler.png';
 import mongodb from '/public/images/logos/mongodb.png';
