@@ -3,14 +3,10 @@ import { CSSProperties } from 'react';
 const styles = {
   flexCenter: 'flex justify-center items-center',
   input: {
-    text: 'bg-gray-dark-400 block box-border w-full rounded-md shadow-sm text-gray-dark-1200 focus-visible:shadow-md outline-none focus:ring-current focus:ring-2 focus-visible:border-gray-dark-900 focus-visible:ring-gray-dark-300 placeholder-gray-dark-900 border border-gray-dark-600 text-sm px-4 py-2',
+    text: 'bg-gray-dark-400 block box-border w-full rounded-md shadow-sm text-gray-dark-1200 outline-none placeholder-gray-dark-900 border border-gray-dark-600 text-sm px-4 py-2',
     error: 'bg-error-200 border border-error-500 placeholder-error-500',
-    checkbox: {
-      unchecked:
-        'cursor-pointer text-center font-regular rounded outline-none outline-0 focus-visible:outline-4 focus-visible:outline-offset-1 border text-gray-dark-1000 hover:text-gray-dark-1200 bg-transparent hover:bg-gray-dark-600 border-gray-dark-700 hover:border-gray-dark-900 focus-visible:outline-red-600 shadow-sm text-xs px-2.5 py-1',
-      checked:
-        'peer-checked:text-gray-dark-1200 peer-checked:bg-gray-dark-500 peer-checked:hover:bg-gray-dark-600 peer-checked:hover:border-gray-dark-800'
-    }
+    focus:
+      'focus-visible:shadow-md focus:ring-current focus:ring-2 focus-visible:border-gray-dark-900 focus-visible:ring-gray-dark-300 '
   },
   labsGrid:
     'mx-auto mt-3 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-[repeat(auto-fit,minmax(300px,1fr))] lg:grid-cols-2 xl:grid-cols-3',

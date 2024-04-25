@@ -72,6 +72,7 @@ export default function AddLabForm() {
           type="text"
           className={twMerge(
             styles.input.text,
+            styles.input.focus,
             errors?.name && styles.input.error
           )}
           defaultValue="">
@@ -88,6 +89,7 @@ export default function AddLabForm() {
           type="text"
           className={twMerge(
             styles.input.text,
+            styles.input.focus,
             errors?.link && styles.input.error
           )}
           defaultValue="">
@@ -105,6 +107,7 @@ export default function AddLabForm() {
             placeholder="Description"
             className={twMerge(
               styles.input.text,
+              styles.input.focus,
               'h-28',
               errors?.description && styles.input.error
             )}
@@ -128,6 +131,7 @@ export default function AddLabForm() {
                 className={twMerge(
                   'bg-gray-dark-400',
                   styles.input.text,
+                  styles.input.focus,
                   errors?.[id as keyof IErrorMessages] && styles.input.error
                 )}
               />

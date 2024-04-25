@@ -17,6 +17,7 @@ export default function SecondaryNavBarMobile({
 }: Props) {
   const profilePicture = session?.user.image || defaultProfile;
   const pathname = usePathname();
+
   return (
     <ul className="absolute lg:hidden bg-gray-dark-100 bottom-0 left-0 w-full flex justify-around p-4">
       {session && (

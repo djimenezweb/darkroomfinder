@@ -84,6 +84,7 @@ export default function EditLabForm({ lab }: { lab: ILabWithOwner }) {
           id="name"
           className={twMerge(
             styles.input.text,
+            styles.input.focus,
             'w-full text-2xl sm:text-3xl',
             errors?.name &&
               'bg-error-200 border-error-500 placeholder-error-500'
@@ -102,6 +103,7 @@ export default function EditLabForm({ lab }: { lab: ILabWithOwner }) {
           type="text"
           className={twMerge(
             styles.input.text,
+            styles.input.focus,
             errors?.link &&
               'bg-error-200 border-error-500 placeholder-error-500'
           )}
@@ -119,6 +121,7 @@ export default function EditLabForm({ lab }: { lab: ILabWithOwner }) {
             placeholder="Description"
             className={twMerge(
               styles.input.text,
+              styles.input.focus,
               'min-h-28',
               errors?.description &&
                 'bg-error-200 border-error-500 placeholder-error-500'
@@ -144,6 +147,7 @@ export default function EditLabForm({ lab }: { lab: ILabWithOwner }) {
                 className={twMerge(
                   'bg-gray-dark-400',
                   styles.input.text,
+                  styles.input.focus,
                   errors?.[id as keyof IErrorMessages] &&
                     'bg-error-200 border-error-500 placeholder-error-500'
                 )}
@@ -164,6 +168,7 @@ export default function EditLabForm({ lab }: { lab: ILabWithOwner }) {
             className={twMerge(
               'bg-gray-dark-400',
               styles.input.text,
+              styles.input.focus,
               errors?.latitude &&
                 'bg-error-200 border-error-500 placeholder-error-500'
             )}
@@ -179,6 +184,7 @@ export default function EditLabForm({ lab }: { lab: ILabWithOwner }) {
             className={twMerge(
               'bg-gray-dark-400',
               styles.input.text,
+              styles.input.focus,
               errors?.longitude &&
                 'bg-error-200 border-error-500 placeholder-error-500'
             )}

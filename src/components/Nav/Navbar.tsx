@@ -7,14 +7,24 @@ import CloseMenu from '../logos/CloseMenu';
 import PrimaryNavBar from './PrimaryNavBar';
 import SecondaryNavBar from './SecondaryNavBar';
 import SecondaryNavBarMobile from './SecondaryNavBarMobile';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import DarkroomFinderLogo from '../logos/DarkroomFinderLogo';
+import { AnimatePresence } from 'framer-motion';
 
 export default function Navbar({ session }: { session: Session | null }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
   const closeProfile = () => setIsProfileOpen(false);
+
+  useEffect(() => {
+    function reset() {
+      closeMobileMenu();
+      closeProfile();
+    }
+    window.addEventListener('resize', reset);
+    return () => window.removeEventListener('resize', reset);
+  }, []);
 
   return (
     <header
@@ -34,7 +44,9 @@ export default function Navbar({ session }: { session: Session | null }) {
             session={session}
             setIsProfileOpen={setIsProfileOpen}
           />
-          {isProfileOpen && <DropDownMenu closeProfile={closeProfile} />}
+          <AnimatePresence>
+            {isProfileOpen && <DropDownMenu closeProfile={closeProfile} />}
+          </AnimatePresence>
 
           {isMobileMenuOpen && (
             <SecondaryNavBarMobile
