@@ -18,14 +18,14 @@ export default async function SigninPage() {
 
   return (
     <>
-      <header className="absolute top-0 w-full h-12 sm:h-16 px-4 sm:px-8 flex items-end">
+      <header className="absolute top-0 flex h-12 w-full items-end px-4 sm:h-16 sm:px-8">
         <DarkroomFinderLogo />
       </header>
       <div className="flex h-dvh sm:h-screen">
-        <main className="flex flex-col items-center flex-1 shrink-0 pt-16 sm:pt-24 px-4 sm:px-8 pb-8">
-          <div className="flex-1 flex flex-col justify-center w-full sm:w-[24rem]">
+        <main className="flex flex-1 shrink-0 flex-col items-center px-4 pb-8 pt-16 sm:px-8 sm:pt-24">
+          <div className="flex w-full flex-1 flex-col justify-center sm:w-[24rem]">
             <div className="mb-10">
-              <h1 className="mt-8 mb-2 text-2xl lg:text-3xl">Welcome back</h1>
+              <h1 className="mb-2 mt-8 text-2xl lg:text-3xl">Welcome back</h1>
               <h2 className="text-sm text-gray-dark-1100">
                 Sign in to your account
               </h2>
@@ -33,23 +33,25 @@ export default async function SigninPage() {
             <Suspense>
               <SignInButtons providers={providers} />
             </Suspense>
-            <p className="text-center text-xs text-gray-dark-1000 sm:mx-auto sm:max-w-sm mt-auto">
+            <p className="mt-auto text-center text-xs text-gray-dark-1000 sm:mx-auto sm:max-w-sm">
               By continuing, you agree to DarkroomFinder&apos;s{' '}
               <Link
                 href="/demo"
-                className="underline hover:text-gray-dark-1100">
+                className="underline hover:text-gray-dark-1100"
+              >
                 Terms of Service
               </Link>{' '}
               and{' '}
               <Link
                 href="/demo"
-                className="underline hover:text-gray-dark-1100">
+                className="underline hover:text-gray-dark-1100"
+              >
                 Privacy Policy
               </Link>
             </p>
           </div>
         </main>
-        <aside className="hidden sm:block relative bg-[#5f0000] grow basis-1/4 border-l border-gray-dark-600 overflow-hidden">
+        <aside className="relative hidden grow basis-1/4 overflow-hidden border-l border-gray-dark-600 bg-[#5f0000] sm:block">
           <figure>
             <Image
               priority
@@ -58,7 +60,7 @@ export default async function SigninPage() {
               className="object-cover"
               fill
             />
-            <figcaption className="absolute w-full text-center bottom-8 text-sm text-gray-dark-1200">
+            <figcaption className="absolute bottom-8 w-full text-center text-sm text-gray-dark-1200">
               <Link href="https://www.pexels.com/photo/hands-holding-negative-10276046/">
                 Ron Lach | Pexels
               </Link>

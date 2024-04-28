@@ -39,7 +39,7 @@ export default async function Labs({
   );
 
   return (
-    <div className="h-full relative md:flex md:items-stretch">
+    <div className="relative h-full md:flex md:items-stretch">
       <StickyAside>
         <AsideElementWrapper>
           <SearchMini key={'searchKey' + query} />
@@ -52,7 +52,7 @@ export default async function Labs({
         </AsideElementWrapper>
       </StickyAside>
 
-      <div className="grow p-5 max-w-screen-2xl mb-16">
+      <div className="mb-16 max-w-screen-2xl grow p-5">
         <SearchResultsHeading
           length={labs.length}
           from={showingFrom}
@@ -64,7 +64,7 @@ export default async function Labs({
         {labs.length > 0 && (
           <>
             <ul className={twMerge(styles.labsGrid)}>
-              {labs.map(lab => (
+              {labs.map((lab) => (
                 <li key={lab._id.toString()}>
                   <Link href={`/lab/${lab._id.toString()}`}>
                     <LabCard

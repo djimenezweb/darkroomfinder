@@ -3,18 +3,20 @@ import Link from 'next/link';
 
 export default function FeaturedLabsSkeleton() {
   return (
-    <div className="bg-gray-dark-100 border-y py-32 border-gray-dark-600">
-      <div className="px-4 mx-auto grid grid-cols-1 gap-4 lg:max-w-fit sm:grid-cols-[repeat(2,_minmax(0,_512px))]">
-        {range(4).map(n => (
+    <div className="border-y border-gray-dark-600 bg-gray-dark-100 py-32">
+      <div className="mx-auto grid grid-cols-1 gap-4 px-4 sm:grid-cols-[repeat(2,_minmax(0,_512px))] lg:max-w-fit">
+        {range(4).map((n) => (
           <div
             key={n}
-            className="w-full h-64 overflow-hidden flex justify-between group relative bg-gray-dark-300 border border-gray-dark-500 rounded-xl cursor-pointer hover:bg-gray-dark-300 hover:border-gray-dark-600 animate-pulse"></div>
+            className="group relative flex h-64 w-full animate-pulse cursor-pointer justify-between overflow-hidden rounded-xl border border-gray-dark-500 bg-gray-dark-300 hover:border-gray-dark-600 hover:bg-gray-dark-300"
+          ></div>
         ))}
       </div>
-      <div className="text-center pt-16">
+      <div className="pt-16 text-center">
         <Link
           href="/labs"
-          className="bg-gray-dark-500 hover:bg-gray-dark-600 px-3 py-2 text-sm rounded-md border border-gray-dark-700 hover:border-gray-dark-800 shadow-sm">
+          className="rounded-md border border-gray-dark-700 bg-gray-dark-500 px-3 py-2 text-sm shadow-sm hover:border-gray-dark-800 hover:bg-gray-dark-600"
+        >
           Show more
         </Link>
       </div>

@@ -15,14 +15,14 @@ export function LabMapSection({
       <div id="map" className="scroll-mt-16" />
       <ContainerWithBorder>
         <p className="text-sm text-gray-dark-1200">{name}</p>
-        <p className="text-sm text-gray-dark-1100 mb-2">
+        <p className="mb-2 text-sm text-gray-dark-1100">
           {location.address}, {location.postalcode}, {location.city},{' '}
           {location.country}
         </p>
-        <div className="rounded-md overflow-hidden">
+        <div className="overflow-hidden rounded-md">
           <LabMap lat={location.latitude} lon={location.longitude} />
         </div>
-        <p className="text-xs text-gray-dark-1100 text-right">
+        <p className="text-right text-xs text-gray-dark-1100">
           powered by{' '}
           <Link href="https://maplibre.org/" target="_blank">
             MapLibre

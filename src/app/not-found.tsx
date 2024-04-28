@@ -13,13 +13,13 @@ export function generateMetadata() {
 export default async function notFound() {
   const session = await getServerSession(authOptions);
   return (
-    <div className="min-h-screen grid grid-rows-layout">
+    <div className="grid min-h-screen grid-rows-layout">
       <Navbar session={session} />
       <main className="pt-16">
-        <div className="h-full flex justify-center items-center">
-          <div className="bg-error-200 text-error-900 border border-error-500 px-6 py-4 rounded-md flex gap-4">
+        <div className="flex h-full items-center justify-center">
+          <div className="flex gap-4 rounded-md border border-error-500 bg-error-200 px-6 py-4 text-error-900">
             <div>
-              <ExclamationTriangleIcon className="w-16 h-16" />
+              <ExclamationTriangleIcon className="h-16 w-16" />
             </div>
             <div className="space-y-2">
               <h2 className="text-lg">Page not found</h2>

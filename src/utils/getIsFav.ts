@@ -12,7 +12,7 @@ export async function getIsFav(
     await dbConnect();
     const user = await User.findOne({ email }).lean();
     if (!user) return false;
-    const isFav = user.bookmarks.some(value => value.toString() === labId);
+    const isFav = user.bookmarks.some((value) => value.toString() === labId);
     return isFav;
   } catch (error) {
     console.error('🔺 ~ getIsFav.ts ~ will return false ~ 🔺', error);

@@ -24,7 +24,7 @@ export default function Previews({
 
   function handleDeleteSavedImage(i: number) {
     if (!setToBeDeletedImages || !setSavedImages) return;
-    setToBeDeletedImages(prev => [...prev, savedImages[i]]);
+    setToBeDeletedImages((prev) => [...prev, savedImages[i]]);
     const nextImages = [...savedImages];
     nextImages.splice(i, 1);
     setSavedImages(nextImages);
@@ -36,8 +36,9 @@ export default function Previews({
         savedImages.map((url, index) => (
           <li
             key={url}
-            className="group w-32 h-[85px] relative cursor-pointer flex gap-2 items-center border border-gray-dark-900 rounded-md overflow-hidden hover:border-gray-dark-1100"
-            onClick={() => handleDeleteSavedImage(index)}>
+            className="group relative flex h-[85px] w-32 cursor-pointer items-center gap-2 overflow-hidden rounded-md border border-gray-dark-900 hover:border-gray-dark-1100"
+            onClick={() => handleDeleteSavedImage(index)}
+          >
             <Image
               src={url || ''}
               fill
@@ -52,8 +53,9 @@ export default function Previews({
         files.map((file, index) => (
           <li
             key={index + file.name}
-            className="group w-32 h-[85px] relative cursor-pointer flex gap-2 items-center border border-gray-dark-900 rounded-md overflow-hidden hover:border-gray-dark-1100"
-            onClick={() => handleDeleteFile(index)}>
+            className="group relative flex h-[85px] w-32 cursor-pointer items-center gap-2 overflow-hidden rounded-md border border-gray-dark-900 hover:border-gray-dark-1100"
+            onClick={() => handleDeleteFile(index)}
+          >
             <Image
               src={file.preview || ''}
               fill
@@ -70,7 +72,7 @@ export default function Previews({
 
 function Overlay() {
   return (
-    <div className="hidden group-hover:flex absolute inset-0 justify-center items-center select-none">
+    <div className="absolute inset-0 hidden select-none items-center justify-center group-hover:flex">
       remove
     </div>
   );

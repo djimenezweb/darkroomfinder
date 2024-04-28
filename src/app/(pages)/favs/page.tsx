@@ -33,14 +33,14 @@ export default async function FavsPage() {
   const labs = userWithFavs.bookmarks;
 
   return (
-    <div className="h-full relative md:flex md:items-stretch">
+    <div className="relative h-full md:flex md:items-stretch">
       <StickyAside>
         <AsideElementWrapper>
           <BackButton />
         </AsideElementWrapper>
       </StickyAside>
 
-      <div className="grow p-5 max-w-screen-2xl mb-16">
+      <div className="mb-16 max-w-screen-2xl grow p-5">
         <h2 className="text-lg">Saved darkrooms</h2>
 
         {labs.length == 0 && (
@@ -52,7 +52,7 @@ export default async function FavsPage() {
         {labs.length > 0 && (
           <>
             <ul className={twMerge(styles.labsGrid)}>
-              {labs.map(lab => (
+              {labs.map((lab) => (
                 <li key={lab._id.toString()}>
                   <Link href={`/lab/${lab._id.toString()}`}>
                     <LabCard

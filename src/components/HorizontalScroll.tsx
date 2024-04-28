@@ -47,8 +47,9 @@ export default function HorizontalScroll({
       <p>{translation}</p>
       <div
         ref={targetRef}
-        className="relative h-96 bg-gray-dark-100 border-y border-gray-dark-600">
-        <div className="sticky h-96 top-16 flex items-center overflow-x-hidden">
+        className="relative h-96 border-y border-gray-dark-600 bg-gray-dark-100"
+      >
+        <div className="sticky top-16 flex h-96 items-center overflow-x-hidden">
           <motion.div style={{ x }} className="flex gap-16" ref={carouselRef}>
             {children}
           </motion.div>

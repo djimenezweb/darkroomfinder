@@ -13,8 +13,9 @@ export default function CancelButton() {
       className={twMerge(
         styles.button.xs,
         styles.button.gray,
-        'p-2.5 lg:px-2.5 lg:py-1 font-normal'
-      )}>
+        'p-2.5 font-normal lg:px-2.5 lg:py-1'
+      )}
+    >
       Cancel
     </button>
   );

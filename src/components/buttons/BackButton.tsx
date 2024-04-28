@@ -7,9 +7,10 @@ export default function BackButton() {
   const router = useRouter();
   return (
     <button
-      className="group text-sm text-gray-dark-1000 hover:text-gray-dark-1100 flex items-center gap-4"
-      onClick={() => router.back()}>
-      <ChevronLeftIcon className="size-4 group-hover:-translate-x-1 transition-transform" />
+      className="group flex items-center gap-4 text-sm text-gray-dark-1000 hover:text-gray-dark-1100"
+      onClick={() => router.back()}
+    >
+      <ChevronLeftIcon className="size-4 transition-transform group-hover:-translate-x-1" />
       <span>Back</span>
     </button>
   );

@@ -13,10 +13,11 @@ export default function ContainerWithBorder({
   return (
     <div
       className={twMerge(
-        'bg-gray-dark-300 p-5 rounded-md border border-gray-dark-500',
+        'rounded-md border border-gray-dark-500 bg-gray-dark-300 p-5',
         className,
         transparent && 'bg-transparent hover:bg-gray-dark-300'
-      )}>
+      )}
+    >
       {children}
     </div>
   );

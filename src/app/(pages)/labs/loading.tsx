@@ -18,7 +18,7 @@ export function generateMetadata() {
 export default async function LabsLoadingPage() {
   return (
     <>
-      <div className="h-full relative md:flex md:items-stretch">
+      <div className="relative h-full md:flex md:items-stretch">
         <StickyAside>
           <AsideElementWrapper>
             <SearchMini />
@@ -31,11 +31,11 @@ export default async function LabsLoadingPage() {
           </AsideElementWrapper>
         </StickyAside>
 
-        <div className="grow p-5 max-w-screen-2xl">
-          <h2 className="text-lg animate-pulse">Searching darkrooms...</h2>
+        <div className="max-w-screen-2xl grow p-5">
+          <h2 className="animate-pulse text-lg">Searching darkrooms...</h2>
 
           <ul className={twMerge(styles.labsGrid)}>
-            {range(RESULTS_PER_PAGE).map(n => (
+            {range(RESULTS_PER_PAGE).map((n) => (
               <SkeletonLabCard key={n} />
             ))}
           </ul>

@@ -12,12 +12,12 @@ export function generateMetadata() {
 
 export default function FakePage() {
   return (
-    <div className="px-4 mb-16">
-      <div className="max-w-2xl mx-auto">
-        <h1 className="text-2xl sm:text-4xl mt-12 mb-6">
+    <div className="mb-16 px-4">
+      <div className="mx-auto max-w-2xl">
+        <h1 className="mb-6 mt-12 text-2xl sm:text-4xl">
           This is a fake website
         </h1>
-        <div className="max-w-2xl text-gray-dark-1100 text-base leading-7 space-y-5">
+        <div className="max-w-2xl space-y-5 text-base leading-7 text-gray-dark-1100">
           <p>
             This website is a personal project to practise web development. This
             is not a real website. All the darkrooms, addresses, personal
@@ -29,16 +29,16 @@ export default function FakePage() {
           </p>
         </div>
       </div>
-      <h2 className="max-w-2xl mx-auto text-gray-dark-1200 text-2xl mt-8 mb-4">
+      <h2 className="mx-auto mb-4 mt-8 max-w-2xl text-2xl text-gray-dark-1200">
         Built with
       </h2>
-      <ul className="max-w-3xl mx-auto columns-1 sm:columns-2 gap-x-4">
-        {technologies.map(technology => (
+      <ul className="mx-auto max-w-3xl columns-1 gap-x-4 sm:columns-2">
+        {technologies.map((technology) => (
           <li key={technology.url} className="mb-4 break-inside-avoid">
             <Link href={technology.url} target="_blank" className="block ">
-              <ContainerWithBorder className=" cursor-pointer hover:bg-gray-dark-400 hover:border-gray-dark-600 shadow-md">
+              <ContainerWithBorder className=" cursor-pointer shadow-md hover:border-gray-dark-600 hover:bg-gray-dark-400">
                 <div className="flex gap-5 ">
-                  <div className="shrink-0 flex items-center justify-center h-12 w-12 bg-gray-dark-100 rounded-lg text-gray-dark-1100">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-gray-dark-100 text-gray-dark-1100">
                     <Image
                       src={technology.logo}
                       alt={technology.title}
@@ -46,12 +46,12 @@ export default function FakePage() {
                       height={24}
                     />
                   </div>
-                  <div className="w-full flex flex-col gap-2">
+                  <div className="flex w-full flex-col gap-2">
                     <h3 className="text-xl">{technology.title}</h3>
-                    <p className="text-gray-dark-1100 text-sm">
+                    <p className="text-sm text-gray-dark-1100">
                       {technology.description}
                     </p>
-                    <p className="text-gray-dark-1000 text-sm text-right">
+                    <p className="text-right text-sm text-gray-dark-1000">
                       {technology.version}
                     </p>
                   </div>

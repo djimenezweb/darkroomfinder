@@ -43,7 +43,7 @@ export default async function EditLabPage({ params }: { params: Params }) {
 
   return (
     <div>
-      <div className="container max-w-3xl relative mx-auto mt-10 mb-16 px-4 space-y-16">
+      <div className="container relative mx-auto mb-16 mt-10 max-w-3xl space-y-16 px-4">
         <EditLabForm lab={lab} />
         <DeleteLabForm
           documentId={lab._id.toString()}

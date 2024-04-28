@@ -11,7 +11,7 @@ export default function PrimaryNavBar({ session, closeMobileMenu }: Props) {
     'block lg:inline hover:bg-gray-dark-400 lg:hover:bg-transparent px-4 py-2 lg:p-0 border-b border-gray-dark-500 lg:border-none lg:hover:text-red-600';
 
   return (
-    <ul className="flex flex-col h-full lg:flex-row p-4 lg:p-0 text-base lg:text-sm lg:gap-6 lg:items-center lg:ml-8">
+    <ul className="flex h-full flex-col p-4 text-base lg:ml-8 lg:flex-row lg:items-center lg:gap-6 lg:p-0 lg:text-sm">
       <li>
         <Link href="/" className={linkStyle} onClick={closeMobileMenu}>
           Home

@@ -9,7 +9,8 @@ export default function TelegramLogo(props: SVGProps<SVGSVGElement>) {
       width={24}
       height={24}
       xmlns="http://www.w3.org/2000/svg"
-      {...props}>
+      {...props}
+    >
       <title>Telegram</title>
       <path
         fill="currentColor"

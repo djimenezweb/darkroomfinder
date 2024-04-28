@@ -75,9 +75,10 @@ export default function EditLabForm({ lab }: { lab: ILabWithOwner }) {
 
   return (
     <form
-      onSubmit={e => handleSubmit(e)}
-      className="rounded-md border border-gray-dark-400 shadow-sm overflow-hidden">
-      <div className="bg-gray-dark-300 border-b border-gray-dark-400 flex items-center px-6 py-4">
+      onSubmit={(e) => handleSubmit(e)}
+      className="overflow-hidden rounded-md border border-gray-dark-400 shadow-sm"
+    >
+      <div className="flex items-center border-b border-gray-dark-400 bg-gray-dark-300 px-6 py-4">
         <input
           type="text"
           name="name"
@@ -87,7 +88,7 @@ export default function EditLabForm({ lab }: { lab: ILabWithOwner }) {
             styles.input.focus,
             'w-full text-2xl sm:text-3xl',
             errors?.name &&
-              'bg-error-200 border-error-500 placeholder-error-500'
+              'border-error-500 bg-error-200 placeholder-error-500'
           )}
           defaultValue={lab.name}
         />
@@ -105,9 +106,10 @@ export default function EditLabForm({ lab }: { lab: ILabWithOwner }) {
             styles.input.text,
             styles.input.focus,
             errors?.link &&
-              'bg-error-200 border-error-500 placeholder-error-500'
+              'border-error-500 bg-error-200 placeholder-error-500'
           )}
-          defaultValue={lab.link}>
+          defaultValue={lab.link}
+        >
           {errors?.link && <FormError>{errors.link}</FormError>}
         </FormInput>
       </FormRow>
@@ -124,7 +126,7 @@ export default function EditLabForm({ lab }: { lab: ILabWithOwner }) {
               styles.input.focus,
               'min-h-28',
               errors?.description &&
-                'bg-error-200 border-error-500 placeholder-error-500'
+                'border-error-500 bg-error-200 placeholder-error-500'
             )}
             defaultValue={lab.description}
           />
@@ -149,7 +151,7 @@ export default function EditLabForm({ lab }: { lab: ILabWithOwner }) {
                   styles.input.text,
                   styles.input.focus,
                   errors?.[id as keyof IErrorMessages] &&
-                    'bg-error-200 border-error-500 placeholder-error-500'
+                    'border-error-500 bg-error-200 placeholder-error-500'
                 )}
               />
               {errors?.[id as keyof IErrorMessages] && (
@@ -170,7 +172,7 @@ export default function EditLabForm({ lab }: { lab: ILabWithOwner }) {
               styles.input.text,
               styles.input.focus,
               errors?.latitude &&
-                'bg-error-200 border-error-500 placeholder-error-500'
+                'border-error-500 bg-error-200 placeholder-error-500'
             )}
           />
         </div>
@@ -186,7 +188,7 @@ export default function EditLabForm({ lab }: { lab: ILabWithOwner }) {
               styles.input.text,
               styles.input.focus,
               errors?.longitude &&
-                'bg-error-200 border-error-500 placeholder-error-500'
+                'border-error-500 bg-error-200 placeholder-error-500'
             )}
           />
         </div>
@@ -212,7 +214,7 @@ export default function EditLabForm({ lab }: { lab: ILabWithOwner }) {
         <FormFieldSet name="processes">Processes</FormFieldSet>
 
         <div className="col-span-2">
-          <ul className="flex gap-2 flex-wrap">
+          <ul className="flex flex-wrap gap-2">
             {processes.map(({ id, fullName }) => (
               <FormCheckBox
                 key={id}
@@ -246,7 +248,7 @@ export default function EditLabForm({ lab }: { lab: ILabWithOwner }) {
           {totalImages <= 0 && <FormError>Upload at least one image</FormError>}
         </div>
       </FormRow>
-      <div className="bg-gray-dark-300 border-b border-gray-dark-400 flex items-center justify-between px-6 py-4">
+      <div className="flex items-center justify-between border-b border-gray-dark-400 bg-gray-dark-300 px-6 py-4">
         <CancelButton />
         <SubmitButton isLoading={isLoading} text="Save changes" />
       </div>

@@ -18,7 +18,7 @@ export default function useTypewriter(array: string[], speed: number = 100) {
     if (letterIndex.current < text.length) {
       const timeoutId = setTimeout(() => {
         const nextCharacter = text.charAt(letterIndex.current);
-        setCurrentText(prev => prev + nextCharacter);
+        setCurrentText((prev) => prev + nextCharacter);
         letterIndex.current += 1;
       }, delay.current);
       return () => clearTimeout(timeoutId);

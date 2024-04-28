@@ -23,22 +23,22 @@ export default function LabMap({ lat, lon }: { lat: number; lon: number }) {
   if (!lat || !lon)
     return (
       <div className="w-full">
-        <div className="w-full h-40 bg-gray-dark-400 flex justify-center items-center">
+        <div className="flex h-40 w-full items-center justify-center bg-gray-dark-400">
           <p className="text-sm text-gray-dark-900">Map not available</p>
         </div>
       </div>
     );
 
   return (
-    <div className="w-full h-80 relative">
+    <div className="relative h-80 w-full">
       {isLoading && (
-        <div className="absolute inset-0 z-10 flex justify-center items-center bg-gray-dark-400">
+        <div className="absolute inset-0 z-10 flex items-center justify-center bg-gray-dark-400">
           <SpinnerSVG className="size-12 animate-spin" />
         </div>
       )}
 
       {error && (
-        <div className="absolute inset-0 z-20 flex justify-center items-center bg-gray-dark-400">
+        <div className="absolute inset-0 z-20 flex items-center justify-center bg-gray-dark-400">
           <p className="text-sm">Map could not be loaded</p>
         </div>
       )}
@@ -55,9 +55,10 @@ export default function LabMap({ lat, lon }: { lat: number; lon: number }) {
         mapLib={import('maplibre-gl')}
         // mapStyle="./maptiler-style.json"
         mapStyle={`https://api.maptiler.com/maps/5cde18f8-54d9-4506-b93a-4ffa7a3aeaa2/style.json?key=${process.env.NEXT_PUBLIC_MAPTILER_API_KEY}`}
-        attributionControl={false}>
+        attributionControl={false}
+      >
         <Marker longitude={lon} latitude={lat} anchor="bottom" offset={[0, -4]}>
-          <MapPinIcon className="text-red-600 size-8 animate-bounce" />
+          <MapPinIcon className="size-8 animate-bounce text-red-600" />
         </Marker>
         <FullscreenControl />
         <NavigationControl showCompass={false} />

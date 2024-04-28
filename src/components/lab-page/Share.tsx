@@ -21,32 +21,36 @@ export function Share() {
 
   return (
     <div>
-      <p className="text-sm mb-2 text-center md:text-left">
+      <p className="mb-2 text-center text-sm md:text-left">
         Share this darkroom
       </p>
-      <div className="flex gap-5 items-center">
+      <div className="flex items-center gap-5">
         <Link
           href={`https://twitter.com/intent/tweet?text=${text}&url=${url}`}
           target="_blank"
-          className={twMerge(baseStyles)}>
+          className={twMerge(baseStyles)}
+        >
           <TwitterLogo className="size-6" />
         </Link>
         <Link
           href={`https://www.linkedin.com/sharing/share-offsite/?url=${url}`}
           target="_blank"
-          className={twMerge(baseStyles)}>
+          className={twMerge(baseStyles)}
+        >
           <LinkedInLogo className="size-6" />
         </Link>
         <Link
           href={`https://www.reddit.com/submit?url=${url}`}
           target="_blank"
-          className={twMerge(baseStyles)}>
+          className={twMerge(baseStyles)}
+        >
           <RedditLogo className="size-6" />
         </Link>
         <Link
           href={`https://www.facebook.com/sharer/sharer.php?u=${url}`}
           target="_blank"
-          className={twMerge(baseStyles)}>
+          className={twMerge(baseStyles)}
+        >
           <FacebookLogo className="size-6" />
         </Link>
       </div>

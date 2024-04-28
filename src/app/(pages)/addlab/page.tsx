@@ -19,7 +19,7 @@ export default async function AddLab() {
 
   return (
     <div>
-      <div className="container max-w-3xl relative mx-auto mt-10 mb-16 px-4">
+      <div className="container relative mx-auto mb-16 mt-10 max-w-3xl px-4">
         <AddLabForm />
       </div>
     </div>

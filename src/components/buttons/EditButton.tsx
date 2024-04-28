@@ -9,10 +9,11 @@ export default function EditButton({ id }: { id: string }) {
       <button
         type="button"
         className={twMerge(
-          'flex gap-2 justify-center items-center font-normal',
+          'flex items-center justify-center gap-2 font-normal',
           styles.button.xs,
           styles.button.brand
-        )}>
+        )}
+      >
         <PencilSquareIcon className="size-4" />
         Edit
       </button>

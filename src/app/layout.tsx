@@ -17,7 +17,8 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`bg-gray-dark-200 text-gray-dark-1200 text-lg ${circular.className}`}>
+        className={`bg-gray-dark-200 text-lg text-gray-dark-1200 ${circular.className}`}
+      >
         {children}
       </body>
     </html>

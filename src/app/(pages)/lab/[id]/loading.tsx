@@ -14,52 +14,52 @@ export function generateMetadata() {
 // PAGE
 export default async function DarkroomLoadingPage() {
   return (
-    <div className="md:grid md:grid-cols-[10rem_1fr] lg:grid-cols-[13rem_1fr] xl:grid-cols-[16rem_1fr] animate-pulse">
+    <div className="animate-pulse md:grid md:grid-cols-[10rem_1fr] lg:grid-cols-[13rem_1fr] xl:grid-cols-[16rem_1fr]">
       <StickyAside>
         <AsideElementWrapper>
           <BackButton />
         </AsideElementWrapper>
       </StickyAside>
 
-      <div className="w-full max-w-4xl mx-auto px-4 space-y-8 mb-16">
+      <div className="mx-auto mb-16 w-full max-w-4xl space-y-8 px-4">
         <div>
-          <div className="h-6 max-w-64 bg-gray-dark-1000 rounded-full mt-9 mb-6" />
-          <div className="h-3 max-w-36 bg-gray-dark-900 rounded-full mb-4" />
-          <div className="h-3 max-w-32 bg-gray-dark-900 rounded-full" />
+          <div className="mb-6 mt-9 h-6 max-w-64 rounded-full bg-gray-dark-1000" />
+          <div className="mb-4 h-3 max-w-36 rounded-full bg-gray-dark-900" />
+          <div className="h-3 max-w-32 rounded-full bg-gray-dark-900" />
         </div>
-        <div className="md:grid md:grid-cols-[1fr_10rem] gap-8">
-          <div className="space-y-8 mt-2">
+        <div className="gap-8 md:grid md:grid-cols-[1fr_10rem]">
+          <div className="mt-2 space-y-8">
             <ContainerWithBorder>
-              <div className="h-3 w-full bg-gray-dark-900 rounded-full mb-2" />
-              <div className="h-3 w-full bg-gray-dark-900 rounded-full mb-2" />
-              <div className="h-3 w-full bg-gray-dark-900 rounded-full mb-2" />
-              <div className="h-3 w-full bg-gray-dark-900 rounded-full mb-2" />
-              <div className="h-3 w-1/2 bg-gray-dark-900 rounded-full" />
+              <div className="mb-2 h-3 w-full rounded-full bg-gray-dark-900" />
+              <div className="mb-2 h-3 w-full rounded-full bg-gray-dark-900" />
+              <div className="mb-2 h-3 w-full rounded-full bg-gray-dark-900" />
+              <div className="mb-2 h-3 w-full rounded-full bg-gray-dark-900" />
+              <div className="h-3 w-1/2 rounded-full bg-gray-dark-900" />
             </ContainerWithBorder>
-            <ContainerWithBorder className="text-sm space-y-4">
+            <ContainerWithBorder className="space-y-4 text-sm">
               <div className="flex">
                 <div className="min-w-32 shrink-0">
-                  <div className="w-12 h-4 bg-gray-dark-800 rounded-full" />
+                  <div className="h-4 w-12 rounded-full bg-gray-dark-800" />
                 </div>
-                <ul className="flex gap-2 flex-wrap">
+                <ul className="flex flex-wrap gap-2">
                   <li>
-                    <div className="w-14 h-4 bg-gray-dark-900 border-gray-dark-700 shadow-sm rounded-full" />
+                    <div className="h-4 w-14 rounded-full border-gray-dark-700 bg-gray-dark-900 shadow-sm" />
                   </li>
                   <li>
-                    <div className="w-16 h-4 bg-gray-dark-900 border-gray-dark-700 shadow-sm rounded-full" />
+                    <div className="h-4 w-16 rounded-full border-gray-dark-700 bg-gray-dark-900 shadow-sm" />
                   </li>
                 </ul>
               </div>
               <div className="flex">
                 <div className="min-w-32 shrink-0">
-                  <div className="w-16 h-4 bg-gray-dark-800 rounded-full" />
+                  <div className="h-4 w-16 rounded-full bg-gray-dark-800" />
                 </div>
-                <ul className="flex gap-2 flex-wrap">
+                <ul className="flex flex-wrap gap-2">
                   <li>
-                    <div className="w-20 h-4 bg-gray-dark-900 border-gray-dark-700 shadow-sm rounded-full" />
+                    <div className="h-4 w-20 rounded-full border-gray-dark-700 bg-gray-dark-900 shadow-sm" />
                   </li>
                   <li>
-                    <div className="w-24 h-4 bg-gray-dark-900 border-gray-dark-700 shadow-sm rounded-full" />
+                    <div className="h-4 w-24 rounded-full border-gray-dark-700 bg-gray-dark-900 shadow-sm" />
                   </li>
                 </ul>
               </div>

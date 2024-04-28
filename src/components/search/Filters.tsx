@@ -22,7 +22,7 @@ export default function Filters({ name }: { name: 'sizes' | 'processes' }) {
   function handleClick(id: string) {
     let nextFilter;
     if (initialFilter.includes(id)) {
-      nextFilter = initialFilter.filter(item => item !== id);
+      nextFilter = initialFilter.filter((item) => item !== id);
     } else {
       nextFilter = [...initialFilter, id];
     }
@@ -41,21 +41,22 @@ export default function Filters({ name }: { name: 'sizes' | 'processes' }) {
 
   return (
     <div className="flex flex-wrap gap-x-4 gap-y-2 md:block md:gap-0">
-      <div className="md:mb-2 h-6 flex justify-between items-center">
-        <p className="min-w-16 text-sm text-gray-dark-1000 capitalize">
+      <div className="flex h-6 items-center justify-between md:mb-2">
+        <p className="min-w-16 text-sm capitalize text-gray-dark-1000">
           {name}
         </p>
         {initialFilter.length > 0 && (
           <button
             type="button"
             onClick={handleReset}
-            className={twMerge(styles.button.reset)}>
+            className={twMerge(styles.button.reset)}
+          >
             <XMarkIcon className="size-5" />
           </button>
         )}
       </div>
       <ul className="flex flex-wrap gap-2 text-xs">
-        {options[name].map(option => (
+        {options[name].map((option) => (
           <li key={option.id}>
             <button
               type="button"
@@ -66,7 +67,8 @@ export default function Filters({ name }: { name: 'sizes' | 'processes' }) {
                   ? styles.tag.button.active
                   : styles.tag.button.inactive
               )}
-              onClick={() => handleClick(option.id)}>
+              onClick={() => handleClick(option.id)}
+            >
               {option.fullName}
             </button>
           </li>

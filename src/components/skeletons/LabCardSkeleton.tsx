@@ -1,14 +1,14 @@
 export default function LabCardSkeleton() {
   return (
-    <div className="relative bg-gray-dark-300 border border-gray-dark-500 rounded-md p-5 block h-44 overflow-hidden animate-pulse">
+    <div className="relative block h-44 animate-pulse overflow-hidden rounded-md border border-gray-dark-500 bg-gray-dark-300 p-5">
       <div className="flex gap-4">
-        <div className="w-[150px] h-[100px] rounded-md overflow-hidden bg-gray-dark-600" />
+        <div className="h-[100px] w-[150px] overflow-hidden rounded-md bg-gray-dark-600" />
         <div className="space-y-2">
-          <p className="mt-1 bg-gray-dark-1100 w-28 h-3 rounded-full" />
-          <p className="bg-gray-dark-1000 w-14 h-3 rounded-full" />
+          <p className="mt-1 h-3 w-28 rounded-full bg-gray-dark-1100" />
+          <p className="h-3 w-14 rounded-full bg-gray-dark-1000" />
         </div>
       </div>
-      <div className="absolute bottom-5 right-5 w-4 h-4 bg-gray-dark-900 rounded-full" />
+      <div className="absolute bottom-5 right-5 h-4 w-4 rounded-full bg-gray-dark-900" />
     </div>
   );
 }

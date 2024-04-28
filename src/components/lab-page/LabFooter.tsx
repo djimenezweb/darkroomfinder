@@ -10,7 +10,7 @@ export function LabFooter({
   return (
     <div>
       {updatedAt && (
-        <p className="py-4 text-center md:text-right text-sm text-gray-dark-1000">
+        <p className="py-4 text-center text-sm text-gray-dark-1000 md:text-right">
           Last edited:{' '}
           <span className="text-gray-dark-1100">{formatDate(updatedAt)}</span>
         </p>

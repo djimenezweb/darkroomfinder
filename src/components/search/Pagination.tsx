@@ -24,8 +24,8 @@ export default function Pagination({ totalResults, page }: PaginationProps) {
   if (buttons <= 1) return;
 
   return (
-    <div className="flex gap-4 justify-center items-center mt-8">
-      {range(1, buttons + 1).map(n => {
+    <div className="mt-8 flex items-center justify-center gap-4">
+      {range(1, buttons + 1).map((n) => {
         if (n === page) {
           return (
             <span
@@ -33,7 +33,8 @@ export default function Pagination({ totalResults, page }: PaginationProps) {
               className={twMerge(
                 styles.pagination.base,
                 styles.pagination.active
-              )}>
+              )}
+            >
               {n}
             </span>
           );
@@ -46,7 +47,8 @@ export default function Pagination({ totalResults, page }: PaginationProps) {
               className={twMerge(
                 styles.pagination.base,
                 styles.pagination.inactive
-              )}>
+              )}
+            >
               {n}
             </Link>
           );

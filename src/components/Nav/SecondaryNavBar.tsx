@@ -19,25 +19,27 @@ export default function SecondaryNavBar({
   const pathname = usePathname();
 
   return (
-    <ul className="bg-gray-dark-100 relative bg-transparent flex items-center gap-2">
+    <ul className="relative flex items-center gap-2 bg-gray-dark-100 bg-transparent">
       {session && (
         <>
-          <li className="text-xs rounded-md font-normal text-gray-dark-1100 hover:text-gray-dark-1200 hover:bg-gray-dark-500">
+          <li className="rounded-md text-xs font-normal text-gray-dark-1100 hover:bg-gray-dark-500 hover:text-gray-dark-1200">
             <Link
               href="https://github.com/djimenezweb/darkroomfinder"
               target="_blank"
-              className="block px-2.5 py-1">
-              <GitHubLogoNav className="w-6 h-6" />
+              className="block px-2.5 py-1"
+            >
+              <GitHubLogoNav className="h-6 w-6" />
             </Link>
           </li>
 
           <li>
             <button
-              onClick={e => {
+              onClick={(e) => {
                 e.stopPropagation();
-                setIsProfileOpen(prv => !prv);
+                setIsProfileOpen((prv) => !prv);
               }}
-              className="px-2.5 py-1">
+              className="px-2.5 py-1"
+            >
               <Image
                 src={profilePicture}
                 alt="Profile picture"
@@ -55,7 +57,8 @@ export default function SecondaryNavBar({
           <Link href={`/sign-in?callbackUrl=${pathname}`} className="block">
             <button
               type="button"
-              className="bg-red-800 hover:bg-red-800/80 text-xs px-2.5 py-1 rounded-md font-normal border border-red-600">
+              className="rounded-md border border-red-600 bg-red-800 px-2.5 py-1 text-xs font-normal hover:bg-red-800/80"
+            >
               Sign in
             </button>
           </Link>

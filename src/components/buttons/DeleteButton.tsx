@@ -11,12 +11,13 @@ export default function DeleteButton() {
     <button
       type="submit"
       className={twMerge(
-        'min-w-32 flex justify-center items-center',
+        'flex min-w-32 items-center justify-center',
         styles.button.xs,
         styles.button.warning
-      )}>
+      )}
+    >
       {pending ? (
-        <SpinnerSVG className="w-4 h-4 animate-spin" />
+        <SpinnerSVG className="h-4 w-4 animate-spin" />
       ) : (
         'Delete darkroom'
       )}

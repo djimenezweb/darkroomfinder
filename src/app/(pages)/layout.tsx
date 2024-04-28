@@ -12,7 +12,7 @@ export default async function PagesLayout({
   const session = await getServerSession(authOptions);
 
   return (
-    <div className="min-h-screen grid grid-rows-layout grid-cols-layout">
+    <div className="grid min-h-screen grid-cols-layout grid-rows-layout">
       <Navbar session={session} />
       <main className="pt-16">{children}</main>
       <Footer />

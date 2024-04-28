@@ -39,10 +39,11 @@ export default function FavButton({
         disabled={isLoading}
         type="button"
         className={twMerge(
-          'group flex gap-2 items-center font-normal',
+          'group flex items-center gap-2 font-normal',
           styles.button.xs,
           styles.button.gray
-        )}>
+        )}
+      >
         {isLoading ? (
           <SpinnerSVG className="size-5 animate-spin" />
         ) : (

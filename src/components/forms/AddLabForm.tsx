@@ -50,12 +50,13 @@ export default function AddLabForm() {
 
   return (
     <form
-      onSubmit={e => handleSubmit(e)}
-      className="rounded-md border border-gray-dark-400 shadow-sm overflow-hidden">
-      <div className="bg-gray-dark-300 border-b border-gray-dark-400 flex items-center px-6 py-4">
+      onSubmit={(e) => handleSubmit(e)}
+      className="overflow-hidden rounded-md border border-gray-dark-400 shadow-sm"
+    >
+      <div className="flex items-center border-b border-gray-dark-400 bg-gray-dark-300 px-6 py-4">
         <h2 className="text-base">Add a new darkroom</h2>
       </div>
-      <div className="bg-gray-dark-300 border-b border-gray-dark-400 flex items-center px-6 py-4">
+      <div className="flex items-center border-b border-gray-dark-400 bg-gray-dark-300 px-6 py-4">
         <p className="text-sm text-gray-dark-1000">
           Fill in the form to add your lab to the database.
           <br />
@@ -75,7 +76,8 @@ export default function AddLabForm() {
             styles.input.focus,
             errors?.name && styles.input.error
           )}
-          defaultValue="">
+          defaultValue=""
+        >
           {errors?.name && <FormError>{errors.name}</FormError>}
         </FormInput>
       </FormRow>
@@ -92,7 +94,8 @@ export default function AddLabForm() {
             styles.input.focus,
             errors?.link && styles.input.error
           )}
-          defaultValue="">
+          defaultValue=""
+        >
           {errors?.link && <FormError>{errors.link}</FormError>}
         </FormInput>
       </FormRow>
@@ -163,7 +166,7 @@ export default function AddLabForm() {
         <FormFieldSet name="processes">Processes</FormFieldSet>
 
         <div className="col-span-2">
-          <ul className="flex gap-2 flex-wrap">
+          <ul className="flex flex-wrap gap-2">
             {processes.map(({ id, fullName, checked }) => (
               <FormCheckBox
                 key={id}
@@ -192,7 +195,7 @@ export default function AddLabForm() {
           <FormError>Check errors and try again</FormError>
         </FormRow>
       )}
-      <div className="bg-gray-dark-300 border-b border-gray-dark-400 flex items-center justify-between px-6 py-4">
+      <div className="flex items-center justify-between border-b border-gray-dark-400 bg-gray-dark-300 px-6 py-4">
         <CancelButton />
         <SubmitButton isLoading={isLoading} text="Add new darkroom" />
       </div>

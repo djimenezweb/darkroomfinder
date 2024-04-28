@@ -31,24 +31,28 @@ export function Carousel({ images }: { images: string[] }) {
   return (
     <motion.div
       // layoutId={'containerKey' + String(index)}
-      className="bg-gray-dark-300 p-5 rounded-md border border-gray-dark-500 min-h-[262px]">
-      <div className="w-full flex justify-between items-center">
+      className="min-h-[262px] rounded-md border border-gray-dark-500 bg-gray-dark-300 p-5"
+    >
+      <div className="flex w-full items-center justify-between">
         {length > 1 && (
           <button
             type="button"
             className={twMerge(buttonStyles)}
-            onClick={() => handleClick(-1)}>
+            onClick={() => handleClick(-1)}
+          >
             <ChevronLeftIcon className="size-6" />
           </button>
         )}
-        <div className="w-full grow flex justify-center">
+        <div className="flex w-full grow justify-center">
           <div
             className="relative overflow-hidden"
-            onClick={() => setIsModalOpen(true)}>
+            onClick={() => setIsModalOpen(true)}
+          >
             <AnimatePresence
               mode="popLayout"
               initial={false}
-              custom={direction}>
+              custom={direction}
+            >
               <motion.div
                 // onClick={() => setIsModalOpen(true)}
                 key={index}
@@ -58,14 +62,15 @@ export function Carousel({ images }: { images: string[] }) {
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.5 }}
-                className="relative">
+                className="relative"
+              >
                 <Image
                   priority
                   src={images[index]}
                   alt={`Picture ${index + 1}`}
                   width={332}
                   height={200}
-                  className="h-[200px] mx-4 object-contain"
+                  className="mx-4 h-[200px] object-contain"
                 />
               </motion.div>
             </AnimatePresence>
@@ -75,7 +80,8 @@ export function Carousel({ images }: { images: string[] }) {
           <button
             type="button"
             className={twMerge(buttonStyles)}
-            onClick={() => handleClick(1)}>
+            onClick={() => handleClick(1)}
+          >
             <ChevronRightIcon className="size-6" />
           </button>
         )}

@@ -22,10 +22,10 @@ export default function Dropzone({
   const limit = 6 - files.length - savedImages;
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
-    const filesWithPreviews = acceptedFiles.map(file =>
+    const filesWithPreviews = acceptedFiles.map((file) =>
       Object.assign(file, { preview: URL.createObjectURL(file) })
     );
-    setFiles(prev => [...prev, ...filesWithPreviews]);
+    setFiles((prev) => [...prev, ...filesWithPreviews]);
   }, []);
 
   const { getRootProps, getInputProps, isDragAccept, isDragReject } =
@@ -38,7 +38,7 @@ export default function Dropzone({
 
   useEffect(() => {
     // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
-    return () => files.forEach(file => URL.revokeObjectURL(file.preview));
+    return () => files.forEach((file) => URL.revokeObjectURL(file.preview));
   }, []);
 
   const style = useMemo(

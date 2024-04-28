@@ -11,7 +11,8 @@ export default function SpinnerSVG(props: SVGProps<SVGSVGElement>) {
       stroke="currentColor"
       strokeLinecap="round"
       strokeLinejoin="round"
-      {...props}>
+      {...props}
+    >
       <line x1="12" y1="2" x2="12" y2="6"></line>
       <line x1="12" y1="18" x2="12" y2="22"></line>
       <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line>

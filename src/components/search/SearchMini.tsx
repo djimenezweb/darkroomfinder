@@ -39,9 +39,9 @@ export default function SearchMini() {
         <input
           type="search"
           value={term}
-          onChange={e => setTerm(e.target.value)}
+          onChange={(e) => setTerm(e.target.value)}
           id="search"
-          className="w-full text-sm md:text-xs px-8 py-1 rounded-md shadow-sm text-gray-dark-1200 placeholder-gray-dark-900 bg-gray-dark-1200/[.026] border border-gray-dark-600 outline-none focus-visible:shadow-md focus:ring-current focus:ring-2 focus-visible:border-gray-dark-900 focus-visible:ring-gray-dark-300"
+          className="w-full rounded-md border border-gray-dark-600 bg-gray-dark-1200/[.026] px-8 py-1 text-sm text-gray-dark-1200 placeholder-gray-dark-900 shadow-sm outline-none focus:ring-2 focus:ring-current focus-visible:border-gray-dark-900 focus-visible:shadow-md focus-visible:ring-gray-dark-300 md:text-xs"
         />
         <div className="absolute left-2 top-2 size-4 text-gray-dark-900">
           <MagnifyingGlassIcon className="size-4" />
@@ -49,7 +49,8 @@ export default function SearchMini() {
         {query && (
           <button
             type="reset"
-            className="absolute right-1 top-1 size-6 text-gray-dark-900 hover:text-gray-dark-1100 flex justify-center items-center">
+            className="absolute right-1 top-1 flex size-6 items-center justify-center text-gray-dark-900 hover:text-gray-dark-1100"
+          >
             <XMarkIcon className="size-5" />
           </button>
         )}

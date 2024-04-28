@@ -22,17 +22,19 @@ export default function DropDownMenu({
 
   return (
     <motion.div
-      className="hidden lg:block absolute w-48 h-auto bg-gray-dark-300 top-10 right-0 border-solid border border-gray-dark-500 rounded-xl shadow-lg"
+      className="absolute right-0 top-10 hidden h-auto w-48 rounded-xl border border-solid border-gray-dark-500 bg-gray-dark-300 shadow-lg lg:block"
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 16 }}>
-      <ul className="font-normal text-sm p-3" ref={ref}>
+      exit={{ opacity: 0, y: 16 }}
+    >
+      <ul className="p-3 text-sm font-normal" ref={ref}>
         <li>
           <Link
             href="/profile"
             onClick={closeProfile}
-            className="px-4 py-2 flex items-center gap-4 hover:bg-gray-dark-400">
-            <UserCircleIcon className="text-gray-dark-900 size-4" />
+            className="flex items-center gap-4 px-4 py-2 hover:bg-gray-dark-400"
+          >
+            <UserCircleIcon className="size-4 text-gray-dark-900" />
             <span>My Profile</span>
           </Link>
         </li>
@@ -40,8 +42,9 @@ export default function DropDownMenu({
           <Link
             href="/favs"
             onClick={closeProfile}
-            className="px-4 py-2 flex items-center gap-4 hover:bg-gray-dark-400">
-            <StarIcon className="text-gray-dark-900 size-4" />
+            className="flex items-center gap-4 px-4 py-2 hover:bg-gray-dark-400"
+          >
+            <StarIcon className="size-4 text-gray-dark-900" />
             <span>Saved Labs</span>
           </Link>
         </li>
@@ -51,8 +54,9 @@ export default function DropDownMenu({
               closeProfile;
               signOut();
             }}
-            className="w-full px-4 py-2 flex items-center gap-4 hover:bg-gray-dark-400">
-            <ArrowUpTrayIcon className="text-gray-dark-900 size-4 rotate-90" />
+            className="flex w-full items-center gap-4 px-4 py-2 hover:bg-gray-dark-400"
+          >
+            <ArrowUpTrayIcon className="size-4 rotate-90 text-gray-dark-900" />
             <span>Sign out</span>
           </button>
         </li>

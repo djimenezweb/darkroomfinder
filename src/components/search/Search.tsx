@@ -24,12 +24,14 @@ export default function Search() {
 
   return (
     <form
-      className="flex justify-center items-center gap-2 mt-8"
-      onSubmit={handleSubmit}>
+      className="mt-8 flex items-center justify-center gap-2"
+      onSubmit={handleSubmit}
+    >
       <DynamicInput term={term} setTerm={setTerm} />
       <button
         type="submit"
-        className={twMerge(styles.button.sm, styles.button.brand, 'text-sm')}>
+        className={twMerge(styles.button.sm, styles.button.brand, 'text-sm')}
+      >
         Search
       </button>
     </form>

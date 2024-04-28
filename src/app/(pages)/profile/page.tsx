@@ -34,15 +34,16 @@ export default async function ProfilePage() {
           <BackButton />
         </AsideElementWrapper>
       </StickyAside>
-      <div className="w-full max-w-3xl mx-auto p-5 grow space-y-8 mb-16">
+      <div className="mx-auto mb-16 w-full max-w-3xl grow space-y-8 p-5">
         <ContainerWithBorder>
-          <h3 className="text-base mb-8">Profile Information</h3>
+          <h3 className="mb-8 text-base">Profile Information</h3>
           <div className="space-y-2">
-            <div className="text-sm grid gap-2 md:grid md:grid-cols-12">
-              <div className="flex flex-col space-y-2 col-span-4">
+            <div className="grid gap-2 text-sm md:grid md:grid-cols-12">
+              <div className="col-span-4 flex flex-col space-y-2">
                 <label
                   htmlFor="username"
-                  className="text-gray-dark-1100 text-sm">
+                  className="text-sm text-gray-dark-1100"
+                >
                   Username
                 </label>
               </div>
@@ -57,9 +58,9 @@ export default async function ProfilePage() {
                 />
               </div>
             </div>
-            <div className="text-sm grid gap-2 md:grid md:grid-cols-12">
-              <div className="flex flex-col space-y-2 col-span-4">
-                <label htmlFor="email" className="text-gray-dark-1100 text-sm">
+            <div className="grid gap-2 text-sm md:grid md:grid-cols-12">
+              <div className="col-span-4 flex flex-col space-y-2">
+                <label htmlFor="email" className="text-sm text-gray-dark-1100">
                   Email
                 </label>
               </div>
@@ -78,8 +79,8 @@ export default async function ProfilePage() {
         </ContainerWithBorder>
 
         <ContainerWithBorder>
-          <div className="text-sm grid gap-2 md:grid md:grid-cols-12">
-            <h3 className="mb-8 text-base col-span-4">Profile picture</h3>
+          <div className="grid gap-2 text-sm md:grid md:grid-cols-12">
+            <h3 className="col-span-4 mb-8 text-base">Profile picture</h3>
             <div className="col-span-8">
               <Image
                 src={profilePicture}

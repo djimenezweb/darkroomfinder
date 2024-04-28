@@ -14,7 +14,7 @@ export async function toggleFav(
     await dbConnect();
     const user = await User.findOne({ email });
     if (!user) return;
-    const isFav = user.bookmarks.some(value => value.toString() === labId);
+    const isFav = user.bookmarks.some((value) => value.toString() === labId);
 
     if (isFav) {
       user.bookmarks.pull(labId);

@@ -76,14 +76,14 @@ export default async function DarkroomPage({ params }: { params: Params }) {
         </AsideElementWrapper>
       </StickyAside>
 
-      <div className="w-full max-w-4xl mx-auto px-4 space-y-8 mb-16">
+      <div className="mx-auto mb-16 w-full max-w-4xl space-y-8 px-4">
         <LabHeader
           name={lab.name}
           address={lab.location.address}
           city={lab.location.city}
           link={lab.link}
         />
-        <div className="md:grid md:grid-cols-[1fr_11rem] gap-8">
+        <div className="gap-8 md:grid md:grid-cols-[1fr_11rem]">
           <div className="space-y-8">
             <LabDescription description={lab.description} />
             <LabFeatures
@@ -95,7 +95,7 @@ export default async function DarkroomPage({ params }: { params: Params }) {
             <LabFooter updatedAt={lab.updatedAt} createdAt={lab.createdAt} />
           </div>
           <div>
-            <div className="flex flex-col justify-center md:items-start items-center md:sticky md:top-20 space-y-8">
+            <div className="flex flex-col items-center justify-center space-y-8 md:sticky md:top-20 md:items-start">
               <FavButton
                 initialState={isFav}
                 labId={id}

@@ -17,8 +17,8 @@ interface IButtonProps {
 }
 
 const providerLogos: { [name: string]: JSX.Element } = {
-  google: <GoogleLogo className="w-5 h-5" />,
-  github: <GitHubLogo className="w-5 h-5" />
+  google: <GoogleLogo className="h-5 w-5" />,
+  github: <GitHubLogo className="h-5 w-5" />
 };
 
 export default function SignInButtons({ providers }: ISignInButtonsProps) {
@@ -27,7 +27,7 @@ export default function SignInButtons({ providers }: ISignInButtonsProps) {
 
   return (
     <div className="flex flex-col gap-5">
-      {Object.values(providers).map(provider => (
+      {Object.values(providers).map((provider) => (
         <div key={provider.name}>
           <Button provider={provider} callbackUrl={callbackUrl} />
         </div>
@@ -54,12 +54,13 @@ function Button({ provider, callbackUrl }: IButtonProps) {
         styles.flexCenter,
         styles.button.sm,
         styles.button.gray,
-        'w-full gap-2 font-regular shadow-sm',
+        'font-regular w-full gap-2 shadow-sm',
         'outline-none outline-0 focus-visible:outline-4 focus-visible:outline-offset-1 focus-visible:outline-red-600'
       )}
       onClick={() => handleClick(provider.id)}
-      disabled={isLoading}>
-      <span className="w-5 h-5">
+      disabled={isLoading}
+    >
+      <span className="h-5 w-5">
         {isLoading ? (
           <SpinnerSVG className="animate-spin" />
         ) : (

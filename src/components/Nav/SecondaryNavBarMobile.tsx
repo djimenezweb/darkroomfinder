@@ -19,21 +19,22 @@ export default function SecondaryNavBarMobile({
   const pathname = usePathname();
 
   return (
-    <ul className="absolute lg:hidden bg-gray-dark-100 bottom-0 left-0 w-full flex justify-around p-4">
+    <ul className="absolute bottom-0 left-0 flex w-full justify-around bg-gray-dark-100 p-4 lg:hidden">
       {session && (
         <>
-          <li className="rounded-md font-normal text-gray-dark-1100 hover:text-gray-dark-1200 hover:bg-gray-dark-500">
+          <li className="rounded-md font-normal text-gray-dark-1100 hover:bg-gray-dark-500 hover:text-gray-dark-1200">
             <button className="block px-2.5 py-1" onClick={() => signOut()}>
-              <ArrowUpTrayIcon className="text-gray-dark-1100 size-8 rotate-90" />
+              <ArrowUpTrayIcon className="size-8 rotate-90 text-gray-dark-1100" />
             </button>
           </li>
 
-          <li className="rounded-md font-normal text-gray-dark-1100 hover:text-gray-dark-1200 hover:bg-gray-dark-500">
+          <li className="rounded-md font-normal text-gray-dark-1100 hover:bg-gray-dark-500 hover:text-gray-dark-1200">
             <Link
               href="/favs"
               className="block px-2.5 py-1"
-              onClick={closeMobileMenu}>
-              <StarIcon className="text-gray-dark-1100 size-8" />
+              onClick={closeMobileMenu}
+            >
+              <StarIcon className="size-8 text-gray-dark-1100" />
             </Link>
           </li>
 
@@ -41,7 +42,8 @@ export default function SecondaryNavBarMobile({
             <Link
               href="/profile"
               className="block px-2.5 py-1"
-              onClick={closeMobileMenu}>
+              onClick={closeMobileMenu}
+            >
               <Image
                 src={profilePicture}
                 alt="Profile picture"
@@ -59,7 +61,8 @@ export default function SecondaryNavBarMobile({
           <Link href={`/sign-in?callbackUrl=${pathname}`} className="block">
             <button
               type="button"
-              className="bg-red-800 hover:bg-red-800/80 w-full text-xs p-2.5 rounded-md font-normal border border-red-600">
+              className="w-full rounded-md border border-red-600 bg-red-800 p-2.5 text-xs font-normal hover:bg-red-800/80"
+            >
               Sign in
             </button>
           </Link>

@@ -44,11 +44,11 @@ export default function DynamicInput({
       type="search"
       id={`input${id}`}
       value={term}
-      onChange={e => setTerm(e.target.value)}
+      onChange={(e) => setTerm(e.target.value)}
       onFocus={() => setIsOnFocus(true)}
       onBlur={() => setIsOnFocus(false)}
       placeholder={isOnFocus ? '' : dynamicPlaceholder}
-      className="rounded-md shadow-sm text-gray-dark-1200 focus-visible:shadow-md outline-none focus:ring-current focus:ring-2 focus-visible:border-gray-dark-900 focus-visible:ring-gray-dark-300 placeholder-gray-dark-900 bg-gray-dark-1200/[.026] border border-gray-dark-600 text-sm px-4 py-2"
+      className="rounded-md border border-gray-dark-600 bg-gray-dark-1200/[.026] px-4 py-2 text-sm text-gray-dark-1200 placeholder-gray-dark-900 shadow-sm outline-none focus:ring-2 focus:ring-current focus-visible:border-gray-dark-900 focus-visible:shadow-md focus-visible:ring-gray-dark-300"
     />
   );
 }

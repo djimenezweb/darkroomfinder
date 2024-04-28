@@ -19,8 +19,9 @@ export default function SubmitButton({
         styles.button.xs,
         styles.button.brand,
         'min-w-32'
-      )}>
-      {isLoading ? <SpinnerSVG className="w-4 h-4 animate-spin" /> : text}
+      )}
+    >
+      {isLoading ? <SpinnerSVG className="h-4 w-4 animate-spin" /> : text}
     </button>
   );
 }
