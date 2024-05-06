@@ -53,7 +53,6 @@ export default function LabMap({ lat, lon }: { lat: number; lon: number }) {
         onError={() => setError(true)}
         style={{ width: '100%', height: '100%' }}
         mapLib={import('maplibre-gl')}
-        // mapStyle="./maptiler-style.json"
         mapStyle={`https://api.maptiler.com/maps/5cde18f8-54d9-4506-b93a-4ffa7a3aeaa2/style.json?key=${process.env.NEXT_PUBLIC_MAPTILER_API_KEY}`}
         attributionControl={false}
       >
@@ -66,7 +65,3 @@ export default function LabMap({ lat, lon }: { lat: number; lon: number }) {
     </div>
   );
 }
-
-// 5cde18f8-54d9-4506-b93a-4ffa7a3aeaa2
-// mapStyle={`https://api.maptiler.com/maps/streets/style.json?key=${process.env.NEXT_PUBLIC_MAPTILER_API_KEY}`}>
-// https://api.maptiler.com/maps/5cde18f8-54d9-4506-b93a-4ffa7a3aeaa2/style.json?key=GnkPvo6GfRC5rLKbXjam
