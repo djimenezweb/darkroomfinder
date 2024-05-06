@@ -27,6 +27,7 @@ export default function Join() {
           width={selectedPicture.src.width}
           height={selectedPicture.src.height}
           sizes="(max-width: 1024px) 100vw, 50vw"
+          placeholder="blur"
         />
         <figcaption
           className={twMerge(

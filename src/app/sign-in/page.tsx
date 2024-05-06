@@ -60,6 +60,7 @@ export default async function SigninPage() {
               sizes="50vw"
               fill
               priority
+              placeholder="blur"
             />
             <figcaption className="absolute bottom-8 w-full text-center text-sm text-gray-dark-1200">
               <Link href="https://www.pexels.com/photo/hands-holding-negative-10276046/">
