@@ -1,0 +1,16 @@
+.test {
+  background-color: #161616; /* 8.6%      100 */
+  background-color: #1c1c1c; /* 11%       200 */
+  background-color: #232323; /* 13.7%     300 */
+  background-color: #282828; /* 15.7%     400 */
+  background-color: #2e2e2e; /* 18%       500 */
+  background-color: #343434; /* 20.4%     600 */
+  background-color: #3e3e3e; /* 24.3%     700 */
+  background-color: #505050; /* 31.4%     800 */
+  background-color: #707070; /* 43.9%     900 */
+  background-color: #7e7e7e; /* 49.4%     1000 */
+  background-color: #a0a0a0; /* 62.7%     1100 */
+  background-color: #ededed; /* 92.9%     1200 */
+  background-color: #dc2626;
+  background-color: hsl(0, 0%, 16%);
+}

@@ -26,6 +26,7 @@ export default function Dropzone({
       Object.assign(file, { preview: URL.createObjectURL(file) })
     );
     setFiles((prev) => [...prev, ...filesWithPreviews]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const { getRootProps, getInputProps, isDragAccept, isDragReject } =
@@ -39,6 +40,7 @@ export default function Dropzone({
   useEffect(() => {
     // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
     return () => files.forEach((file) => URL.revokeObjectURL(file.preview));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const style = useMemo(

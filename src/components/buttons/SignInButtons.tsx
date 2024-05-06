@@ -1,16 +1,15 @@
 'use client';
+
 import GoogleLogo from '@/components/logos/GoogleLogo';
 import SpinnerSVG from '@/components/logos/Spinner';
 import useToggle from '@/hooks/useToggle';
-import { ClientSafeProvider, LiteralUnion, signIn } from 'next-auth/react';
+import { ClientSafeProvider, signIn } from 'next-auth/react';
 import { useSearchParams } from 'next/navigation';
 import GitHubLogo from '../logos/GitHubLogo';
 import { styles } from '@/styles/styles';
 import { twMerge } from 'tailwind-merge';
+import { providers } from '@/utils/authProviders';
 
-interface ISignInButtonsProps {
-  providers: Record<LiteralUnion<string, string>, ClientSafeProvider>;
-}
 interface IButtonProps {
   provider: ClientSafeProvider;
   callbackUrl: string | null;
@@ -21,7 +20,7 @@ const providerLogos: { [name: string]: JSX.Element } = {
   github: <GitHubLogo className="h-5 w-5" />
 };
 
-export default function SignInButtons({ providers }: ISignInButtonsProps) {
+export default function SignInButtons() {
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get('callbackUrl');
 

@@ -1,10 +1,11 @@
-import { getProviders } from 'next-auth/react';
+// import { getProviders } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import SignInButtons from '@/components/buttons/SignInButtons';
 import { TITLE } from '@/constants/metadata';
 import { Suspense } from 'react';
 import DarkroomFinderLogo from '@/components/logos/DarkroomFinderLogo';
+import img10276046 from '/public/images/pexels-ron-lach-10276046.jpg';
 
 export function generateMetadata() {
   return {
@@ -13,8 +14,8 @@ export function generateMetadata() {
 }
 
 export default async function SigninPage() {
-  const providers = await getProviders();
-  if (!providers) return;
+  //  const providers = await getProviders();
+  //  if (!providers) return;
 
   return (
     <>
@@ -31,7 +32,7 @@ export default async function SigninPage() {
               </h2>
             </div>
             <Suspense>
-              <SignInButtons providers={providers} />
+              <SignInButtons />
             </Suspense>
             <p className="mt-auto text-center text-xs text-gray-dark-1000 sm:mx-auto sm:max-w-sm">
               By continuing, you agree to DarkroomFinder&apos;s{' '}
@@ -54,10 +55,10 @@ export default async function SigninPage() {
         <aside className="hidden grow basis-1/4 overflow-hidden border-l border-gray-dark-600 bg-[#5f0000] sm:block">
           <figure className="relative h-full">
             <Image
-              src="/images/pexels-ron-lach-10276046.jpg"
+              src={img10276046}
               alt="Hands Holding Negative"
               className="object-cover"
-              sizes="50vw"
+              sizes="75vw"
               fill
               priority
               placeholder="blur"

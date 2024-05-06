@@ -12,7 +12,9 @@ const circular = localFont({
       weight: '500',
       style: 'normal'
     }
-  ]
+  ],
+  fallback: ['system-ui', 'arial'],
+  adjustFontFallback: 'Arial'
 });
 
 export { circular };

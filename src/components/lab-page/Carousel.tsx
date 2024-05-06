@@ -64,12 +64,26 @@ export function Carousel({ images }: { images: string[] }) {
                 transition={{ duration: 0.5 }}
                 className="relative"
               >
+                {/* Preload images START */}
+                {images.map((image) => (
+                  <Image
+                    key={image}
+                    src={image}
+                    alt="Hidden"
+                    width={332}
+                    height={200}
+                    className="hidden"
+                    priority
+                  />
+                ))}
+                {/* Preload images END */}
                 <Image
                   src={images[index]}
                   alt={`Picture ${index + 1}`}
                   width={332}
                   height={200}
                   className="h-[200px] object-contain px-4"
+                  priority
                 />
               </motion.div>
             </AnimatePresence>
