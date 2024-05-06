@@ -44,6 +44,7 @@ export default function Previews({
               fill
               className="object-cover group-hover:brightness-50"
               alt="Preview"
+              sizes="128px"
             />
             <Overlay />
           </li>
@@ -62,6 +63,7 @@ export default function Previews({
               className="object-cover group-hover:brightness-50"
               alt="Preview"
               onLoad={() => URL.revokeObjectURL(file.preview)}
+              unoptimized
             />
             <Overlay />
           </li>

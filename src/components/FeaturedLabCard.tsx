@@ -4,7 +4,7 @@ import { processes, sizes } from '@/constants/lab-options';
 import { twMerge } from 'tailwind-merge';
 import { styles } from '@/styles/styles';
 
-export default function FeaturedLabCardAlt({
+export default function FeaturedLabCard({
   name,
   city,
   picture,
@@ -56,6 +56,7 @@ export default function FeaturedLabCardAlt({
           src={picture || defaultImage}
           alt={name}
           fill
+          sizes="(max-width: 640px) 50vw, (max-width: 1024: 25vw), 255px"
           className="object-cover"
         />
       </div>

@@ -42,8 +42,9 @@ export default function FakePage() {
                     <Image
                       src={technology.logo}
                       alt={technology.title}
-                      width={24}
-                      height={24}
+                      width={technology.logo.width}
+                      height={technology.logo.height}
+                      className="h-auto w-auto max-w-6"
                     />
                   </div>
                   <div className="flex w-full flex-col gap-2">

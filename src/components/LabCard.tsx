@@ -15,12 +15,12 @@ export default function LabCard({
     <div className="group relative block h-44 cursor-pointer rounded-md border border-gray-dark-500 bg-gray-dark-300 p-5 hover:border-gray-dark-600 hover:bg-gray-dark-400">
       <div className="flex gap-4 text-sm">
         <Image
-          priority
           src={picture || defaultImage}
           alt={name}
           width={150}
           height={100}
           className="h-[100px] w-[150px] shrink-0 overflow-hidden rounded-md bg-gray-dark-500 object-cover object-center"
+          sizes="150px"
         />
         <div>
           <p>{name}</p>

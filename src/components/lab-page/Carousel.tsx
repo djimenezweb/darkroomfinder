@@ -17,9 +17,9 @@ export function Carousel({ images }: { images: string[] }) {
     'block px-1 py-2.5 rounded-md font-normal text-gray-dark-800 hover:text-gray-dark-1100 hover:bg-gray-dark-500';
 
   const variants = {
-    enter: (direction: number) => ({ x: direction > 0 ? '100%' : '-100%' }),
+    enter: (direction: number) => ({ x: direction > 0 ? '120%' : '-120%' }),
     center: { x: 0 },
-    exit: (direction: number) => ({ x: direction < 0 ? '100%' : '-100%' })
+    exit: (direction: number) => ({ x: direction < 0 ? '120%' : '-120%' })
   };
 
   function handleClick(newDirection: number) {
@@ -65,12 +65,11 @@ export function Carousel({ images }: { images: string[] }) {
                 className="relative"
               >
                 <Image
-                  priority
                   src={images[index]}
                   alt={`Picture ${index + 1}`}
                   width={332}
                   height={200}
-                  className="mx-4 h-[200px] object-contain"
+                  className="h-[200px] object-contain px-4"
                 />
               </motion.div>
             </AnimatePresence>

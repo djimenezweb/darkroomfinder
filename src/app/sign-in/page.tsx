@@ -51,14 +51,15 @@ export default async function SigninPage() {
             </p>
           </div>
         </main>
-        <aside className="relative hidden grow basis-1/4 overflow-hidden border-l border-gray-dark-600 bg-[#5f0000] sm:block">
-          <figure>
+        <aside className="hidden grow basis-1/4 overflow-hidden border-l border-gray-dark-600 bg-[#5f0000] sm:block">
+          <figure className="relative h-full">
             <Image
-              priority
               src="/images/pexels-ron-lach-10276046.jpg"
               alt="Hands Holding Negative"
               className="object-cover"
+              sizes="50vw"
               fill
+              priority
             />
             <figcaption className="absolute bottom-8 w-full text-center text-sm text-gray-dark-1200">
               <Link href="https://www.pexels.com/photo/hands-holding-negative-10276046/">

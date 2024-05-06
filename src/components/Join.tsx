@@ -22,11 +22,11 @@ export default function Join() {
 
       <figure className="relative basis-1/2">
         <Image
-          priority
           src={selectedPicture.src}
           alt={selectedPicture.alt}
-          width={1200}
-          height={800}
+          width={selectedPicture.src.width}
+          height={selectedPicture.src.height}
+          sizes="(max-width: 1024px) 100vw, 50vw"
         />
         <figcaption
           className={twMerge(
