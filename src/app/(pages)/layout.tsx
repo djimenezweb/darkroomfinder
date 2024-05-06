@@ -14,7 +14,7 @@ export default async function PagesLayout({
   return (
     <div className="grid min-h-screen grid-cols-layout grid-rows-layout">
       <Navbar session={session} />
-      <main className="pt-16">{children}</main>
+      <main className="pt-[--header-height]">{children}</main>
       <Footer />
     </div>
   );

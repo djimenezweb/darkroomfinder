@@ -19,16 +19,20 @@ export default function Navbar({ session }: { session: Session | null }) {
 
   useEffect(() => {
     function reset() {
-      closeMobileMenu();
-      closeProfile();
+      if (isMobileMenuOpen) {
+        closeMobileMenu();
+      }
+      if (isProfileOpen) {
+        closeProfile();
+      }
     }
     window.addEventListener('resize', reset);
     return () => window.removeEventListener('resize', reset);
-  }, []);
+  }, [isMobileMenuOpen, isProfileOpen]);
 
   return (
     <header
-      className={`fixed z-40 h-16 w-full border-b border-solid border-gray-dark-500 text-sm font-medium ${
+      className={`fixed z-40 h-[--header-height] w-full border-b border-solid border-gray-dark-500 text-sm font-medium ${
         isMobileMenuOpen ? 'border-none bg-gray-dark-300' : 'bg-gray-dark-200'
       } lg:bg-gray-dark-200/75 lg:backdrop-blur`}
     >
