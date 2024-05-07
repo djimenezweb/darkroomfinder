@@ -20,6 +20,16 @@ import {
   LabMapSection,
   Share
 } from '@/components/lab-page';
+import { getAllLabIDs } from '@/utils/getAllLabIDs';
+
+// GENERATE STATIC PARAMS
+export async function generateStaticParams() {
+  const allLabs = await getAllLabIDs();
+  if (!allLabs) return;
+  return allLabs.map((lab) => ({
+    id: lab._id.toString()
+  }));
+}
 
 // METADATA
 export async function generateMetadata({ params }: { params: Params }) {

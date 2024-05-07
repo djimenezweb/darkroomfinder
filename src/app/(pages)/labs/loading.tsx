@@ -8,6 +8,7 @@ import { TITLE } from '@/constants/metadata';
 import AsideElementWrapper from '@/components/AsideElementWrapper';
 import { twMerge } from 'tailwind-merge';
 import { styles } from '@/styles/styles';
+import { Suspense } from 'react';
 
 export function generateMetadata() {
   return {
@@ -21,13 +22,19 @@ export default async function LabsLoadingPage() {
       <div className="relative h-full md:flex md:items-stretch">
         <StickyAside>
           <AsideElementWrapper>
-            <SearchMini />
+            <Suspense>
+              <SearchMini />
+            </Suspense>
           </AsideElementWrapper>
           <AsideElementWrapper>
-            <Filters name="sizes" />
+            <Suspense>
+              <Filters name="sizes" />
+            </Suspense>
           </AsideElementWrapper>
           <AsideElementWrapper>
-            <Filters name="processes" />
+            <Suspense>
+              <Filters name="processes" />
+            </Suspense>
           </AsideElementWrapper>
         </StickyAside>
 

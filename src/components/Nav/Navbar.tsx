@@ -1,6 +1,5 @@
 'use client';
 
-import { Session } from 'next-auth';
 import DropDownMenu from './DropDownMenu';
 import HamburgerMenu from '../logos/HamburgerMenu';
 import CloseMenu from '../logos/CloseMenu';
@@ -10,8 +9,10 @@ import SecondaryNavBarMobile from './SecondaryNavBarMobile';
 import { useEffect, useState } from 'react';
 import DarkroomFinderLogo from '../logos/DarkroomFinderLogo';
 import { AnimatePresence } from 'framer-motion';
+import { useSession } from 'next-auth/react';
 
-export default function Navbar({ session }: { session: Session | null }) {
+export default function Navbar() {
+  const { data: session, status } = useSession();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const closeMobileMenu = () => setIsMobileMenuOpen(false);

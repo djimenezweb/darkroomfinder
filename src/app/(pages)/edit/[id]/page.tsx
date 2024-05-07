@@ -7,13 +7,25 @@ import EditLabForm from '@/components/forms/EditLabForm';
 import { TITLE } from '@/constants/metadata';
 import { Types } from 'mongoose';
 import DeleteLabForm from '@/components/forms/DeleteLabForm';
+import { getAllLabIDs } from '@/utils/getAllLabIDs';
 
+// GENERATE STATIC PARAMS
+export async function generateStaticParams() {
+  const allLabs = await getAllLabIDs();
+  if (!allLabs) return;
+  return allLabs.map((lab) => ({
+    id: lab._id.toString()
+  }));
+}
+
+// METADATA
 export function generateMetadata() {
   return {
     title: `Edit | ${TITLE}`
   };
 }
 
+// PAGE
 export default async function EditLabPage({ params }: { params: Params }) {
   const id = params.id;
 

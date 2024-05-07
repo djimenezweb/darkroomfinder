@@ -1,7 +1,6 @@
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Nav/Navbar';
-import { authOptions } from '@/utils/authOptions';
-import { getServerSession } from 'next-auth';
+import AuthProvider from '@/components/providers/AuthProvider';
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
 
 export function generateMetadata() {
@@ -11,10 +10,11 @@ export function generateMetadata() {
 }
 
 export default async function notFound() {
-  const session = await getServerSession(authOptions);
   return (
     <div className="grid min-h-screen grid-rows-layout">
-      <Navbar session={session} />
+      <AuthProvider>
+        <Navbar />
+      </AuthProvider>
       <main className="pt-16">
         <div className="flex h-full items-center justify-center">
           <div className="flex gap-4 rounded-md border border-error-500 bg-error-200 px-6 py-4 text-error-900">

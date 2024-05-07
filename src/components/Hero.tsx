@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import Search from './search/Search';
 
 export default function Hero() {
@@ -17,7 +18,9 @@ export default function Hero() {
         </p>
       </div>
       <div>
-        <Search />
+        <Suspense>
+          <Search />
+        </Suspense>
       </div>
     </section>
   );

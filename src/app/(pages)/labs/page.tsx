@@ -10,6 +10,7 @@ import AsideElementWrapper from '@/components/AsideElementWrapper';
 import { TITLE } from '@/constants/metadata';
 import { twMerge } from 'tailwind-merge';
 import { styles } from '@/styles/styles';
+import { Suspense } from 'react';
 
 export function generateMetadata() {
   return {
@@ -42,13 +43,19 @@ export default async function Labs({
     <div className="relative h-full md:flex md:items-stretch">
       <StickyAside>
         <AsideElementWrapper>
-          <SearchMini key={'searchKey' + query} />
+          <Suspense>
+            <SearchMini key={'searchKey' + query} />
+          </Suspense>
         </AsideElementWrapper>
         <AsideElementWrapper>
-          <Filters name="sizes" key={'sizesKey' + sizes} />
+          <Suspense>
+            <Filters name="sizes" key={'sizesKey' + sizes} />
+          </Suspense>
         </AsideElementWrapper>
         <AsideElementWrapper>
-          <Filters name="processes" key={'processesKey' + processes} />
+          <Suspense>
+            <Filters name="processes" key={'processesKey' + processes} />
+          </Suspense>
         </AsideElementWrapper>
       </StickyAside>
 
